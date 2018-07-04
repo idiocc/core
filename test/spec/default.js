@@ -1,18 +1,18 @@
 import { equal, ok } from 'zoroaster/assert'
 import Context from '../context'
-import core from '../../src'
+import idioCore from '../../src'
 
 /** @type {Object.<string, (c: Context)>} */
 const T = {
   context: Context,
   'is a function'() {
-    equal(typeof core, 'function')
+    equal(typeof idioCore, 'function')
   },
   async 'calls package without error'() {
-    await core()
+    await idioCore()
   },
   async 'gets a link to the fixture'({ FIXTURE }) {
-    const res = await core({
+    const res = await idioCore({
       type: FIXTURE,
     })
     ok(res, FIXTURE)
