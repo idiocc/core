@@ -35,9 +35,28 @@
   },
   "homepage": "https://github.com/idiojs/core#readme",
   "devDependencies": {
+    "catchment": "2.0.1",
     "documentary": "1.8.2",
     "eslint-config-artdeco": "1.0.0",
+    "rqt": "2.0.0",
+    "snapshot-context": "2.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "2.1.0"
+  },
+  "dependencies": {
+    "@wrote/ensure-path": "1.0.1",
+    "erotic": "1.2.1",
+    "koa": "2.5.1",
+    "koa-bodyparser": "4.2.1",
+    "koa-compose": "4.1.0",
+    "koa-compress": "3.0.0",
+    "koa-csrf": "3.0.6",
+    "koa-logger": "3.2.0",
+    "koa-mount": "3.0.0",
+    "koa-multer": "1.0.2",
+    "koa-router": "7.4.0",
+    "koa-session": "5.8.1",
+    "koa-static": "5.0.0",
+    "server-destroy": "1.0.1"
   }
 }
