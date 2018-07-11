@@ -86,7 +86,22 @@ The `@idio/core` accepts a single argument which is the configuration object. It
   <td><a name="middleware"><code>middleware</code></a></td>
   <td><em>MiddlewareConfig</em></td>
   <td>Middleware configuration. See details below.</td>
-  <td></td>
+  <td>
+
+```js
+{
+  static: {
+    mount: '/files',
+    root: 'files',
+    use: true,
+  },
+  session: {
+    use: true,
+    keys: ['secret-key'],
+  },
+}
+```
+</td>
  </tr>
  </tbody>
 </table>

@@ -36,7 +36,22 @@ The `@idio/core` accepts a single argument which is the configuration object. It
 </p>
 <p name="middleware" type="MiddlewareConfig">
   <d>Middleware configuration. See details below.</d>
-  <e></e>
+  <e>
+
+```js
+{
+  static: {
+    mount: '/files',
+    root: 'files',
+    use: true,
+  },
+  session: {
+    use: true,
+    keys: ['secret-key'],
+  },
+}
+```
+</e>
 </p>
 %
 
