@@ -1,17 +1,11 @@
-// import { debuglog } from 'util'
 import startApp from './lib/start-app'
-
-// const LOG = debuglog('@idio/core')
 
 /**
  * Start the server.
  * @param {Config} config A configuration object.
- * @param {string} [config.databaseURL='mongodb://localhost:27017'] Address on which to connect to the database.
  * @param {number} [config.port=5000] Port on which to start the server.
  * @param {number} [config.host=0.0.0.0] The host on which to listen.
  * @param {MiddlewareConfig} [config.middleware] Middleware configuration for the idio core server.
- * @param {boolean} [config.autoConnect=true] Whether to automatically connect to the database.
- * @param {RoutesConfig} [config.routesConfig] A configuration object for the router.
  */
 export default async function idioCore(config = {}) {
   const res = await startApp(config)
@@ -21,16 +15,10 @@ export default async function idioCore(config = {}) {
 }
 
 /**
- * @typedef {Object.<string, (route: function) => (string|function)[]>} MiddlewareMap
- *
- * @typedef {Object.<string, string[]>} AliasMap
- *
  * @typedef {Object} Config
- * @property {string} [databaseURL='mongodb://localhost:27017'] Address on which to connect to the database.
  * @property {number} [port=5000] Port on which to start the server.
  * @property {number} [host=0.0.0.0] The host on which to listen.
  * @property {MiddlewareConfig} [middleware] Middleware configuration for the idio core server.
- * @property {boolean} [autoConnect=true] Whether to automatically connect to the database.
 
  * @typedef ISignature
  * @property {boolean} use

@@ -74,7 +74,7 @@ export default async function startApp(config = {}) {
 
 /**
  * @typedef {Object} App
- * @property {function} destroy Kill the server and disconnect from the database
+ * @property {function} destroy Kill the server by terminating all active connections.
  *
  * @typedef {Object} AppReturn
  * @property {App} app
