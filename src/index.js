@@ -17,8 +17,6 @@ async function idioCore(middleware = {}, config = {}) {
 /* documentary types/index.xml */
 
 /**
- * @typedef {import("koa").Context} Context
- *
  * @typedef {Object} SessionConfig
  * @prop {string} [key] cookie key. Default `koa:sess`.
  * @prop {number|'session'} [maxAge] maxAge in ms. Default `86400000` (1 day). `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire.
