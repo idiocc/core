@@ -14,8 +14,7 @@ async function idioCore(middleware = {}, config = {}) {
   return { url, app, router, middleware: mw }
 }
 
-/* documentary types */
-/* below is auto-generated code */
+/* documentary types/index.xml */
 
 /**
  * @typedef {import("koa").Context} Context
