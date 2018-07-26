@@ -15,6 +15,19 @@ async function idioCore(middleware = {}, config = {}) {
 }
 
 /* documentary types/index.xml */
+/**
+ * @typedef {import('koa').Context} Context
+ * @typedef {(res: import('http').ServerResponse, path: string, stats: import('fs').Stats) => any} SetHeaders
+ * @typedef {Object} StaticConfig
+ * @prop {number} maxage=0 Browser cache max-age in milliseconds. Default `0`.
+ * @prop {boolean} hidden=false  Allow transfer of hidden files. Default `false`.
+ * @prop {string} index="index.html" Default file name. Default `index.html`.
+ * @prop {boolean} defer If `true`, serves after return next(), allowing any downstream middleware to respond first.
+ * @prop {boolean} gzip=true  Try to serve the gzipped version of a file automatically when gzip is supported by a client and if the requested file with .gz extension exists. Default `true`.
+ * @prop {boolean} br=true Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with .br extension exists (note, that brotli is only accepted over https). Default `true`.
+ * @prop {SetHeaders} setHeaders Function to set custom headers on response.
+ * @prop {boolean} extensions=false Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served. Default `false`.
+ */
 
 /**
  * @typedef {Object} SessionConfig

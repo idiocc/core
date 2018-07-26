@@ -9,6 +9,7 @@
     "test-build": "BABEL_ENV=test-build yarn test",
     "test-all": "yarn-s test test-build",
     "test-watch": "yarn test -w",
+    "typedef": "NODE_DEBUG=doc doc src/index.js -T",
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
     "rec": "NODE_DEBUG=appshot appshot -T 23 -a Terminal -y 150 -f",
