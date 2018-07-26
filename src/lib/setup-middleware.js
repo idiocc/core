@@ -72,8 +72,8 @@ const setupBodyParser = (app, config) => {
   return bodyparser
 }
 
-const setupLogger = () => {
-  const l = logger()
+const setupLogger = (app, config) => {
+  const l = logger(config)
   return l
 }
 
@@ -101,7 +101,10 @@ async function initMiddleware(name, conf, app) {
   return res
 }
 
+/** @typedef {import("koa").Middleware} Middleware */
+
 export default async function setupMiddleware(middleware = {}, app) {
+  /** @type {Object.<string, Middleware>} */
   const res = await Object.keys(middleware)
     .reduce(async (acc, name) => {
       const accRes = await acc
