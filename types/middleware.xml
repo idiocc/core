@@ -1,0 +1,122 @@
+<types>
+  <t name="Context" type="import('koa').Context" import="koa" />
+  <t name="Stats" type="import('fs').Stats" />
+  <t name="ServerResponse" type="import('http').ServerResponse" />
+  <t name="StorageEngine" type="import('koa-multer').StorageEngine" />
+
+  <t name="SetHeaders" type="(res: ServerResponse, path: string, stats: Stats) => any" />
+  <t name="StaticConfig">
+    <p number name="maxage" default="0">Browser cache max-age in milliseconds.</p>
+    <p boolean name="hidden" default="false"> Allow transfer of hidden files.</p>
+    <p string name="index" default="index.html">Default file name.</p>
+    <p boolean name="defer">If `true`, serves after return next(), allowing any downstream middleware to respond first.</p>
+    <p boolean name="gzip" default="true"> Try to serve the gzipped version of a file automatically when gzip is supported by a client and if the requested file with .gz extension exists.</p>
+    <p boolean name="br" default="true">Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with .br extension exists (note, that brotli is only accepted over https).</p>
+    <p type="SetHeaders" name="setHeaders">Function to set custom headers on response.</p>
+    <p boolean name="extensions" default="false">Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served.</p>
+  </t>
+  <t name="SessionConfig">
+    <p opt string name="key" default="koa:sess">cookie key.</p>
+    <p opt type="number|'session'" name="maxAge">maxAge in ms. Default `86400000` (1 day). `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire.</p>
+    <p opt boolean name="overwrite" default="true">Can overwrite or not.</p>
+    <p opt boolean name="httpOnly" default="true">httpOnly or not or not.</p>
+    <p opt boolean name="true" default="true">Signed or not.</p>
+    <p opt boolean name="rolling" default="false">Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.</p>
+    <p opt boolean name="renew" default="false">Renew session when session is nearly expired, so we can always keep user logged in.</p>
+  </t>
+  <t name="Limits">
+    <p opt number name="fieldNameSize">Max field name size (Default: 100 bytes).</p>
+    <p opt number name="fieldSize">Max field value size (Default: 1MB).</p>
+    <p opt number name="fields">Max number of non- file fields (Default: Infinity).</p>
+    <p opt number name="fileSize">For multipart forms, the max file size (in bytes)(Default: Infinity).</p>
+    <p opt number name="files">For multipart forms, the max number of file fields (Default: Infinity).</p>
+    <p opt number name="parts">For multipart forms, the max number of parts (fields + files)(Default: Infinity).</p>
+    <p opt number name="headerPairs">For multipart forms, the max number of header key=> value pairs to parse Default: 2000 (same as node's http).</p>
+  </t>
+  <t name="MulterConfig">
+    <p opt string name="dest">Where to store the files.</p>
+    <p opt type="StorageEngine" name="storage">Where to store the files.</p>
+    <p opt type="(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void" name="fileFilter">Function to control which files are accepted.</p>
+    <p opt type="Limits" name="limits">Limits of the uploaded data.</p>
+    <p opt boolean name="preservePath" default="false">Keep the full path of files instead of just the base name.</p>
+  </t>
+  <t name="CSRFConfig">
+    <p opt string name="invalidSessionSecretMessage"/>
+    <p opt number name="invalidSessionSecretStatusCode"/>
+    <p opt string name="invalidTokenMessage"/>
+    <p opt number name="invalidTokenStatusCode"/>
+    <p opt type="string[]" name="excludedMethods"/>
+    <p opt boolean name="disableQuery"/>
+  </t>
+  <t name="BodyparserConfig">
+    <p opt type="string[]" name="enableTypes" default="['json', 'form']">Parser will only parse when request type hits enableTypes.</p>
+    <p opt string name="encode" default="utf-8">Requested encoding.</p>
+    <p opt string name="formLimit" default="56kb">Limit of the urlencoded body. If the body ends up being larger than this limit a 413 error code is returned.</p>
+    <p opt string name="jsonLimit" default="1mb">Limit of the json body.</p>
+    <p opt boolean name="strict" default="true">When set to true, JSON parser will only accept arrays and objects.</p>
+    <p opt type="(ctx: Context) => boolean" name="detectJSON" default="null">Custom json request detect function.</p>
+    <p opt type="{json: string[], form: string[], text: string[]}" name="extendTypes">Support extend types.</p>
+    <p opt type="(err: Error, ctx: Context) => void" name="onerror">Support custom error handle.</p>
+  </t>
+  <t name="CompressConfig">
+    <p opt type="(content_type: string) => boolean" name="filter">An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`.</p>
+    <p opt number name="threshold"> Minimum response size in bytes to compress. Default 1024 bytes or 1kb.</p>
+    <p opt number name="flush">default: zlib.constants.Z_NO_FLUSH</p>
+    <p opt number name="finishFlush">default: zlib.constants.Z_FINISH</p>
+    <p opt number name="chunkSize">default: 16*1024</p>
+    <p opt number name="windowBits">Support extend types.</p>
+    <p opt number name="level">compression only</p>
+    <p opt number name="memLevel">compression only</p>
+    <p opt number name="strategy">compression only</p>
+    <p opt type="any" name="dictionary">deflate/inflate only, empty dictionary by default</p>
+  </t>
+  <t name="LoggerConfig">
+    <p opt type="(str: string, args: [string, string, string, string, string, string, string]) => void" name="transporter">Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`.</p>
+  </t>
+  <t name="Config">
+    <p opt number name="port" default="5000">Port on which to start the server.</p>
+    <p opt string name="host" default="0.0.0.0">The host on which to listen.</p>
+  </t>
+  <t name="StaticOptions">
+    <p opt boolean name="use">Use this middleware for every request.</p>
+    <p type="string|string[]" name="root">Root or multiple roots from which to serve files.</p>
+    <p opt string name="mount" default="/">Path from which to serve files.</p>
+    <p opt number name="maxage" default="0">How long to cache file for.</p>
+    <p opt type="StaticConfig" name="config">`koa-static` configuration.</p>
+  </t>
+  <t name="LoggerOptions">
+    <p opt boolean name="use">Use this middleware for every request.</p>
+    <p opt type="object" name="config">`koa-logger` configuration.</p>
+  </t>
+  <t name="SessionOptions">
+    <p type="string[]" name="keys">A set of keys to be installed in app.keys.</p>
+    <p opt boolean name="use">Use this middleware for every request.</p>
+    <p opt type="SessionConfig" name="config">`koa-session` configuration.</p>
+  </t>
+  <t name="MulterOptions">
+    <p opt boolean name="use">Use this middleware for every request.</p>
+    <p opt type="MulterConfig" name="config">`koa-multer` configuration.</p>
+  </t>
+  <t name="CSRFOptions">
+    <p opt boolean name="use">Use this middleware for every request.</p>
+    <p opt type="CSRFConfig" name="config">`koa-csrf` configuration.</p>
+  </t>
+  <t name="BodyparserOptions">
+    <p opt boolean name="use">Use this middleware for every request.</p>
+    <p opt type="BodyparserConfig" name="config">`koa-bodyparser` configuration.</p>
+  </t>
+  <t name="CompressOptions">
+    <p opt boolean name="use">Use this middleware for every request.</p>
+    <p opt type="CompressConfig" name="config">`koa-compress` configuration.</p>
+  </t>
+  <t name="MiddlewareConfig" desc="ABC">
+    <p opt type="SessionOptions" name="session">`session` options.</p>
+    <p opt type="MulterOptions" name="multer">`multer` options.</p>
+    <p opt type="CSRFOptions" name="csrf">`csrf` options.</p>
+    <p opt type="BodyparserOptions" name="bodyparser">`bodyparser` options.</p>
+    <p opt type="CompressOptions" name="compress">`compress` options.</p>
+    <p opt type="{ use?: boolean }" name="checkauth">`checkauth` options.</p>
+    <p opt type="{ use?: boolean, config: LoggerConfig }" name="logger">`logger` options.</p>
+    <p opt type="StaticOptions" name="static">`static` options.</p>
+  </t>
+</types>
