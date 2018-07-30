@@ -1,12 +1,10 @@
 import Koa from 'koa'
 import setupMiddleware from './setup-middleware'
 
-export default async function createApp(config) {
+export default async function createApp(middleware) {
   const app = new Koa()
 
-  app.context.config = config
-
-  const middleware = await setupMiddleware(config.middleware, app)
+  const mw = await setupMiddleware(middleware, app)
 
   if (app.env == 'production') {
     app.proxy = true
@@ -14,6 +12,6 @@ export default async function createApp(config) {
 
   return {
     app,
-    middleware,
+    middleware: mw,
   }
 }

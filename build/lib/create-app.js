@@ -11,10 +11,9 @@ var _setupMiddleware = _interopRequireDefault(require("./setup-middleware"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-async function createApp(config) {
+async function createApp(middleware) {
   const app = new _koa.default();
-  app.context.config = config;
-  const middleware = await (0, _setupMiddleware.default)(config.middleware, app);
+  const mw = await (0, _setupMiddleware.default)(middleware, app);
 
   if (app.env == 'production') {
     app.proxy = true;
@@ -22,7 +21,7 @@ async function createApp(config) {
 
   return {
     app,
-    middleware
+    middleware: mw
   };
 }
 //# sourceMappingURL=create-app.js.map

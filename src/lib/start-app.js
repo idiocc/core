@@ -3,7 +3,6 @@ import enableDestroy from 'server-destroy'
 import Router from 'koa-router'
 import erotic from 'erotic'
 import createApp from './create-app'
-// import { AppReturn, Config } from '../types' // eslint-disable-line no-unused-vars
 
 const LOG = debuglog('idio')
 
@@ -40,9 +39,8 @@ function listen(app, port, hostname = '0.0.0.0') {
 /**
  * Start the server.
  * @param {Config} [config] configuration object
- * @returns {AppReturn} An object with variables
  */
-export default async function startApp(config = {}) {
+export default async function startApp(middleware, config) {
   const {
     port = DEFAULT_PORT,
     host = DEFAULT_HOST,
@@ -54,7 +52,7 @@ export default async function startApp(config = {}) {
     process.kill(process.pid, 'SIGUSR2')
   })
 
-  const appMeta = await createApp(config)
+  const appMeta = await createApp(middleware, config)
   const { app } = appMeta
 
   const server = await listen(app, port, host)
@@ -67,39 +65,7 @@ export default async function startApp(config = {}) {
 
   const url = `http://localhost:${p}`
 
-  const router = Router()
+  const router = new Router()
 
   return { ...appMeta, router, url }
 }
-
-/**
- * @typedef {Object} App
- * @property {function} destroy Kill the server by terminating all active connections.
- *
- * @typedef {Object} AppReturn
- * @property {App} app
- * @property {string} url
- * @property {object} middleware
- * @property {Router} router
- * @property {function} [connect]
-
- * @typedef {Object} Config
- * @property {number} [port=5000]
- * @property {number} [host=0.0.0.0]
- * @property {MiddlewareConfig} [middleware]
- *
- * @typedef ISignature
- * @property {boolean} use
- * @property {Object} config
- * @property {Object} [rest]
- *
- * @typedef {Object} MiddlewareConfig
- * @property {ISignature} [session]
- * @property {ISignature} [multer]
- * @property {ISignature} [csrf]
- * @property {ISignature} [compress]
- * @property {ISignature} [bodyparser]
- * @property {ISignature} [checkauth]
- * @property {ISignature} [logger]
- * @property {Static} [static]
- */

@@ -17,7 +17,6 @@ var _createApp = _interopRequireDefault(require("./create-app"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { AppReturn, Config } from '../types' // eslint-disable-line no-unused-vars
 const LOG = (0, _util.debuglog)('idio');
 const DEFAULT_PORT = 5000;
 const DEFAULT_HOST = '0.0.0.0';
@@ -57,7 +56,7 @@ function listen(app, port, hostname = '0.0.0.0') {
  */
 
 
-async function startApp(config = {}) {
+async function startApp(middleware, config) {
   const {
     port = DEFAULT_PORT,
     host = DEFAULT_HOST
@@ -67,7 +66,7 @@ async function startApp(config = {}) {
     await app.destroy();
     process.kill(process.pid, 'SIGUSR2');
   });
-  const appMeta = await (0, _createApp.default)(config);
+  const appMeta = await (0, _createApp.default)(middleware, config);
   const {
     app
   } = appMeta;
@@ -88,35 +87,4 @@ async function startApp(config = {}) {
     url
   };
 }
-/**
- * @typedef {Object} App
- * @property {function} destroy Kill the server and disconnect from the database
- *
- * @typedef {Object} AppReturn
- * @property {App} app
- * @property {string} url
- * @property {object} middleware
- * @property {Router} router
- * @property {function} [connect]
-
- * @typedef {Object} Config
- * @property {number} [port=5000]
- * @property {number} [host=0.0.0.0]
- * @property {MiddlewareConfig} [middleware]
- *
- * @typedef ISignature
- * @property {boolean} use
- * @property {Object} config
- * @property {Object} [rest]
- *
- * @typedef {Object} MiddlewareConfig
- * @property {ISignature} [session]
- * @property {ISignature} [multer]
- * @property {ISignature} [csrf]
- * @property {ISignature} [compress]
- * @property {ISignature} [bodyparser]
- * @property {ISignature} [checkauth]
- * @property {ISignature} [logger]
- * @property {Static} [static]
- */
 //# sourceMappingURL=start-app.js.map
