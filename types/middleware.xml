@@ -156,7 +156,7 @@
     <prop opt number name="strategy">
       compression only
     </prop>
-    <prop opt type="any" name="dictionary">
+    <prop opt name="dictionary">
       deflate/inflate only, empty dictionary by default
     </prop>
   </type>
