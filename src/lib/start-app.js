@@ -18,9 +18,9 @@ async function destroy(server) {
 }
 
 /**
- * @param {Koa} app
+ * @param {import('koa').Application} app
  * @param {number} [port]
- * @param {string} [hostname]
+ * @param {string} [hostname='0.0.0.0']
  */
 function listen(app, port, hostname = '0.0.0.0') {
   const cb = erotic(true)
@@ -38,9 +38,10 @@ function listen(app, port, hostname = '0.0.0.0') {
 
 /**
  * Start the server.
- * @param {Config} [config] configuration object
+ * @param {import('..').MiddlewareConfig} [middleware]
+ * @param {import('..').Config} [config] configuration object
  */
-export default async function startApp(middleware, config) {
+async function startApp(middleware, config) {
   const {
     port = DEFAULT_PORT,
     host = DEFAULT_HOST,
@@ -69,3 +70,5 @@ export default async function startApp(middleware, config) {
 
   return { ...appMeta, router, url }
 }
+
+export default startApp

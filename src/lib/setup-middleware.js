@@ -101,7 +101,7 @@ async function initMiddleware(name, conf, app) {
   return res
 }
 
-/** @typedef {import("koa").Middleware} Middleware */
+/** @typedef {import('koa').Middleware} Middleware */
 
 export default async function setupMiddleware(middleware = {}, app) {
   /** @type {Object.<string, Middleware>} */

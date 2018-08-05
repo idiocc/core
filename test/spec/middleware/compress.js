@@ -3,15 +3,13 @@ import rqt from 'rqt'
 import { gunzipSync } from 'zlib'
 import Context from '../../context'
 
-/** @type {Object.<string, (api: Context)>} */
+/** @type {Object.<string, (c: Context)>} */
 const T = {
   context: Context,
   async 'uses compression'({ start, readFixture, assignRoute }) {
     const body = await readFixture()
     const { app, url, router } = await start({
-      middleware: {
-        compress: { use: true },
-      },
+      compress: { use: true },
     })
     const fullUrl = assignRoute(app, url, router, '/dracula.txt', body)
     const res = await rqt(fullUrl, {
@@ -26,9 +24,7 @@ const T = {
   async 'passes threshold to the constructor'({ start, readFixture, assignRoute }) {
     const body = await readFixture()
     const { app, url, router } = await start({
-      middleware: {
-        compress: { use: true, config: { threshold: body.length + 1 } },
-      },
+      compress: { use: true, config: { threshold: body.length + 1 } },
     })
     const fullUrl = assignRoute(app, url, router, '/dracula.txt', body)
     const actual = await rqt(fullUrl, {
