@@ -12,21 +12,22 @@ yarn add -E @idio/core
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-  * [`core(config?: IdioConfig)`](#coreconfig-idioconfig-void)
-  * [`IdioConfig` Type](#idioconfig-type)
-    * [<code>port</code>](#port)
-    * [<code>host</code>](#host)
-    * [<code>middleware</code>](#middleware)
-  * [`MiddlewareConfig` Type](#middlewareconfig-type)
-    * [session](#session)
-    * [multer](#multer)
-    * [csrf](#csrf)
-    * [bodyparser](#bodyparser)
-    * [checkauth](#checkauth)
-    * [logger](#logger)
-    * [compress](#compress)
-    * [static](#static)
-    * [Custom Middleware](#custom-middleware)
+- [`core(middleware?: MiddlewareConfig, config?: Config)`](#coremiddleware-middlewareconfigconfig-config-void)
+  * [`MiddlewareConfig`](#middlewareconfig)
+  * [`Config`](#config)
+- [Middleware Configuration](#middleware-configuration)
+  * [session](#session)
+    * [`SessionOptions`](#sessionoptions)
+    * [`SessionConfig`](#sessionconfig)
+  * [multer](#multer)
+  * [csrf](#csrf)
+  * [bodyparser](#bodyparser)
+  * [checkauth](#checkauth)
+  * [logger](#logger)
+  * [compress](#compress)
+  * [static](#static)
+- [Custom Middleware](#custom-middleware)
+- [Copyright](#copyright)
 
 ## API
 
@@ -36,23 +37,28 @@ The package is available by importing its default function:
 import core from '@idio/core'
 ```
 
-To start the server, call the async method and pass the configuration object:
+To start the server, call the async method and pass middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
 ```javascript
-/* yarn example */
+/* yarn example/ */
 import { resolve } from 'path'
 import core from '@idio/core'
 
 (async () => {
   const { url } = await core({
-    port: 8080,
-    middleware: {
-      static: {
-        use: true,
-        root: resolve(__dirname, 'static'),
-        mount: '/static',
+    static: {
+      use: true,
+      root: resolve(__dirname, 'static'),
+      mount: '/static',
+    },
+    compress: {
+      use: true,
+      config: {
+        threshold: 1024,
       },
     },
+  }, {
+    port: 8080,
   })
   console.log('File available at: %s/static/test.txt', url)
 })()
@@ -62,67 +68,34 @@ import core from '@idio/core'
 File available at: http://localhost:8080/static/test.txt
 ```
 
-### `core(`<br/>&nbsp;&nbsp;`config?: IdioConfig,`<br/>`): void`
+## `core(`<br/>&nbsp;&nbsp;`middleware?: MiddlewareConfig,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): void`
 
-The `@idio/core` accepts a single argument which is the configuration object. It is possible to start the server without any configuration, however it will do nothing, therefore it is important to add some middleware configuration.
+The `@idio/core` accepts 2 arguments which are the middleware configuration object and server configuration object. It is possible to start the server without any configuration, however it will do nothing, therefore it is important to add some middleware configuration.
 
+__<a name="middlewareconfig">`MiddlewareConfig`</a>__: Middleware configuration for the `idio` `core` server.
 
-### `IdioConfig` Type
+| Name | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
+| session | _SessionOptions_ | `session` options. | - |
+| multer | _MulterOptions_ | `multer` options. | - |
+| csrf | _CSRFOptions_ | `csrf` options. | - |
+| bodyparser | _BodyparserOptions_ | `bodyparser` options. | - |
+| compress | _CompressOptions_ | `compress` options. | - |
+| checkauth | _CheckauthOptions_ | `checkauth` options. | - |
+| logger | _LoggerOptions_ | `logger` options. | - |
+| static | _StaticOptions_ | `static` options. | - |
 
-<table>
- <thead>
-  <tr>
-   <th>Property</th>
-   <th>Type</th>
-   <th>Description</th>
-   <th>Example</th>
-  </tr>
- </thead>
- <tbody>
-  <tr>
-   <td><a name="port"><code>port</code></a></td>
-   <td><em>number</em></td>
-   <td>Port on which to listen, default <code>5000</code>.</td>
-   <td><code>80</code></td>
-  </tr>
-  <tr>
-   <td><a name="host"><code>host</code></a></td>
-   <td><em>string</em></td>
-   <td>Host to which to bind, default <code>0.0.0.0</code>.</td>
-   <td><code>127.0.0.1</code></td>
-  </tr>
-  <tr>
-   <td><a name="middleware"><code>middleware</code></a></td>
-   <td><em>MiddlewareConfig</em></td>
-   <td colspan="2">Middleware configuration. See details below.</td>
-  </tr>
-  <tr></tr>
-  <tr>
-   <td colspan="4">
+__<a name="config">`Config`</a>__: Server configuration object.
 
-```js
-{
-  session: {
-    use: true,
-    keys: ['secret-key'],
-  },
-  static: {
-    mount: '/files',
-    root: 'files',
-    use: true,
-  },
-}
-```
-</td>
-  </tr>
- </tbody>
-</table>
+| Name | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
+| port | _number_ | The port on which to start the server. | `5000` |
+| host | _string_ | The host on which to listen. | `0.0.0.0` |
 
 
+## Middleware Configuration
 
-### `MiddlewareConfig` Type
-
-The middleware can be configured according to the `MiddlewareConfig` object which is part of the `IdioConfig`. `@idio/core` comes with some installed middleware as dependencies to speed up the process of creating a web server. Moreover, any custom middleware which is not part of the bundle can also be specified here.
+The middleware can be configured according to the `MiddlewareConfig`. `@idio/core` comes with some installed middleware as dependencies to speed up the process of creating a web server. Moreover, any custom middleware which is not part of the bundle can also be specified here (see [Custom Middleware](#custom-middleware)).
 
 Each middleware accepts the following properties:
 
@@ -133,16 +106,31 @@ Each middleware accepts the following properties:
 | `function` | A constructor function when passing middleware not from the bundle. |  |
 | `...props` | Any additional specific properties (see individual middleware configuration). |  |
 
-#### session
+### session
 
 [`koa-session`](https://github.com/koajs/session) for handling sessions.
 
-| Property | Description | Default | Required |
-| -------- | ----------- | ------- | -------- |
-| `keys` | A set of keys to be installed in `app.keys.` | - | _true_ |
-| `config` | `koa-session` configuration. | `{}` |  |
+__<a name="sessionoptions">`SessionOptions`</a>__
 
-#### multer
+| Name | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
+| __keys*__ | _string[]_ | A set of keys to be installed in app.keys. | - |
+| use | _boolean_ | Use this middleware for every request. | `false` |
+| config | [_SessionConfig_](#sessionconfig) | `koa-session` configuration. | - |
+
+__<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-session`.
+
+| Name | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
+| key | _string_ | Cookie key. | `koa:sess` |
+| maxAge | _number\|'session'_ | maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. | `86400000` |
+| overwrite | _boolean_ | Can overwrite or not. | `true` |
+| httpOnly | _boolean_ | httpOnly or not or not. | `true` |
+| signed | _boolean_ | Signed or not. | `true` |
+| rolling | _boolean_ | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. | `false` |
+| renew | _boolean_ | Renew session when session is nearly expired, so we can always keep user logged in. | `false` |
+
+### multer
 
 [`koa-multer`](https://github.com/koa-modules/multer) for file uploads.
 
@@ -152,7 +140,7 @@ Each middleware accepts the following properties:
 | `config` | `koa-multer` configuration. | `{}` |  |
 
 
-#### csrf
+### csrf
 
 [`koa-csrf`](https://github.com/koajs/csrf) for prevention against CSRF attacks.
 
@@ -160,7 +148,7 @@ Each middleware accepts the following properties:
 | -------- | ----------- | ------- | -------- |
 | `config` | `koa-csrf` configuration. | `{}` |  |
 
-#### bodyparser
+### bodyparser
 
 [`koa-bodyparser`](https://github.com/koajs/body-parser) to parse data sent to the server.
 
@@ -168,11 +156,11 @@ Each middleware accepts the following properties:
 | -------- | ----------- | ------- | -------- |
 | `config` | `koa-bodyparser` configuration. | `{}` |  |
 
-#### checkauth
+### checkauth
 
 A simple middleware which throws if `ctx.session.user` is not set. Does not require configuration.
 
-#### logger
+### logger
 
 [`koa-logger`](https://github.com/koajs/logger) to log requests.
 
@@ -180,7 +168,7 @@ A simple middleware which throws if `ctx.session.user` is not set. Does not requ
 | -------- | ----------- | ------- | -------- |
 | `config` | `koa-logger` configuration. | `{}` |  |
 
-#### compress
+### compress
 
 [`koa-compress`](https://github.com/koajs/compress) to apply compression.
 
@@ -189,7 +177,7 @@ A simple middleware which throws if `ctx.session.user` is not set. Does not requ
 | `threshold` | Minimum response size in bytes to compress. | `1024` |  |
 | `config` | `koa-compress` configuration. | `{}` |  |
 
-#### static
+### static
 
 [`koa-static`](https://github.com/koajs/static) to serve static files.
 
@@ -225,7 +213,7 @@ const DAY = 1000 * 60 * 60 * 24
 })
 ```
 
-#### Custom Middleware
+## Custom Middleware
 
 When required to add any other middleware in the application not included in the `@idio/core` bundle, it can be set up by passing its constructor as the `function` property of the configuration. The constructor will receive the `app` and `config` arguments and should return a middleware function.
 
@@ -267,7 +255,7 @@ await core({
 })
 ```
 
----
+## Copyright
 
 (c) [Art Deco][1] 2018
 
