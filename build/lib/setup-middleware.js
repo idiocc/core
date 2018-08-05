@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = setupMiddleware;
 
 var _koaSession = _interopRequireDefault(require("koa-session"));
@@ -100,8 +98,8 @@ const setupBodyParser = (app, config) => {
   return bodyparser;
 };
 
-const setupLogger = () => {
-  const l = (0, _koaLogger.default)();
+const setupLogger = (app, config) => {
+  const l = (0, _koaLogger.default)(config);
   return l;
 };
 
@@ -136,8 +134,11 @@ async function initMiddleware(name, conf, app) {
 
   return res;
 }
+/** @typedef {import('koa').Middleware} Middleware */
+
 
 async function setupMiddleware(middleware = {}, app) {
+  /** @type {Object.<string, Middleware>} */
   const res = await Object.keys(middleware).reduce(async (acc, name) => {
     const accRes = await acc;
     const conf = middleware[name];

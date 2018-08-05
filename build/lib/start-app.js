@@ -1,9 +1,7 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = startApp;
+exports.__esModule = true;
+exports.default = void 0;
 
 var _util = require("util");
 
@@ -29,9 +27,9 @@ async function destroy(server) {
   LOG('destroyed the server');
 }
 /**
- * @param {Koa} app
+ * @param {import('koa').Application} app
  * @param {number} [port]
- * @param {string} [hostname]
+ * @param {string} [hostname='0.0.0.0']
  */
 
 
@@ -51,8 +49,8 @@ function listen(app, port, hostname = '0.0.0.0') {
 }
 /**
  * Start the server.
- * @param {Config} [config] configuration object
- * @returns {AppReturn} An object with variables
+ * @param {import('..').MiddlewareConfig} [middleware]
+ * @param {import('..').Config} [config] configuration object
  */
 
 
@@ -81,10 +79,13 @@ async function startApp(middleware, config) {
     port: p
   } = server.address();
   const url = `http://localhost:${p}`;
-  const router = (0, _koaRouter.default)();
+  const router = new _koaRouter.default();
   return { ...appMeta,
     router,
     url
   };
 }
+
+var _default = startApp;
+exports.default = _default;
 //# sourceMappingURL=start-app.js.map
