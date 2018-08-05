@@ -241,6 +241,24 @@
       `koa-compress` configuration.
     </prop>
   </type>
+  <type name="CheckauthOptions">
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+  </type>
+  <type name="CheckauthOptions">
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+  </type>
+  <type name="LoggerOptions">
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="LoggerConfig" name="config">
+      `logger` configuration.
+    </prop>
+  </type>
   <type name="MiddlewareConfig" desc="Middleware configuration for the `idio` `core` server.">
     <prop opt type="SessionOptions" name="session">
       `session` options.
@@ -257,10 +275,10 @@
     <prop opt type="CompressOptions" name="compress">
       `compress` options.
     </prop>
-    <prop opt type="{ use?: boolean }" name="checkauth">
+    <prop opt type="CheckauthOptions" name="checkauth">
       `checkauth` options.
     </prop>
-    <prop opt type="{ use?: boolean, config: LoggerConfig }" name="logger">
+    <prop opt type="LoggerOptions" name="logger">
       `logger` options.
     </prop>
     <prop opt type="StaticOptions" name="static">
