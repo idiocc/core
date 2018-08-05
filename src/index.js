@@ -26,6 +26,101 @@ async function idioCore(middleware = {}, config = {}) {
   return { url, app, router, middleware: mw }
 }
 
+/* documentary types/bodyparser.xml */
+/**
+ * @typedef {import('koa').Context} Context
+ *
+ * @typedef {Object} BodyparserOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {BodyparserConfig} [config] `koa-bodyparser` configuration.
+ *
+ * @typedef {Object} BodyparserConfig
+ * @prop {string[]} [enableTypes="['json', 'form']"] Parser will only parse when request type hits enableTypes. Default `['json', 'form']`.
+ * @prop {string} [encode="utf-8"] Requested encoding. Default `utf-8`.
+ * @prop {string} [formLimit="56kb"] Limit of the urlencoded body. If the body ends up being larger than this limit a 413 error code is returned. Default `56kb`.
+ * @prop {string} [jsonLimit="1mb"] Limit of the json body. Default `1mb`.
+ * @prop {boolean} [strict=true] When set to true, JSON parser will only accept arrays and objects. Default `true`.
+ * @prop {(ctx: Context) => boolean} [detectJSON="null"] Custom json request detect function. Default `null`.
+ * @prop {{json: string[], form: string[], text: string[]}} [extendTypes] Support extend types.
+ * @prop {(err: Error, ctx: Context) => void} [onerror] Support custom error handle.
+ */
+
+/* documentary types/checkauth.xml */
+/**
+ * @typedef {Object} CheckauthOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ */
+
+/* documentary types/compress.xml */
+/**
+ * @typedef {Object} CompressOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {CompressConfig} [config] `koa-compress` configuration.
+ *
+ * @typedef {Object} CompressConfig
+ * @prop {(content_type: string) => boolean} [filter] An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`.
+ * @prop {number} [threshold] Minimum response size in bytes to compress. Default 1024 bytes or 1kb.
+ * @prop {number} [flush] default: zlib.constants.Z_NO_FLUSH
+ * @prop {number} [finishFlush] default: zlib.constants.Z_FINISH
+ * @prop {number} [chunkSize] default: 16*1024
+ * @prop {number} [windowBits] Support extend types.
+ * @prop {number} [level] compression only
+ * @prop {number} [memLevel] compression only
+ * @prop {number} [strategy] compression only
+ * @prop {*} [dictionary] deflate/inflate only, empty dictionary by default
+ */
+
+/* documentary types/csrf.xml */
+/**
+ * @typedef {Object} CSRFOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {CSRFConfig} [config] `koa-csrf` configuration.
+ *
+ * @typedef {Object} CSRFConfig
+ * @prop {string} [invalidSessionSecretMessage]
+ * @prop {number} [invalidSessionSecretStatusCode]
+ * @prop {string} [invalidTokenMessage]
+ * @prop {number} [invalidTokenStatusCode]
+ * @prop {string[]} [excludedMethods]
+ * @prop {boolean} [disableQuery]
+ */
+
+/* documentary types/logger.xml */
+/**
+ * @typedef {Object} LoggerOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {object} [config] `koa-logger` configuration.
+ *
+ * @typedef {Object} LoggerConfig
+ * @prop {(str: string, args: [string, string, string, string, string, string, string]) => void} [transporter] Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`.
+ */
+
+/* documentary types/multer.xml */
+/**
+ * @typedef {import('fs').Stats} Stats
+ * @typedef {import('koa-multer').StorageEngine} StorageEngine
+ *
+ * @typedef {Object} Limits
+ * @prop {number} [fieldNameSize] Max field name size (Default: 100 bytes).
+ * @prop {number} [fieldSize] Max field value size (Default: 1MB).
+ * @prop {number} [fields] Max number of non- file fields (Default: Infinity).
+ * @prop {number} [fileSize] For multipart forms, the max file size (in bytes)(Default: Infinity).
+ * @prop {number} [files] For multipart forms, the max number of file fields (Default: Infinity).
+ * @prop {number} [parts] For multipart forms, the max number of parts (fields + files)(Default: Infinity).
+ * @prop {number} [headerPairs] For multipart forms, the max number of header key=> value pairs to parse Default: 2000 (same as node's http).
+ *
+ * @typedef {Object} MulterOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {MulterConfig} [config] `koa-multer` configuration.
+ *
+ * @typedef {Object} MulterConfig
+ * @prop {string} [dest] Where to store the files.
+ * @prop {StorageEngine} [storage] Where to store the files.
+ * @prop {(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void} [fileFilter] Function to control which files are accepted.
+ * @prop {Limits} [limits] Limits of the uploaded data.
+ * @prop {boolean} [preservePath=false] Keep the full path of files instead of just the base name. Default `false`.
+ */
+
 /* documentary types/session.xml */
 /**
  * @typedef {Object} SessionOptions
@@ -43,14 +138,18 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {boolean} [renew=false] Renew session when session is nearly expired, so we can always keep user logged in. Default `false`.
  */
 
-/* documentary types/middleware.xml */
+/* documentary types/static.xml */
 /**
- * @typedef {import('koa').Context} Context
- * @typedef {import('fs').Stats} Stats
  * @typedef {import('http').ServerResponse} ServerResponse
- * @typedef {import('koa-multer').StorageEngine} StorageEngine
  *
  * @typedef {(res: ServerResponse, path: string, stats: Stats) => any} SetHeaders
+ *
+ * @typedef {Object} StaticOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {string|string[]} root Root or multiple roots from which to serve files.
+ * @prop {string} [mount="/"] Path from which to serve files. Default `/`.
+ * @prop {number} [maxage=0] How long to cache file for. Default `0`.
+ * @prop {StaticConfig} [config] `koa-static` configuration.
  *
  * @typedef {Object} StaticConfig
  * @prop {number} [maxage=0] Browser cache max-age in milliseconds. Default `0`.
@@ -61,96 +160,13 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {boolean} [br=true] Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with `.br` extension exists (note, that brotli is only accepted over https). Default `true`.
  * @prop {SetHeaders} [setHeaders] Function to set custom headers on response.
  * @prop {boolean} [extensions=false] Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served. Default `false`.
- *
- * @typedef {Object} Limits
- * @prop {number} [fieldNameSize] Max field name size (Default: 100 bytes).
- * @prop {number} [fieldSize] Max field value size (Default: 1MB).
- * @prop {number} [fields] Max number of non- file fields (Default: Infinity).
- * @prop {number} [fileSize] For multipart forms, the max file size (in bytes)(Default: Infinity).
- * @prop {number} [files] For multipart forms, the max number of file fields (Default: Infinity).
- * @prop {number} [parts] For multipart forms, the max number of parts (fields + files)(Default: Infinity).
- * @prop {number} [headerPairs] For multipart forms, the max number of header key=> value pairs to parse Default: 2000 (same as node's http).
- *
- * @typedef {Object} MulterConfig
- * @prop {string} [dest] Where to store the files.
- * @prop {StorageEngine} [storage] Where to store the files.
- * @prop {(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void} [fileFilter] Function to control which files are accepted.
- * @prop {Limits} [limits] Limits of the uploaded data.
- * @prop {boolean} [preservePath=false] Keep the full path of files instead of just the base name. Default `false`.
- *
- * @typedef {Object} CSRFConfig
- * @prop {string} [invalidSessionSecretMessage]
- * @prop {number} [invalidSessionSecretStatusCode]
- * @prop {string} [invalidTokenMessage]
- * @prop {number} [invalidTokenStatusCode]
- * @prop {string[]} [excludedMethods]
- * @prop {boolean} [disableQuery]
- *
- * @typedef {Object} BodyparserConfig
- * @prop {string[]} [enableTypes="['json', 'form']"] Parser will only parse when request type hits enableTypes. Default `['json', 'form']`.
- * @prop {string} [encode="utf-8"] Requested encoding. Default `utf-8`.
- * @prop {string} [formLimit="56kb"] Limit of the urlencoded body. If the body ends up being larger than this limit a 413 error code is returned. Default `56kb`.
- * @prop {string} [jsonLimit="1mb"] Limit of the json body. Default `1mb`.
- * @prop {boolean} [strict=true] When set to true, JSON parser will only accept arrays and objects. Default `true`.
- * @prop {(ctx: Context) => boolean} [detectJSON="null"] Custom json request detect function. Default `null`.
- * @prop {{json: string[], form: string[], text: string[]}} [extendTypes] Support extend types.
- * @prop {(err: Error, ctx: Context) => void} [onerror] Support custom error handle.
- *
- * @typedef {Object} CompressConfig
- * @prop {(content_type: string) => boolean} [filter] An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`.
- * @prop {number} [threshold] Minimum response size in bytes to compress. Default 1024 bytes or 1kb.
- * @prop {number} [flush] default: zlib.constants.Z_NO_FLUSH
- * @prop {number} [finishFlush] default: zlib.constants.Z_FINISH
- * @prop {number} [chunkSize] default: 16*1024
- * @prop {number} [windowBits] Support extend types.
- * @prop {number} [level] compression only
- * @prop {number} [memLevel] compression only
- * @prop {number} [strategy] compression only
- * @prop {*} [dictionary] deflate/inflate only, empty dictionary by default
- *
- * @typedef {Object} LoggerConfig
- * @prop {(str: string, args: [string, string, string, string, string, string, string]) => void} [transporter] Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`.
- *
+ */
+
+/* documentary types/middleware.xml */
+/**
  * @typedef {Object} Config
  * @prop {number} [port=5000] Port on which to start the server. Default `5000`.
  * @prop {string} [host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
- *
- * @typedef {Object} StaticOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {string|string[]} root Root or multiple roots from which to serve files.
- * @prop {string} [mount="/"] Path from which to serve files. Default `/`.
- * @prop {number} [maxage=0] How long to cache file for. Default `0`.
- * @prop {StaticConfig} [config] `koa-static` configuration.
- *
- * @typedef {Object} LoggerOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {object} [config] `koa-logger` configuration.
- *
- * @typedef {Object} MulterOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {MulterConfig} [config] `koa-multer` configuration.
- *
- * @typedef {Object} CSRFOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {CSRFConfig} [config] `koa-csrf` configuration.
- *
- * @typedef {Object} BodyparserOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {BodyparserConfig} [config] `koa-bodyparser` configuration.
- *
- * @typedef {Object} CompressOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {CompressConfig} [config] `koa-compress` configuration.
- *
- * @typedef {Object} CheckauthOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- *
- * @typedef {Object} CheckauthOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- *
- * @typedef {Object} LoggerOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {LoggerConfig} [config] `logger` configuration.
  *
  * @typedef {Object} MiddlewareConfig Middleware configuration for the `idio` `core` server.
  * @prop {SessionOptions} [session] `session` options.
