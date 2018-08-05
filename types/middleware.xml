@@ -44,7 +44,7 @@
     <prop boolean name="httpOnly" default="true">
       httpOnly or not or not.
     </prop>
-    <prop boolean name="true" default="true">
+    <prop boolean name="signed" default="true">
       Signed or not.
     </prop>
     <prop boolean name="rolling" default="false">
@@ -259,7 +259,11 @@
       `logger` configuration.
     </prop>
   </type>
-  <type name="MiddlewareConfig" desc="Middleware configuration for the `idio` `core` server.">
+  <type
+    name="MiddlewareConfig"
+    desc="Middleware configuration for the `idio` `core` server."
+    spread noExpand
+  >
     <prop opt type="SessionOptions" name="session">
       `session` options.
     </prop>
