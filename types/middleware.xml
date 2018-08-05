@@ -31,29 +31,6 @@
       Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served.
     </prop>
   </type>
-  <type name="SessionConfig">
-    <prop string name="key" default="koa:sess">
-      Cookie key.
-    </prop>
-    <prop type="number|'session'" name="maxAge" default="86400000">
-      maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire.
-    </prop>
-    <prop boolean name="overwrite" default="true">
-      Can overwrite or not.
-    </prop>
-    <prop boolean name="httpOnly" default="true">
-      httpOnly or not or not.
-    </prop>
-    <prop boolean name="signed" default="true">
-      Signed or not.
-    </prop>
-    <prop boolean name="rolling" default="false">
-      Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.
-    </prop>
-    <prop boolean name="renew" default="false">
-      Renew session when session is nearly expired, so we can always keep user logged in.
-    </prop>
-  </type>
   <type name="Limits">
     <prop opt number name="fieldNameSize">
       Max field name size (Default: 100 bytes).
@@ -196,17 +173,6 @@
     </prop>
     <prop opt type="object" name="config">
       `koa-logger` configuration.
-    </prop>
-  </type>
-  <type name="SessionOptions">
-    <prop type="string[]" name="keys">
-      A set of keys to be installed in app.keys.
-    </prop>
-    <prop boolean name="use" default="false">
-      Use this middleware for every request.
-    </prop>
-    <prop opt type="SessionConfig" name="config">
-      `koa-session` configuration.
     </prop>
   </type>
   <type name="MulterOptions">

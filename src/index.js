@@ -4,7 +4,7 @@ import startApp from './lib/start-app'
  * Start the server.
  * @param {{ session?: SessionOptions, multer?: MulterOptions, csrf?: CSRFOptions, bodyparser?: BodyparserOptions, compress?: CompressOptions, checkauth?: CheckauthOptions, logger?: LoggerOptions, static?: StaticOptions }} [middleware] Middleware configuration for the `idio` `core` server.
  * @param {Config} [config] Server configuration object.
- * @param {number} [config.port=5000] Port on which to start the server. Default `5000`.
+ * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
  * @example
  *
@@ -26,6 +26,23 @@ async function idioCore(middleware = {}, config = {}) {
   return { url, app, router, middleware: mw }
 }
 
+/* documentary types/session.xml */
+/**
+ * @typedef {Object} SessionOptions
+ * @prop {string[]} keys A set of keys to be installed in `app.keys`.
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {SessionConfig} [config] `koa-session` configuration.
+ *
+ * @typedef {Object} SessionConfig Configuration passed to `koa-session`.
+ * @prop {string} [key="koa:sess"] Cookie key. Default `koa:sess`.
+ * @prop {number|'session'} [maxAge=86400000] maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. Default `86400000`.
+ * @prop {boolean} [overwrite=true] Can overwrite or not. Default `true`.
+ * @prop {boolean} [httpOnly=true] httpOnly or not or not. Default `true`.
+ * @prop {boolean} [signed=true] Signed or not. Default `true`.
+ * @prop {boolean} [rolling=false] Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. Default `false`.
+ * @prop {boolean} [renew=false] Renew session when session is nearly expired, so we can always keep user logged in. Default `false`.
+ */
+
 /* documentary types/middleware.xml */
 /**
  * @typedef {import('koa').Context} Context
@@ -44,15 +61,6 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {boolean} [br=true] Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with `.br` extension exists (note, that brotli is only accepted over https). Default `true`.
  * @prop {SetHeaders} [setHeaders] Function to set custom headers on response.
  * @prop {boolean} [extensions=false] Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served. Default `false`.
- *
- * @typedef {Object} SessionConfig
- * @prop {string} [key="koa:sess"] Cookie key. Default `koa:sess`.
- * @prop {number|'session'} [maxAge=86400000] maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. Default `86400000`.
- * @prop {boolean} [overwrite=true] Can overwrite or not. Default `true`.
- * @prop {boolean} [httpOnly=true] httpOnly or not or not. Default `true`.
- * @prop {boolean} [signed=true] Signed or not. Default `true`.
- * @prop {boolean} [rolling=false] Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. Default `false`.
- * @prop {boolean} [renew=false] Renew session when session is nearly expired, so we can always keep user logged in. Default `false`.
  *
  * @typedef {Object} Limits
  * @prop {number} [fieldNameSize] Max field name size (Default: 100 bytes).
@@ -118,11 +126,6 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {object} [config] `koa-logger` configuration.
  *
- * @typedef {Object} SessionOptions
- * @prop {string[]} keys A set of keys to be installed in app.keys.
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {SessionConfig} [config] `koa-session` configuration.
- *
  * @typedef {Object} MulterOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {MulterConfig} [config] `koa-multer` configuration.
@@ -163,7 +166,7 @@ async function idioCore(middleware = {}, config = {}) {
 /* documentary types/config.xml */
 /**
  * @typedef {Object} Config Server configuration object.
- * @prop {number} [port=5000] Port on which to start the server. Default `5000`.
+ * @prop {number} [port=5000] The port on which to start the server. Default `5000`.
  * @prop {string} [host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
  */
 
