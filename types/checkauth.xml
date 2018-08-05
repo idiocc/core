@@ -1,0 +1,7 @@
+<types>
+  <type name="CheckauthOptions">
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+  </type>
+</types>

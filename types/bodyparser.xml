@@ -1,0 +1,38 @@
+<types>
+  <import name="Context" from="koa" />
+
+  <type name="BodyparserOptions">
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="BodyparserConfig" name="config">
+      `koa-bodyparser` configuration.
+    </prop>
+  </type>
+  <type name="BodyparserConfig">
+    <prop type="string[]" name="enableTypes" default="['json', 'form']">
+      Parser will only parse when request type hits enableTypes.
+    </prop>
+    <prop string name="encode" default="utf-8">
+      Requested encoding.
+    </prop>
+    <prop string name="formLimit" default="56kb">
+      Limit of the urlencoded body. If the body ends up being larger than this limit a 413 error code is returned.
+    </prop>
+    <prop string name="jsonLimit" default="1mb">
+      Limit of the json body.
+    </prop>
+    <prop boolean name="strict" default="true">
+      When set to true, JSON parser will only accept arrays and objects.
+    </prop>
+    <prop opt type="(ctx: Context) => boolean" name="detectJSON" default="null">
+      Custom json request detect function.
+    </prop>
+    <prop opt type="{json: string[], form: string[], text: string[]}" name="extendTypes">
+      Support extend types.
+    </prop>
+    <prop opt type="(err: Error, ctx: Context) => void" name="onerror">
+      Support custom error handle.
+    </prop>
+  </type>
+</types>

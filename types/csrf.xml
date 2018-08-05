@@ -1,0 +1,18 @@
+<types>
+  <type name="CSRFOptions">
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="CSRFConfig" name="config">
+      `koa-csrf` configuration.
+    </prop>
+  </type>
+  <type name="CSRFConfig">
+    <prop opt string name="invalidSessionSecretMessage" />
+    <prop opt number name="invalidSessionSecretStatusCode" />
+    <prop opt string name="invalidTokenMessage" />
+    <prop opt number name="invalidTokenStatusCode" />
+    <prop opt type="string[]" name="excludedMethods" />
+    <prop opt boolean name="disableQuery" />
+  </type>
+</types>
