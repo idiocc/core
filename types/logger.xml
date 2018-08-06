@@ -3,7 +3,7 @@
     <prop boolean name="use" default="false">
       Use this middleware for every request.
     </prop>
-    <prop opt type="object" name="config">
+    <prop opt type="LoggerConfig" name="config">
       `koa-logger` configuration.
     </prop>
   </type>

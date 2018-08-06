@@ -1,37 +1,33 @@
 <types>
-  <import name="Stats" from="fs" />
-  <import name="StorageEngine" from="koa-multer" />
-
-  <type name="Limits">
-    <prop opt number name="fieldNameSize">
-      Max field name size (Default: 100 bytes).
-    </prop>
-    <prop opt number name="fieldSize">
-      Max field value size (Default: 1MB).
-    </prop>
-    <prop opt number name="fields">
-      Max number of non- file fields (Default: Infinity).
-    </prop>
-    <prop opt number name="fileSize">
-      For multipart forms, the max file size (in bytes)(Default: Infinity).
-    </prop>
-    <prop opt number name="files">
-      For multipart forms, the max number of file fields (Default: Infinity).
-    </prop>
-    <prop opt number name="parts">
-      For multipart forms, the max number of parts (fields + files)(Default: Infinity).
-    </prop>
-    <prop opt number name="headerPairs">
-      For multipart forms, the max number of header key=> value pairs to parse Default: 2000 (same as node's http).
-    </prop>
-  </type>
-
   <type name="MulterOptions">
     <prop boolean name="use" default="false">
       Use this middleware for every request.
     </prop>
     <prop opt type="MulterConfig" name="config">
       `koa-multer` configuration.
+    </prop>
+  </type>
+  <type name="Limits" desc="[An object](https://github.com/expressjs/multer#limits) specifying the size limits.">
+    <prop number name="fieldNameSize" default="100">
+      Max field name size in bytes.
+    </prop>
+    <prop number name="fieldSize" default="1024">
+      Max field value size in bytes.
+    </prop>
+    <prop number name="fields" default="Infinity">
+      Max number of non-file fields.
+    </prop>
+    <prop opt number name="fileSize" default="Infinity">
+      For multipart forms, the max file size in bytes.
+    </prop>
+    <prop opt number name="files" default="Infinity">
+      For multipart forms, the max number of file fields.
+    </prop>
+    <prop opt number name="parts" default="Infinity">
+      For multipart forms, the max number of parts (fields + files).
+    </prop>
+    <prop opt number name="headerPairs" default="2000">
+      For multipart forms, the max number of header key=> value pairs to parse.
     </prop>
   </type>
   <type name="MulterConfig">
@@ -42,7 +38,7 @@
       Where to store the files.
     </prop>
     <prop opt type="(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void" name="fileFilter">
-      Function to control which files are accepted.
+      [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted.
     </prop>
     <prop opt type="Limits" name="limits">
       Limits of the uploaded data.
@@ -51,4 +47,9 @@
       Keep the full path of files instead of just the base name.
     </prop>
   </type>
+
+  <import name="IncomingMessage" from="http" />
+  <import name="Stats" from="fs" />
+  <import name="StorageEngine" from="koa-multer" desc="[Storage](https://github.com/expressjs/multer#storage)." />
+  <import name="File" from="koa-multer" desc="[File information](https://github.com/expressjs/multer#file-information)." />
 </types>

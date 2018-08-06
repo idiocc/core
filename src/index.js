@@ -59,15 +59,15 @@ async function idioCore(middleware = {}, config = {}) {
  *
  * @typedef {Object} CompressConfig
  * @prop {(content_type: string) => boolean} [filter] An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`.
- * @prop {number} [threshold] Minimum response size in bytes to compress. Default 1024 bytes or 1kb.
- * @prop {number} [flush] default: zlib.constants.Z_NO_FLUSH
- * @prop {number} [finishFlush] default: zlib.constants.Z_FINISH
- * @prop {number} [chunkSize] default: 16*1024
+ * @prop {number} [threshold=1024] Minimum response size in bytes to compress. Default `1024`.
+ * @prop {number} [flush] Default: `zlib.constants.Z_NO_FLUSH`.
+ * @prop {number} [finishFlush] Default: `zlib.constants.Z_FINISH`.
+ * @prop {number} [chunkSize] Default: `16*1024`.
  * @prop {number} [windowBits] Support extend types.
- * @prop {number} [level] compression only
- * @prop {number} [memLevel] compression only
- * @prop {number} [strategy] compression only
- * @prop {*} [dictionary] deflate/inflate only, empty dictionary by default
+ * @prop {number} [level] Compression only.
+ * @prop {number} [memLevel] Compression only.
+ * @prop {number} [strategy] Compression only.
+ * @prop {*} [dictionary] Deflate/inflate only, empty dictionary by default.
  */
 
 /* documentary types/csrf.xml */
@@ -89,7 +89,7 @@ async function idioCore(middleware = {}, config = {}) {
 /**
  * @typedef {Object} LoggerOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {object} [config] `koa-logger` configuration.
+ * @prop {LoggerConfig} [config] `koa-logger` configuration.
  *
  * @typedef {Object} LoggerConfig
  * @prop {(str: string, args: [string, string, string, string, string, string, string]) => void} [transporter] Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`.
@@ -97,26 +97,28 @@ async function idioCore(middleware = {}, config = {}) {
 
 /* documentary types/multer.xml */
 /**
+ * @typedef {import('http').IncomingMessage} IncomingMessage
  * @typedef {import('fs').Stats} Stats
  * @typedef {import('koa-multer').StorageEngine} StorageEngine
- *
- * @typedef {Object} Limits
- * @prop {number} [fieldNameSize] Max field name size (Default: 100 bytes).
- * @prop {number} [fieldSize] Max field value size (Default: 1MB).
- * @prop {number} [fields] Max number of non- file fields (Default: Infinity).
- * @prop {number} [fileSize] For multipart forms, the max file size (in bytes)(Default: Infinity).
- * @prop {number} [files] For multipart forms, the max number of file fields (Default: Infinity).
- * @prop {number} [parts] For multipart forms, the max number of parts (fields + files)(Default: Infinity).
- * @prop {number} [headerPairs] For multipart forms, the max number of header key=> value pairs to parse Default: 2000 (same as node's http).
+ * @typedef {import('koa-multer').File} File
  *
  * @typedef {Object} MulterOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {MulterConfig} [config] `koa-multer` configuration.
  *
+ * @typedef {Object} Limits
+ * @prop {number} [fieldNameSize=100] Max field name size in bytes. Default `100`.
+ * @prop {number} [fieldSize=1024] Max field value size in bytes. Default `1024`.
+ * @prop {number} [fields=Infinity] Max number of non-file fields. Default `Infinity`.
+ * @prop {number} [fileSize=Infinity] For multipart forms, the max file size in bytes. Default `Infinity`.
+ * @prop {number} [files=Infinity] For multipart forms, the max number of file fields. Default `Infinity`.
+ * @prop {number} [parts=Infinity] For multipart forms, the max number of parts (fields + files). Default `Infinity`.
+ * @prop {number} [headerPairs=2000] For multipart forms, the max number of header key=> value pairs to parse. Default `2000`.
+ *
  * @typedef {Object} MulterConfig
  * @prop {string} [dest] Where to store the files.
  * @prop {StorageEngine} [storage] Where to store the files.
- * @prop {(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void} [fileFilter] Function to control which files are accepted.
+ * @prop {(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void} [fileFilter] [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted.
  * @prop {Limits} [limits] Limits of the uploaded data.
  * @prop {boolean} [preservePath=false] Keep the full path of files instead of just the base name. Default `false`.
  */
@@ -145,8 +147,8 @@ async function idioCore(middleware = {}, config = {}) {
  * @typedef {(res: ServerResponse, path: string, stats: Stats) => any} SetHeaders
  *
  * @typedef {Object} StaticOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {string|string[]} root Root or multiple roots from which to serve files.
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {string} [mount="/"] Path from which to serve files. Default `/`.
  * @prop {number} [maxage=0] How long to cache file for. Default `0`.
  * @prop {StaticConfig} [config] `koa-static` configuration.
