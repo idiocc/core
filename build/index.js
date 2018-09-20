@@ -1,4 +1,4 @@
-import startApp from './lib/start-app'
+let startApp = require('./lib/start-app'); if (startApp && startApp.__esModule) startApp = startApp.default;
 
 /**
  * Start the server.
@@ -188,4 +188,6 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {string} [host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
  */
 
-export default idioCore
+module.exports=idioCore
+
+//# sourceMappingURL=index.js.map
