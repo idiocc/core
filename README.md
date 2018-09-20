@@ -56,7 +56,7 @@ The package is available by importing its default function:
 import core from '@idio/core'
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true" width="15"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
 ## `core(`<br/>&nbsp;&nbsp;`middleware?: MiddlewareConfig,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): void`
 
@@ -131,6 +131,8 @@ Each middleware accepts the following properties:
 | `function` | A constructor function when passing middleware not from the bundle.                                                                                                                                                                                                 |         |
 | `...props` | Any additional specific properties (see individual middleware configuration).                                                                                                                                                                                       |         |
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
+
 ### session
 
 [`koa-session`](https://github.com/koajs/session) for handling sessions.
@@ -154,6 +156,8 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 | signed    | _boolean_           | Signed or not.                                                                                                                                                                            | `true`     |
 | rolling   | _boolean_           | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.                                        | `false`    |
 | renew     | _boolean_           | Renew session when session is nearly expired, so we can always keep user logged in.                                                                                                       | `false`    |
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
 
 ### multer
 
@@ -196,6 +200,8 @@ __<a name="multerconfig">`MulterConfig`</a>__
 | limits       | _[Limits](#limits)_                                                                                    | Limits of the uploaded data.                                                                    | -       |
 | preservePath | _boolean_                                                                                              | Keep the full path of files instead of just the base name.                                      | `false` |
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true" width="15"></a></p>
+
 ### csrf
 
 [`koa-csrf`](https://github.com/koajs/csrf) for prevention against CSRF attacks.
@@ -217,6 +223,8 @@ __<a name="csrfconfig">`CSRFConfig`</a>__
 | invalidTokenStatusCode         | _number_   |             | -       |
 | excludedMethods                | _string[]_ |             | -       |
 | disableQuery                   | _boolean_  |             | -       |
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/7.svg?sanitize=true" width="15"></a></p>
 
 ### bodyparser
 
@@ -244,6 +252,8 @@ __<a name="bodyparserconfig">`BodyparserConfig`</a>__
 | extendTypes | _{json: string[], form: string[], text: string[]}_ | Support extend types.                                                                                        | -                  |
 | onerror     | _(err: Error, ctx: Context) =&gt; void_            | Support custom error handle.                                                                                 | -                  |
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/8.svg?sanitize=true" width="15"></a></p>
+
 ### checkauth
 
 A simple middleware which throws if `ctx.session.user` is not set. Does not require configuration.
@@ -253,6 +263,8 @@ __<a name="checkauthoptions">`CheckauthOptions`</a>__
 | Name |   Type    |              Description               | Default |
 | ---- | --------- | -------------------------------------- | ------- |
 | use  | _boolean_ | Use this middleware for every request. | `false` |
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/9.svg?sanitize=true" width="15"></a></p>
 
 ### logger
 
@@ -270,6 +282,8 @@ __<a name="loggerconfig">`LoggerConfig`</a>__
 |    Name     |                                            Type                                            |                                                                                       Description                                                                                       | Default |
 | ----------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | transporter | _(str: string, args: [string, string, string, string, string, string, string]) =&gt; void_ | Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`. | -       |
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/10.svg?sanitize=true" width="15"></a></p>
 
 ### compress
 
@@ -296,6 +310,8 @@ __<a name="compressconfig">`CompressConfig`</a>__
 | memLevel    | _number_                               | Compression only.                                                                                                             | -       |
 | strategy    | _number_                               | Compression only.                                                                                                             | -       |
 | dictionary  | _*_                                    | Deflate/inflate only, empty dictionary by default.                                                                            | -       |
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/11.svg?sanitize=true" width="15"></a></p>
 
 ### static
 
@@ -350,6 +366,8 @@ const DAY = 1000 * 60 * 60 * 24
   })
 })
 ```
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/12.svg?sanitize=true"></a></p>
 
 ## Custom Middleware
 

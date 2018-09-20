@@ -14,6 +14,8 @@ Each middleware accepts the following properties:
 ]
 ```
 
+%~ width="15"%
+
 ### session
 
 [`koa-session`](https://github.com/koajs/session) for handling sessions.
@@ -31,6 +33,8 @@ Each middleware accepts the following properties:
 
 <!-- %TYPEDEF types/middleware.xml SessionConfig% -->
 
+%~ width="15"%
+
 ### multer
 
 [`koa-multer`](https://github.com/koa-modules/multer) for file uploads.
@@ -45,6 +49,7 @@ Each middleware accepts the following properties:
 ]
 ``` -->
 
+%~ width="15"%
 
 ### csrf
 
@@ -59,6 +64,8 @@ Each middleware accepts the following properties:
 ]
 ``` -->
 
+%~ width="15"%
+
 ### bodyparser
 
 [`koa-bodyparser`](https://github.com/koajs/body-parser) to parse data sent to the server.
@@ -72,11 +79,15 @@ Each middleware accepts the following properties:
 
 %TYPEDEF types/bodyparser.xml%
 
+%~ width="15"%
+
 ### checkauth
 
 A simple middleware which throws if `ctx.session.user` is not set. Does not require configuration.
 
 %TYPEDEF types/checkauth.xml%
+
+%~ width="15"%
 
 ### logger
 
@@ -91,6 +102,8 @@ A simple middleware which throws if `ctx.session.user` is not set. Does not requ
 
 %TYPEDEF types/logger.xml%
 
+%~ width="15"%
+
 ### compress
 
 [`koa-compress`](https://github.com/koajs/compress) to apply compression.
@@ -104,6 +117,8 @@ A simple middleware which throws if `ctx.session.user` is not set. Does not requ
 ``` -->
 
 %TYPEDEF types/compress.xml%
+
+%~ width="15"%
 
 ### static
 
@@ -143,6 +158,8 @@ const DAY = 1000 * 60 * 60 * 24
   })
 })
 ```
+
+%~%
 
 ## Custom Middleware
 

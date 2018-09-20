@@ -6,7 +6,7 @@ The package is available by importing its default function:
 import core from '@idio/core'
 ```
 
-%~ width="15"%
+%~%
 
 ```## core
 [
