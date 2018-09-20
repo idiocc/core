@@ -1,8 +1,3 @@
-
-%TYPEDEF types/middleware.xml MiddlewareConfig%
-
-%TYPEDEF types/config.xml Config%
-
 ## Middleware Configuration
 
 The middleware can be configured according to the `MiddlewareConfig`. `@idio/core` comes with some installed middleware as dependencies to speed up the process of creating a web server. Moreover, any custom middleware which is not part of the bundle can also be specified here (see [Custom Middleware](#custom-middleware)).
