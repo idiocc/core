@@ -35,9 +35,10 @@ Each middleware accepts the following properties:
 
 %~ width="15"%
 
-### multer
-
-[`koa-multer`](https://github.com/koa-modules/multer) for file uploads.
+<details open>
+<summary><strong>[multer](###)</strong>: file uploads <a href="https://github.com/koa-modules/multer">middleware</a>.
+<br/><br/>
+</summary>
 
 %TYPEDEF types/multer.xml%
 
@@ -48,6 +49,8 @@ Each middleware accepts the following properties:
   ["`config`", "`koa-multer` configuration.", "`{}`", ""]
 ]
 ``` -->
+
+</details>
 
 %~ width="15"%
 

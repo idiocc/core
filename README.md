@@ -159,9 +159,10 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
 
-### multer
-
-[`koa-multer`](https://github.com/koa-modules/multer) for file uploads.
+<details open>
+<summary><strong><a name="multer">multer</a></strong>: file uploads <a href="https://github.com/koa-modules/multer">middleware</a>.
+<br/><br/>
+</summary>
 
 [`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="incomingmessage">`IncomingMessage`</a>__
 
@@ -199,6 +200,8 @@ __<a name="multerconfig">`MulterConfig`</a>__
 | fileFilter   | _(req: IncomingMessage, file: File, callback: (error: Error \| null, acceptFile: boolean)) =&gt; void_ | [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted. | -       |
 | limits       | _[Limits](#limits)_                                                                                    | Limits of the uploaded data.                                                                    | -       |
 | preservePath | _boolean_                                                                                              | Keep the full path of files instead of just the base name.                                      | `false` |
+
+</details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true" width="15"></a></p>
 
