@@ -48,8 +48,12 @@
     </prop>
   </type>
 
-  <import name="IncomingMessage" from="http" />
-  <import name="Stats" from="fs" />
-  <import name="StorageEngine" from="koa-multer" desc="[Storage](https://github.com/expressjs/multer#storage)." />
-  <import name="File" from="koa-multer" desc="[File information](https://github.com/expressjs/multer#file-information)." />
+  <import
+    name="IncomingMessage"
+    from="http"
+    link="https://nodejs.org/api/http.html#http_class_http_incomingmessage"
+  />
+  <import name="Stats" from="fs" link="https://nodejs.org/api/fs.html#fs_class_fs_stats" />
+  <import name="StorageEngine" from="koa-multer" link="https://github.com/expressjs/multer#storage" />
+  <import name="File" from="koa-multer" link="https://github.com/expressjs/multer#file-information." />
 </types>

@@ -163,13 +163,13 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 
 [`koa-multer`](https://github.com/koa-modules/multer) for file uploads.
 
-`import('http').IncomingMessage` __<a name="incomingmessage">`IncomingMessage`</a>__
+[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="incomingmessage">`IncomingMessage`</a>__
 
-`import('fs').Stats` __<a name="stats">`Stats`</a>__
+[`import('fs').Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) __<a name="stats">`Stats`</a>__
 
-`import('koa-multer').StorageEngine` __<a name="storageengine">`StorageEngine`</a>__: [Storage](https://github.com/expressjs/multer#storage).
+[`import('koa-multer').StorageEngine`](https://github.com/expressjs/multer#storage) __<a name="storageengine">`StorageEngine`</a>__
 
-`import('koa-multer').File` __<a name="file">`File`</a>__: [File information](https://github.com/expressjs/multer#file-information).
+[`import('koa-multer').File`](https://github.com/expressjs/multer#file-information.) __<a name="file">`File`</a>__
 
 __<a name="multeroptions">`MulterOptions`</a>__
 
@@ -230,7 +230,7 @@ __<a name="csrfconfig">`CSRFConfig`</a>__
 
 [`koa-bodyparser`](https://github.com/koajs/body-parser) to parse data sent to the server.
 
-`import('koa').Context` __<a name="context">`Context`</a>__
+[`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="context">`Context`</a>__
 
 __<a name="bodyparseroptions">`BodyparserOptions`</a>__
 
