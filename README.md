@@ -20,6 +20,7 @@ yarn add -E @idio/core
 - [`async core(middleware?: MiddlewareConfig, config?: Config): IdioCore`](#async-coremiddleware-middlewareconfigconfig-config-idiocore)
   * [`MiddlewareConfig`](#middlewareconfig)
   * [`Config`](#config)
+  * [`IdioCore`](#idiocore)
 - [Middleware Configuration](#middleware-configuration)
   * [Session](#session)
   * [File Uploads](#file-uploads)
@@ -40,7 +41,7 @@ yarn add -E @idio/core
 The package is available by importing its default function:
 
 ```js
-import core from '@idio/core'
+import idioCore from '@idio/core'
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
@@ -69,7 +70,22 @@ __<a name="config">`Config`</a>__: Server configuration object.
 | port | _number_ | The port on which to start the server. | `5000`    |
 | host | _string_ | The host on which to listen.           | `0.0.0.0` |
 
-The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-setup).
+The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-set-up).
+
+`import('koa').Application` __<a name="application">`Application`</a>__
+
+`import('koa').Middleware` __<a name="middleware">`Middleware`</a>__
+
+`import('koa-router').Router` __<a name="router">`Router`</a>__
+
+__<a name="idiocore">`IdioCore`</a>__
+
+|      Name       |                Type                 |                                             Description                                              | Default |
+| --------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------- | ------- |
+| __url*__        | _string_                            | The url on which the server is accessible.                                                           | -       |
+| __app*__        | _[Application](#application)_       | The `Koa` application.                                                                               | -       |
+| __router*__     | _[Router](#router)_                 | The `koa-router` instance.                                                                           | -       |
+| __middleware*__ | _Object.&lt;string, Middleware&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -       |
 
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
