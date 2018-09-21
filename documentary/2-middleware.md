@@ -16,7 +16,7 @@ Each middleware accepts the following properties:
 
 %MACRO middleware
 %~ width="15"%
-<img src="images/$4.svg" align="left" width="85">
+<img src="images/$4.svg" align="left" height="100">
 <details>
 <summary><strong>[$1](###)</strong>: $2 <a href="$3">middleware</a>.
 <hr/>
