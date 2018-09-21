@@ -11,6 +11,8 @@
 yarn add -E @idio/core
 ```
 
+<a href="https://idio.cc">![Developer-Friendly Suggestions For Middleware](app.gif)</a>
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
 
 ## Table Of Contents
@@ -567,6 +569,8 @@ Page available at: http://localhost:5003/test
   <-- POST /test
   --> POST /test 200
 ```
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/14.svg?sanitize=true"></a></p>
 
 ## Copyright
 

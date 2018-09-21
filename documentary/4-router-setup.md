@@ -4,3 +4,5 @@ After the _Application_ and _Router_ instances are obtaining after starting the 
 
 %EXAMPLE: example/router.js, ../src => @idio/core%
 %FORK example example/router%
+
+%~%
