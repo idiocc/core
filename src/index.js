@@ -2,7 +2,15 @@ import startApp from './lib/start-app'
 
 /**
  * Start the server.
- * @param {{ session?: SessionOptions, multer?: MulterOptions, csrf?: CSRFOptions, bodyparser?: BodyparserOptions, compress?: CompressOptions, checkauth?: CheckauthOptions, logger?: LoggerOptions, static?: StaticOptions }} [middleware] Middleware configuration for the `idio` `core` server.
+ * @param {MiddlewareConfig} [middleware] Middleware configuration for the `idio` `core` server.
+ * @param {SessionOptions} [middleware.session] `session` options.
+ * @param {MulterOptions} [middleware.multer] `multer` options.
+ * @param {CSRFOptions} [middleware.csrf] `csrf` options.
+ * @param {BodyparserOptions} [middleware.bodyparser] `bodyparser` options.
+ * @param {CompressOptions} [middleware.compress] `compress` options.
+ * @param {CheckauthOptions} [middleware.checkauth] `checkauth` options.
+ * @param {LoggerOptions} [middleware.logger] `logger` options.
+ * @param {StaticOptions} [middleware.static] `static` options.
  * @param {Config} [config] Server configuration object.
  * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
@@ -166,10 +174,6 @@ async function idioCore(middleware = {}, config = {}) {
 
 /* documentary types/middleware.xml */
 /**
- * @typedef {Object} Config
- * @prop {number} [port=5000] Port on which to start the server. Default `5000`.
- * @prop {string} [host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
- *
  * @typedef {Object} MiddlewareConfig Middleware configuration for the `idio` `core` server.
  * @prop {SessionOptions} [session] `session` options.
  * @prop {MulterOptions} [multer] `multer` options.

@@ -1,16 +1,7 @@
 <types>
-  <type name="Config">
-    <prop number name="port" default="5000">
-      Port on which to start the server.
-    </prop>
-    <prop string name="host" default="0.0.0.0">
-      The host on which to listen.
-    </prop>
-  </type>
   <type
     name="MiddlewareConfig"
     desc="Middleware configuration for the `idio` `core` server."
-    spread noExpand
   >
     <prop opt type="SessionOptions" name="session">
       `session` options.

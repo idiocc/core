@@ -1,8 +1,28 @@
 import { debuglog } from 'util'
 import enableDestroy from 'server-destroy'
 import Router from 'koa-router'
+import Koa from 'koa'
 import erotic from 'erotic'
-import createApp from './create-app'
+import setupMiddleware from './setup-middleware'
+
+/**
+ * Create an application and setup middleware.
+ * @param {MiddlewareConfig} middlewareConfig
+ */
+async function createApp(middlewareConfig) {
+  const app = new Koa()
+
+  const middleware = await setupMiddleware(middlewareConfig, app)
+
+  if (app.env == 'production') {
+    app.proxy = true
+  }
+
+  return {
+    app,
+    middleware,
+  }
+}
 
 const LOG = debuglog('idio')
 
@@ -38,10 +58,10 @@ function listen(app, port, hostname = '0.0.0.0') {
 
 /**
  * Start the server.
- * @param {import('..').MiddlewareConfig} [middleware]
- * @param {import('..').Config} [config] configuration object
+ * @param {MiddlewareConfig} [middlewareConfig] Middleware configuration.
+ * @param {Config} [config] Configuration object.
  */
-async function startApp(middleware, config) {
+async function startApp(middlewareConfig, config) {
   const {
     port = DEFAULT_PORT,
     host = DEFAULT_HOST,
@@ -53,7 +73,7 @@ async function startApp(middleware, config) {
     process.kill(process.pid, 'SIGUSR2')
   })
 
-  const appMeta = await createApp(middleware, config)
+  const appMeta = await createApp(middlewareConfig, config)
   const { app } = appMeta
 
   const server = await listen(app, port, host)
@@ -72,3 +92,8 @@ async function startApp(middleware, config) {
 }
 
 export default startApp
+
+/**
+ * @typedef {import('..').MiddlewareConfig} MiddlewareConfig
+ * @typedef {import('..').Config} Config
+ */

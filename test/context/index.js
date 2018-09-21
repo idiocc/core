@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { join } from 'path'
 import { debuglog } from 'util'
 import Catchment from 'catchment'
 import { createReadStream } from 'fs'
@@ -6,10 +6,10 @@ import startApp from '../../src/lib/start-app'
 
 const LOG = debuglog('@idio/core')
 
-const FIXTURE = resolve(__dirname, '../fixture')
+const FIXTURE = 'test/fixture'
 
 const read = async (...path) => {
-  const p = resolve(...path)
+  const p = join(...path)
   const rs = createReadStream(p)
   const { promise } = new Catchment({ rs })
   /** @type {string} */
@@ -39,13 +39,13 @@ export default class Context {
     if (this.app) await this.app.destroy()
   }
   get SNAPSHOT_DIR() {
-    return resolve(__dirname, '../snapshot')
+    return join(__dirname, '../snapshot')
   }
   get staticDir() {
-    return resolve(FIXTURE, 'static')
+    return join(FIXTURE, 'static')
   }
   get staticDir2() {
-    return resolve(FIXTURE, 'static2')
+    return join(FIXTURE, 'static2')
   }
   async readStaticFixture() {
     const dracula = await read(this.staticDir, 'chapter2.txt')

@@ -10,8 +10,6 @@
       "name": "Launch Zoroaster",
       "program": "${workspaceFolder}/node_modules/.bin/zoroaster",
       "env": {
-        "BABEL_ENV": "debug",
-        "ZOROASTER_TIMEOUT": "9999999",
         "NODE_DEBUG": "@idio/core",
       },
       "console": "integratedTerminal",
@@ -19,6 +17,21 @@
         "test/spec",
         "-b",
         "-w",
+        "-t",
+        "9999999"
+      ],
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Example",
+      "program": "${workspaceFolder}/example/index.js",
+      "console": "integratedTerminal",
+      "args": [
+        "example/router",
       ],
       "skipFiles": [
         "<node_internals>/**/*.js"

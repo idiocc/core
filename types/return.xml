@@ -1,0 +1,19 @@
+<types>
+  <import name="Application" from="koa" />
+  <import name="Middleware" from="koa" />
+  <import name="Router" from="koa-router" />
+  <type name="IdioCore">
+    <prop string name="url">
+      The url on which the server is accessible.
+    </prop>
+    <prop type="Application" name="app">
+      The `Koa` application.
+    </prop>
+    <prop type="Router" name="router">
+      The `koa-router` instance.
+    </prop>
+    <prop type="Object.<string, Middleware>" name="middleware">
+      The map of configured middleware functions which could then be setup to be used on a certain route.
+    </prop>
+  </type>
+</types>
