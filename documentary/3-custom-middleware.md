@@ -2,11 +2,16 @@
 
 When required to add any other middleware in the application not included in the `@idio/core` bundle, it can be done in several ways.
 
-<!-- 1. Passing a configuration object that includes a `middleware` property. When the `use` property is also set, the middleware will be installed automatically. -->
-1. Pass the middleware function as part of the _MiddlewareConfig_. It will be automatically installed to be used by the _Application_. All middleware will be installed in order it is found in the _MiddlewareConfig_.
+1. Passing the middleware function as part of the _MiddlewareConfig_. It will be automatically installed to be used by the _Application_. All middleware will be installed in order it is found in the _MiddlewareConfig_.
 
 %EXAMPLE: example/custom-middleware/api-server.js, ../../src => @idio/core%
-%FORK example example/custom-middleware/start-api%
+%FORK example example/custom-middleware/run-api%
+
+2. Passing a configuration object as part of the _MiddlewareConfig_ that includes the `middlewareConstructor` property. Other properties such as `conf` and `use` will be used in the same way as when setting up bundled middleware.
+
+%EXAMPLE: example/custom-middleware/proxy.js, ../../src => @idio/core%
+%FORK example example/custom-middleware/proxy%
+
 
 
 <!-- set up by passing its constructor as the `middlewareConstructor` property of the configuration. The constructor will receive the `app` and `config` arguments and should return a middleware function. -->

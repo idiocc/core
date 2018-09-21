@@ -2,13 +2,15 @@ import idioCore from '../../src'
 
 /** @typedef {import('koa').Middleware} Middleware */
 
-const APIServer = async () => {
+const APIServer = async (port) => {
   const { url } = await idioCore({
+    // 1. Add logging middleware.
     /** @type {Middleware} */
     async log(ctx, next) {
       await next()
       console.log(' --> API: %s %s %s', ctx.method, ctx.url, ctx.status)
     },
+    // 2. Add always used error middleware.
     /** @type {Middleware} */
     async error(ctx, next) {
       try {
@@ -18,16 +20,15 @@ const APIServer = async () => {
         ctx.body = err.message
       }
     },
+    // 3. Add validation middleware.
     /** @type {Middleware} */
-    async api(ctx, next) {
+    async validateKey(ctx, next) {
       if (ctx.query.key !== 'app-secret')
         throw new Error('Wrong API key.')
-      ctx.body = {
-        userId: 127,
-      }
+      ctx.body = 'ok'
       await next()
     },
-  })
+  }, { port })
   return url
 }
 

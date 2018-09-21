@@ -402,20 +402,22 @@ const DAY = 1000 * 60 * 60 * 24
 
 When required to add any other middleware in the application not included in the `@idio/core` bundle, it can be done in several ways.
 
-1. Pass the middleware function as part of the _MiddlewareConfig_. It will be automatically installed to be used by the _Application_. All middleware will be installed in order it is found in the _MiddlewareConfig_.
+1. Passing the middleware function as part of the _MiddlewareConfig_. It will be automatically installed to be used by the _Application_. All middleware will be installed in order it is found in the _MiddlewareConfig_.
 
 ```js
 import idioCore from '@idio/core'
 
 /** @typedef {import('koa').Middleware} Middleware */
 
-const APIServer = async () => {
+const APIServer = async (port) => {
   const { url } = await idioCore({
+    // 1. Add logging middleware.
     /** @type {Middleware} */
     async log(ctx, next) {
       await next()
       console.log(' --> API: %s %s %s', ctx.method, ctx.url, ctx.status)
     },
+    // 2. Add always used error middleware.
     /** @type {Middleware} */
     async error(ctx, next) {
       try {
@@ -425,16 +427,15 @@ const APIServer = async () => {
         ctx.body = err.message
       }
     },
+    // 3. Add validation middleware.
     /** @type {Middleware} */
-    async api(ctx, next) {
+    async validateKey(ctx, next) {
       if (ctx.query.key !== 'app-secret')
         throw new Error('Wrong API key.')
-      ctx.body = {
-        userId: 127,
-      }
+      ctx.body = 'ok'
       await next()
     },
-  })
+  }, { port })
   return url
 }
 
@@ -445,6 +446,56 @@ Started API server at: http://localhost:5000
  --> API: GET / 403
  --> API: GET /?key=app-secret 200
 ```
+
+2. Passing a configuration object as part of the _MiddlewareConfig_ that includes the `middlewareConstructor` property. Other properties such as `conf` and `use` will be used in the same way as when setting up bundled middleware.
+
+```js
+import rqt from 'rqt'
+import idioCore from '@idio/core'
+import APIServer from './api-server'
+
+const ProxyServer = async (port) => {
+  // 1. Start the API server.
+  const API = await APIServer(5001)
+  console.log('API server started at %s', API)
+
+  // 2. Start a proxy server to the API.
+  const { url } = await idioCore({
+    /** @type {import('koa').Middleware} */
+    async log(ctx, next) {
+      await next()
+      console.log(' --> Proxy: %s %s %s', ctx.method, ctx.url, ctx.status)
+    },
+    api: {
+      use: true,
+      async middlewareConstructor(app, config) {
+        // e.g., read from a virtual network
+        app.context.SECRET = await Promise.resolve('app-secret')
+
+        /** @type {import('koa').Middleware} */
+        const fn = async(ctx, next) => {
+          const { path } = ctx
+          const res = await rqt(`${config.API}${path}?key=${ctx.SECRET}`)
+          ctx.body = res
+          await next()
+        }
+        return fn
+      },
+      config: {
+        API,
+      },
+    },
+  }, { port })
+  return url
+}
+```
+```
+API server started at http://localhost:5001
+Proxy started at http://localhost:5002
+ --> API: GET /?key=app-secret 200
+ --> Proxy: GET / 200
+```
+
 
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
