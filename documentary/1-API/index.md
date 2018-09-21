@@ -8,7 +8,7 @@ import core from '@idio/core'
 
 %~%
 
-```## core
+```## async core => IdioCore
 [
   ["middleware?", "MiddlewareConfig"],
   ["config?", "Config"]
@@ -20,6 +20,8 @@ The `@idio/core` accepts 2 arguments which are the middleware configuration obje
 %TYPEDEF types/middleware.xml MiddlewareConfig%
 
 %TYPEDEF types/config.xml Config%
+
+The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-setup).
 
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 

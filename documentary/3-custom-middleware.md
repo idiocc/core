@@ -1,22 +1,17 @@
-
 ## Custom Middleware
 
-When required to add any other middleware in the application not included in the `@idio/core` bundle, it can be set up by passing its constructor as the `function` property of the configuration. The constructor will receive the `app` and `config` arguments and should return a middleware function.
+When required to add any other middleware in the application not included in the `@idio/core` bundle, it can be done in several ways.
 
-```js
-const middlewareConstructor = async (app, config) => {
-  app.context.usingFunction = true
+<!-- 1. Passing a configuration object that includes a `middleware` property. When the `use` property is also set, the middleware will be installed automatically. -->
+1. Pass the middleware function as part of the _MiddlewareConfig_. It will be automatically installed to be used by the _Application_. All middleware will be installed in order it is found in the _MiddlewareConfig_.
 
-  return async(ctx, next) => {
-    await next()
-    if (config.debug) {
-      console.error(ctx.usingFunction)
-    }
-  }
-}
-```
+%EXAMPLE: example/custom-middleware/api-server.js, ../../src => @idio/core%
+%FORK example example/custom-middleware/start-api%
 
-The `use` and `config` properties stay applicable as with the bundled middleware.
+
+<!-- set up by passing its constructor as the `middlewareConstructor` property of the configuration. The constructor will receive the `app` and `config` arguments and should return a middleware function. -->
+
+<!-- The `use` and `config` properties stay applicable as with the bundled middleware.
 
 For example, setting up a custom middleware can look like this:
 
@@ -37,6 +32,6 @@ await core({
     use: true,
   },
 })
-```
+``` -->
 
 %~%

@@ -14,7 +14,7 @@ yarn add -E @idio/core
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`core(middleware?: MiddlewareConfig, config?: Config)`](#coremiddleware-middlewareconfigconfig-config-void)
+- [`async core(middleware?: MiddlewareConfig, config?: Config): IdioCore`](#async-coremiddleware-middlewareconfigconfig-config-idiocore)
   * [`MiddlewareConfig`](#middlewareconfig)
   * [`Config`](#config)
 - [Middleware Configuration](#middleware-configuration)
@@ -44,6 +44,7 @@ yarn add -E @idio/core
     * [`StaticOptions`](#staticoptions)
     * [`StaticConfig`](#staticconfig)
 - [Custom Middleware](#custom-middleware)
+- [Router Setup](#router-setup)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
@@ -58,7 +59,7 @@ import core from '@idio/core'
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
-## `core(`<br/>&nbsp;&nbsp;`middleware?: MiddlewareConfig,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): void`
+## `async core(`<br/>&nbsp;&nbsp;`middleware?: MiddlewareConfig,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): IdioCore`
 
 The `@idio/core` accepts 2 arguments which are the middleware configuration object and server configuration object. It is possible to start the server without any configuration, however it will do nothing, therefore it is important to add some middleware configuration.
 
@@ -81,6 +82,8 @@ __<a name="config">`Config`</a>__: Server configuration object.
 | ---- | -------- | -------------------------------------- | --------- |
 | port | _number_ | The port on which to start the server. | `5000`    |
 | host | _string_ | The host on which to listen.           | `0.0.0.0` |
+
+The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-setup).
 
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
@@ -395,48 +398,101 @@ const DAY = 1000 * 60 * 60 * 24
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/12.svg?sanitize=true"></a></p>
 
-
 ## Custom Middleware
 
-When required to add any other middleware in the application not included in the `@idio/core` bundle, it can be set up by passing its constructor as the `function` property of the configuration. The constructor will receive the `app` and `config` arguments and should return a middleware function.
+When required to add any other middleware in the application not included in the `@idio/core` bundle, it can be done in several ways.
+
+1. Pass the middleware function as part of the _MiddlewareConfig_. It will be automatically installed to be used by the _Application_. All middleware will be installed in order it is found in the _MiddlewareConfig_.
 
 ```js
-const middlewareConstructor = async (app, config) => {
-  app.context.usingFunction = true
+import idioCore from '@idio/core'
 
-  return async(ctx, next) => {
-    await next()
-    if (config.debug) {
-      console.error(ctx.usingFunction)
-    }
-  }
-}
-```
+/** @typedef {import('koa').Middleware} Middleware */
 
-The `use` and `config` properties stay applicable as with the bundled middleware.
-
-For example, setting up a custom middleware can look like this:
-
-```js
-await core({
-  customMiddleware: {
-    async function(app, config) {
-      app.context.usingFunction = true
-
-      return async(ctx, next) => {
+const APIServer = async () => {
+  const { url } = await idioCore({
+    /** @type {Middleware} */
+    async log(ctx, next) {
+      await next()
+      console.log(' --> API: %s %s %s', ctx.method, ctx.url, ctx.status)
+    },
+    /** @type {Middleware} */
+    async error(ctx, next) {
+      try {
         await next()
-        if (config.debug) {
-          console.error(ctx.usingFunction)
-        }
+      } catch (err) {
+        ctx.status = 403
+        ctx.body = err.message
       }
     },
-    config: { debug: process.env.NODE_DEBUG == '@idio/core' },
-    use: true,
-  },
-})
+    /** @type {Middleware} */
+    async api(ctx, next) {
+      if (ctx.query.key !== 'app-secret')
+        throw new Error('Wrong API key.')
+      ctx.body = {
+        userId: 127,
+      }
+      await next()
+    },
+  })
+  return url
+}
+
+export default APIServer
+```
+```
+Started API server at: http://localhost:5000
+ --> API: GET / 403
+ --> API: GET /?key=app-secret 200
 ```
 
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
+
+## Router Setup
+
+After the app and router instances are obtaining after starting the server, the router can be configured to respond to custom paths. This can be done by assigning required middleware from the map, and calling the `use` method on the _Application_ instance.
+
+```js
+import idioCore from '@idio/core'
+
+(async () => {
+const path = '/test'
+const {
+  url, router, app, middleware: { pre, post },
+} = await idioCore({
+  async pre(ctx, next) {
+    console.log('  <-- %s %s',
+      ctx.request.method,
+      ctx.request.path,
+    )
+    await next()
+  },
+  async post(ctx, next) {
+    console.log('  --> %s %s %s',
+      ctx.request.method,
+      ctx.request.path,
+      ctx.response.status,
+    )
+    await next()
+  },
+})
+router.get(path, pre,
+  async (ctx, next) => {
+    ctx.body = '<!doctype html><html><body>test</body></html>'
+    await next()
+  }, post)
+app.use(router.routes())
+console.log('Page available at: %s%s', url, path)
+```
+
+```
+Page available at: http://localhost:5000/test
+  <-- GET /test
+  --> GET /test 404
+  <-- GET /test
+  --> GET /test 200
+```
 
 ## Copyright
 
