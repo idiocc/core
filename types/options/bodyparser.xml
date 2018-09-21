@@ -1,5 +1,5 @@
 <types>
-  <type name="BodyparserOptions">
+  <type name="BodyparserOptions" noToc>
     <prop boolean name="use" default="false">
       Use this middleware for every request.
     </prop>

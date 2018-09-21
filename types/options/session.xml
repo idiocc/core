@@ -1,5 +1,5 @@
 <types>
-  <type name="SessionOptions">
+  <type name="SessionOptions" noToc>
     <prop type="string[]" name="keys">
       A set of keys to be installed in `app.keys`.
     </prop>

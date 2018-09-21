@@ -1,5 +1,5 @@
 <types>
-  <type name="Limits" desc="[An object](https://github.com/expressjs/multer#limits) specifying the size limits.">
+  <type name="Limits" desc="[An object](https://github.com/expressjs/multer#limits) specifying the size limits." noToc>
     <prop number name="fieldNameSize" default="100">
       Max field name size in bytes.
     </prop>
@@ -22,7 +22,7 @@
       For multipart forms, the max number of header key=> value pairs to parse.
     </prop>
   </type>
-  <type name="MulterConfig">
+  <type name="MulterConfig" noToc>
     <prop opt string name="dest">
       Where to store the files.
     </prop>

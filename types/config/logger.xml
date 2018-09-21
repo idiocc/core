@@ -1,5 +1,5 @@
 <types>
-  <type name="LoggerConfig">
+  <type name="LoggerConfig" noToc>
     <prop opt type="(str: string, args: [string, string, string, string, string, string, string]) => void" name="transporter">
       Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`.
     </prop>

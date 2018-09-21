@@ -1,5 +1,5 @@
 <types>
-  <type name="CSRFConfig">
+  <type name="CSRFConfig" noToc>
     <prop opt string name="invalidSessionSecretMessage" />
     <prop opt number name="invalidSessionSecretStatusCode" />
     <prop opt string name="invalidTokenMessage" />

@@ -1,6 +1,6 @@
 <types>
   <import name="Context" from="koa" link="https://github.com/koajs/koa/blob/master/docs/api/context.md" />
-  <type name="BodyparserConfig">
+  <type name="BodyparserConfig" noToc>
     <prop type="string[]" name="enableTypes" default="['json', 'form']">
       Parser will only parse when request type hits enableTypes.
     </prop>

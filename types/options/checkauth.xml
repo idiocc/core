@@ -1,5 +1,5 @@
 <types>
-  <type name="CheckauthOptions">
+  <type name="CheckauthOptions" noToc>
     <prop boolean name="use" default="false">
       Use this middleware for every request.
     </prop>

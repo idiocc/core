@@ -1,5 +1,5 @@
 <types>
-  <type name="StaticOptions">
+  <type name="StaticOptions" noToc>
     <prop type="string|string[]" name="root">
       Root or multiple roots from which to serve files.
     </prop>

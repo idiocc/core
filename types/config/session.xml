@@ -1,5 +1,5 @@
 <types>
-  <type name="SessionConfig" desc="Configuration passed to `koa-session`.">
+  <type name="SessionConfig" desc="Configuration passed to `koa-session`." noToc>
     <prop string name="key" default="koa:sess">
       Cookie key.
     </prop>

@@ -1,7 +1,7 @@
 <types>
-  <import name="ServerResponse" from="http" />
-  <type name="SetHeaders" type="(res: ServerResponse, path: string, stats: Stats) => any" />
-  <type name="StaticConfig">
+  <import name="ServerResponse" from="http" link="https://nodejs.org/api/http.html#http_class_http_serverresponse" />
+  <type name="SetHeaders" type="(res: ServerResponse, path: string, stats: Stats) => any"  noToc />
+  <type name="StaticConfig" noToc>
     <prop number name="maxage" default="0">
       Browser cache max-age in milliseconds.
     </prop>
