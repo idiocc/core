@@ -44,7 +44,7 @@ yarn add -E @idio/core
     * [`StaticOptions`](#staticoptions)
     * [`StaticConfig`](#staticconfig)
 - [Custom Middleware](#custom-middleware)
-- [Router Setup](#router-setup)
+- [Router Set-up](#router-set-up)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
@@ -500,49 +500,64 @@ Proxy started at http://localhost:5002
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
 
-## Router Setup
+## Router Set-up
 
-After the app and router instances are obtaining after starting the server, the router can be configured to respond to custom paths. This can be done by assigning required middleware from the map, and calling the `use` method on the _Application_ instance.
+After the _Application_ and _Router_ instances are obtaining after starting the server in the `app` and `router` properties of the returned object, the router can be configured to respond to custom paths. This can be done by assigning required middleware from the map, and calling the `use` method on the _Application_ instance.
 
 ```js
 import idioCore from '@idio/core'
 
-(async () => {
-const path = '/test'
-const {
-  url, router, app, middleware: { pre, post },
-} = await idioCore({
-  async pre(ctx, next) {
-    console.log('  <-- %s %s',
-      ctx.request.method,
-      ctx.request.path,
-    )
-    await next()
-  },
-  async post(ctx, next) {
-    console.log('  --> %s %s %s',
-      ctx.request.method,
-      ctx.request.path,
-      ctx.response.status,
-    )
-    await next()
-  },
-})
-router.get(path, pre,
-  async (ctx, next) => {
-    ctx.body = '<!doctype html><html><body>test</body></html>'
-    await next()
-  }, post)
-app.use(router.routes())
-console.log('Page available at: %s%s', url, path)
-```
+async function pre(ctx, next) {
+  console.log('  <-- %s %s',
+    ctx.request.method,
+    ctx.request.path,
+  )
+  await next()
+}
 
+async function post(ctx, next) {
+  console.log('  --> %s %s %s',
+    ctx.request.method,
+    ctx.request.path,
+    ctx.response.status,
+  )
+  await next()
+}
+
+const Server = async () => {
+  const path = '/test'
+  const {
+    url, router, app, middleware: { bodyparser },
+  } = await idioCore({
+    // 1. Configure the bodyparser without using it for each request.
+    bodyparser: {
+      config: {
+        enableTypes: ['json'],
+      },
+    },
+  }, { port: 5003 })
+
+  // 2. Setup router with the bodyparser and path-specific middleware.
+  router.post(path,
+    pre,
+    bodyparser,
+    async (ctx, next) => {
+      ctx.body = {
+        ok: true,
+        request: ctx.request.body,
+      }
+      await next()
+    },
+    post,
+  )
+  app.use(router.routes())
+  return `${url}${path}`
+}
 ```
-Page available at: http://localhost:5000/test
-  <-- GET /test
-  --> GET /test 404
-  <-- GET /test
-  --> GET /test 200
+```
+Page available at: http://localhost:5003/test
+  <-- POST /test
+  --> POST /test 200
 ```
 
 ## Copyright
