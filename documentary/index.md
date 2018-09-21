@@ -12,7 +12,7 @@ yarn add -E @idio/core
 ```
 
 <p align="center">
-<a href="https://idio.cc">![Developer-Friendly Suggestions For Middleware](app2.gif)</a>
+<a href="https://idio.cc"><img alt="Developer-Friendly Suggestions For Middleware" src="app2.gif"></a>
 </p>
 
 %~%
