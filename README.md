@@ -124,7 +124,7 @@ Each middleware accepts the following properties:
 <summary><strong><a name="session">Session</a></strong>: handling sessions via cookies <a href="https://github.com/koajs/session">middleware</a>.
 <hr/>
 
-__`SessionOptions`__
+__<a name="sessionoptions">`SessionOptions`</a>__
 
 |   Name    |               Type                |                 Description                  | Default |
 | --------- | --------------------------------- | -------------------------------------------- | ------- |
@@ -133,7 +133,7 @@ __`SessionOptions`__
 | config    | _[SessionConfig](#sessionconfig)_ | `koa-session` configuration.                 | -       |
 </summary>
 
-__`SessionConfig`__: Configuration passed to `koa-session`.
+__<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-session`.
 
 |   Name    |        Type         |                                                                                        Description                                                                                        |  Default   |
 | --------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
@@ -154,7 +154,7 @@ __`SessionConfig`__: Configuration passed to `koa-session`.
 <summary><strong><a name="file-uploads">File Uploads</a></strong>: multer <a href="https://github.com/koa-modules/multer">middleware</a>.
 <hr/>
 
-__`MulterOptions`__
+__<a name="multeroptions">`MulterOptions`</a>__
 
 |  Name  |              Type               |              Description               | Default |
 | ------ | ------------------------------- | -------------------------------------- | ------- |
@@ -170,7 +170,7 @@ __`MulterOptions`__
 
 [`import('koa-multer').File`](https://github.com/expressjs/multer#file-information.) __<a name="file">`File`</a>__
 
-__`Limits`__: [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
+__<a name="limits">`Limits`</a>__: [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
 
 |     Name      |   Type   |                                Description                                |  Default   |
 | ------------- | -------- | ------------------------------------------------------------------------- | ---------- |
@@ -182,7 +182,7 @@ __`Limits`__: [An object](https://github.com/expressjs/multer#limits) specifying
 | parts         | _number_ | For multipart forms, the max number of parts (fields + files).            | `Infinity` |
 | headerPairs   | _number_ | For multipart forms, the max number of header key=> value pairs to parse. | `2000`     |
 
-__`MulterConfig`__
+__<a name="multerconfig">`MulterConfig`</a>__
 
 |     Name     |                                                  Type                                                  |                                           Description                                           | Default |
 | ------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------- |
@@ -201,7 +201,7 @@ __`MulterConfig`__
 <summary><strong><a name="cross-site-request-forgery">Cross-Site Request Forgery</a></strong>: prevention against CSRF attacks <a href="https://github.com/koajs/csrf">middleware</a>.
 <hr/>
 
-__`CSRFOptions`__
+__<a name="csrfoptions">`CSRFOptions`</a>__
 
 |  Name  |            Type             |              Description               | Default |
 | ------ | --------------------------- | -------------------------------------- | ------- |
@@ -209,7 +209,7 @@ __`CSRFOptions`__
 | config | _[CSRFConfig](#csrfconfig)_ | `koa-csrf` configuration.              | -       |
 </summary>
 
-__`CSRFConfig`__
+__<a name="csrfconfig">`CSRFConfig`</a>__
 
 |              Name              |    Type    | Description | Default |
 | ------------------------------ | ---------- | ----------- | ------- |
@@ -229,7 +229,7 @@ __`CSRFConfig`__
 <summary><strong><a name="parse-body">Parse Body</a></strong>: parsing of data sent to the server <a href="https://github.com/koajs/body-parser">middleware</a>.
 <hr/>
 
-__`BodyparserOptions`__
+__<a name="bodyparseroptions">`BodyparserOptions`</a>__
 
 |  Name  |                  Type                   |              Description               | Default |
 | ------ | --------------------------------------- | -------------------------------------- | ------- |
@@ -239,7 +239,7 @@ __`BodyparserOptions`__
 
 [`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="context">`Context`</a>__
 
-__`BodyparserConfig`__
+__<a name="bodyparserconfig">`BodyparserConfig`</a>__
 
 |    Name     |                        Type                        |                                                 Description                                                  |      Default       |
 | ----------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------ |
@@ -261,7 +261,7 @@ __`BodyparserConfig`__
 <summary><strong><a name="checking-auth">Checking Auth</a></strong>: a simple function which throws if <code>ctx.session.user</code> is not set. Non-configurable <a href="#">middleware</a>.
 <hr/>
 
-__`CheckauthOptions`__
+__<a name="checkauthoptions">`CheckauthOptions`</a>__
 
 | Name |   Type    |              Description               | Default |
 | ---- | --------- | -------------------------------------- | ------- |
@@ -279,7 +279,7 @@ __`CheckauthOptions`__
 <summary><strong><a name="logging">Logging</a></strong>: a logger <a href="https://github.com/koajs/logger">middleware</a>.
 <hr/>
 
-__`LoggerOptions`__
+__<a name="loggeroptions">`LoggerOptions`</a>__
 
 |  Name  |              Type               |              Description               | Default |
 | ------ | ------------------------------- | -------------------------------------- | ------- |
@@ -287,7 +287,7 @@ __`LoggerOptions`__
 | config | _[LoggerConfig](#loggerconfig)_ | `koa-logger` configuration.            | -       |
 </summary>
 
-__`LoggerConfig`__
+__<a name="loggerconfig">`LoggerConfig`</a>__
 
 |    Name     |                                            Type                                            |                                                                                       Description                                                                                       | Default |
 | ----------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -302,7 +302,7 @@ __`LoggerConfig`__
 <summary><strong><a name="compression">Compression</a></strong>: a compress <a href="https://github.com/koajs/compress">middleware</a>.
 <hr/>
 
-__`CompressOptions`__
+__<a name="compressoptions">`CompressOptions`</a>__
 
 |  Name  |                Type                 |              Description               | Default |
 | ------ | ----------------------------------- | -------------------------------------- | ------- |
@@ -310,7 +310,7 @@ __`CompressOptions`__
 | config | _[CompressConfig](#compressconfig)_ | `koa-compress` configuration.          | -       |
 </summary>
 
-__`CompressConfig`__
+__<a name="compressconfig">`CompressConfig`</a>__
 
 |    Name     |                  Type                  |                                                          Description                                                          | Default |
 | ----------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -334,7 +334,7 @@ __`CompressConfig`__
 <summary><strong><a name="static-files">Static Files</a></strong>: serving files from filesystem <a href="https://github.com/koajs/static">middleware</a>.
 <hr/>
 
-__`StaticOptions`__
+__<a name="staticoptions">`StaticOptions`</a>__
 
 |   Name    |              Type               |                    Description                    | Default |
 | --------- | ------------------------------- | ------------------------------------------------- | ------- |
@@ -347,9 +347,9 @@ __`StaticOptions`__
 
 [`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse) __<a name="serverresponse">`ServerResponse`</a>__
 
-`(res: ServerResponse, path: string, stats: Stats) => any` __`SetHeaders`__
+`(res: ServerResponse, path: string, stats: Stats) => any` __<a name="setheaders">`SetHeaders`</a>__
 
-__`StaticConfig`__
+__<a name="staticconfig">`StaticConfig`</a>__
 
 |    Name    |            Type             |                                                                                             Description                                                                                             |   Default    |
 | ---------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
