@@ -136,9 +136,10 @@ Each middleware accepts the following properties:
 
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
+<img src="images/session.svg" align="left" width="85">
 <details>
 <summary><strong><a name="session">Session</a></strong>: handling sessions via cookies <a href="https://github.com/koajs/session">middleware</a>.
-<br/><br/><img src="images/session.svg" align="left" width="200">
+<hr/>
 
 __<a name="sessionoptions">`SessionOptions`</a>__
 
@@ -156,7 +157,7 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 | key       | _string_            | Cookie key.                                                                                                                                                                               | `koa:sess` |
 | maxAge    | _number\|'session'_ | maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. | `86400000` |
 | overwrite | _boolean_           | Can overwrite or not.                                                                                                                                                                     | `true`     |
-| httpOnly  | _boolean_           | httpOnly or not or not.                                                                                                                                                                   | `true`     |
+| httpOnly  | _boolean_           | httpOnly or not.                                                                                                                                                                          | `true`     |
 | signed    | _boolean_           | Signed or not.                                                                                                                                                                            | `true`     |
 | rolling   | _boolean_           | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.                                        | `false`    |
 | renew     | _boolean_           | Renew session when session is nearly expired, so we can always keep user logged in.                                                                                                       | `false`    |
@@ -165,9 +166,10 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
+<img src="images/multer.svg" align="left" width="85">
 <details>
 <summary><strong><a name="file-uploads">File Uploads</a></strong>: multer <a href="https://github.com/koa-modules/multer">middleware</a>.
-<br/><br/><img src="images/multer.svg" align="left" width="200">
+<hr/>
 
 __<a name="multeroptions">`MulterOptions`</a>__
 
@@ -211,9 +213,10 @@ __<a name="multerconfig">`MulterConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true" width="15"></a></p>
+<img src="images/csrf.svg" align="left" width="85">
 <details>
 <summary><strong><a name="cross-site-request-forgery">Cross-Site Request Forgery</a></strong>: prevention against CSRF attacks <a href="https://github.com/koajs/csrf">middleware</a>.
-<br/><br/><img src="images/csrf.svg" align="left" width="200">
+<hr/>
 
 __<a name="csrfoptions">`CSRFOptions`</a>__
 
@@ -238,9 +241,10 @@ __<a name="csrfconfig">`CSRFConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/7.svg?sanitize=true" width="15"></a></p>
+<img src="images/bodyparser.svg" align="left" width="85">
 <details>
 <summary><strong><a name="parse-body">Parse Body</a></strong>: parsing of data sent to the server <a href="https://github.com/koajs/body-parser">middleware</a>.
-<br/><br/><img src="images/bodyparser.svg" align="left" width="200">
+<hr/>
 
 __<a name="bodyparseroptions">`BodyparserOptions`</a>__
 
@@ -269,9 +273,10 @@ __<a name="bodyparserconfig">`BodyparserConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/8.svg?sanitize=true" width="15"></a></p>
+<img src="images/checkauth.svg" align="left" width="85">
 <details>
 <summary><strong><a name="checking-auth">Checking Auth</a></strong>: a simple function which throws if <code>ctx.session.user</code> is not set. Non-configurable <a href="#">middleware</a>.
-<br/><br/><img src="images/checkauth.svg" align="left" width="200">
+<hr/>
 
 __<a name="checkauthoptions">`CheckauthOptions`</a>__
 
@@ -286,9 +291,10 @@ __<a name="checkauthoptions">`CheckauthOptions`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/9.svg?sanitize=true" width="15"></a></p>
+<img src="images/logger.svg" align="left" width="85">
 <details>
 <summary><strong><a name="logging">Logging</a></strong>: a logger <a href="https://github.com/koajs/logger">middleware</a>.
-<br/><br/><img src="images/logger.svg" align="left" width="200">
+<hr/>
 
 __<a name="loggeroptions">`LoggerOptions`</a>__
 
@@ -308,9 +314,10 @@ __<a name="loggerconfig">`LoggerConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/10.svg?sanitize=true" width="15"></a></p>
+<img src="images/compress.svg" align="left" width="85">
 <details>
 <summary><strong><a name="compression">Compression</a></strong>: a compress <a href="https://github.com/koajs/compress">middleware</a>.
-<br/><br/><img src="images/compress.svg" align="left" width="200">
+<hr/>
 
 __<a name="compressoptions">`CompressOptions`</a>__
 
@@ -339,9 +346,10 @@ __<a name="compressconfig">`CompressConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/11.svg?sanitize=true" width="15"></a></p>
+<img src="images/static.svg" align="left" width="85">
 <details>
 <summary><strong><a name="static-files">Static Files</a></strong>: serving files from filesystem <a href="https://github.com/koajs/static">middleware</a>.
-<br/><br/><img src="images/static.svg" align="left" width="200">
+<hr/>
 
 __<a name="staticoptions">`StaticOptions`</a>__
 

@@ -10,7 +10,7 @@
       Can overwrite or not.
     </prop>
     <prop boolean name="httpOnly" default="true">
-      httpOnly or not or not.
+      httpOnly or not.
     </prop>
     <prop boolean name="signed" default="true">
       Signed or not.
