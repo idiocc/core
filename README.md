@@ -72,11 +72,11 @@ __<a name="config">`Config`</a>__: Server configuration object.
 
 The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-set-up).
 
-`import('koa').Application` __<a name="application">`Application`</a>__
+[`import('koa').Application`](https://github.com/koajs/koa/blob/master/docs/api/index.md#application) __<a name="application">`Application`</a>__
 
-`import('koa').Middleware` __<a name="middleware">`Middleware`</a>__
+[`import('koa').Middleware`](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) __<a name="middleware">`Middleware`</a>__
 
-`import('koa-router').Router` __<a name="router">`Router`</a>__
+[`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="router">`Router`</a>__
 
 __<a name="idiocore">`IdioCore`</a>__
 
