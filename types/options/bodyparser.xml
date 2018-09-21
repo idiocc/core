@@ -1,0 +1,10 @@
+<types>
+  <type name="BodyparserOptions">
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="BodyparserConfig" name="config">
+      `koa-bodyparser` configuration.
+    </prop>
+  </type>
+</types>

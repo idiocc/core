@@ -40,8 +40,8 @@ yarn add -E @idio/core
     * [`CompressOptions`](#compressoptions)
     * [`CompressConfig`](#compressconfig)
   * [Static Files](#static-files)
-    * [`SetHeaders`](#setheaders)
     * [`StaticOptions`](#staticoptions)
+    * [`SetHeaders`](#setheaders)
     * [`StaticConfig`](#staticconfig)
 - [Custom Middleware](#custom-middleware)
 - [Router Set-up](#router-set-up)
@@ -131,17 +131,14 @@ Each middleware accepts the following properties:
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `use` | Whether to use this middleware for every request. If not set to `true`, the configured middleware function will be included in the `middleware` property of the returned object, which can then be passed to a router configuration (not part of the `@idio/core`). | `false` |
 | `config` | Configuration object expected by the middleware constructor.                                                                                                                                                                                                        | `{}` |
-| `function` | A constructor function when passing middleware not from the bundle.                                                                                                                                                                                                 |         |
 | `...props` | Any additional specific properties (see individual middleware configuration).                                                                                                                                                                                       |         |
 
 
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="session">Session</a></strong>: handling sessions via cookies <a href="https://github.com/koajs/session">middleware</a>.
 <br/><br/>
-</summary>
-
 __<a name="sessionoptions">`SessionOptions`</a>__
 
 |   Name    |               Type                |                 Description                  | Default |
@@ -149,6 +146,7 @@ __<a name="sessionoptions">`SessionOptions`</a>__
 | __keys*__ | _string[]_                        | A set of keys to be installed in `app.keys`. | -       |
 | use       | _boolean_                         | Use this middleware for every request.       | `false` |
 | config    | _[SessionConfig](#sessionconfig)_ | `koa-session` configuration.                 | -       |
+</summary>
 
 __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-session`.
 
@@ -166,9 +164,15 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="file-uploads">File Uploads</a></strong>: multer <a href="https://github.com/koa-modules/multer">middleware</a>.
 <br/><br/>
+__<a name="multeroptions">`MulterOptions`</a>__
+
+|  Name  |              Type               |              Description               | Default |
+| ------ | ------------------------------- | -------------------------------------- | ------- |
+| use    | _boolean_                       | Use this middleware for every request. | `false` |
+| config | _[MulterConfig](#multerconfig)_ | `koa-multer` configuration.            | -       |
 </summary>
 
 [`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="incomingmessage">`IncomingMessage`</a>__
@@ -178,13 +182,6 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 [`import('koa-multer').StorageEngine`](https://github.com/expressjs/multer#storage) __<a name="storageengine">`StorageEngine`</a>__
 
 [`import('koa-multer').File`](https://github.com/expressjs/multer#file-information.) __<a name="file">`File`</a>__
-
-__<a name="multeroptions">`MulterOptions`</a>__
-
-|  Name  |              Type               |              Description               | Default |
-| ------ | ------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                       | Use this middleware for every request. | `false` |
-| config | _[MulterConfig](#multerconfig)_ | `koa-multer` configuration.            | -       |
 
 __<a name="limits">`Limits`</a>__: [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
 
@@ -212,17 +209,16 @@ __<a name="multerconfig">`MulterConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="cross-site-request-forgery">Cross-Site Request Forgery</a></strong>: prevention against CSRF attacks <a href="https://github.com/koajs/csrf">middleware</a>.
 <br/><br/>
-</summary>
-
 __<a name="csrfoptions">`CSRFOptions`</a>__
 
 |  Name  |            Type             |              Description               | Default |
 | ------ | --------------------------- | -------------------------------------- | ------- |
 | use    | _boolean_                   | Use this middleware for every request. | `false` |
 | config | _[CSRFConfig](#csrfconfig)_ | `koa-csrf` configuration.              | -       |
+</summary>
 
 __<a name="csrfconfig">`CSRFConfig`</a>__
 
@@ -239,19 +235,18 @@ __<a name="csrfconfig">`CSRFConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/7.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="parse-body">Parse Body</a></strong>: parsing of data sent to the server <a href="https://github.com/koajs/body-parser">middleware</a>.
 <br/><br/>
-</summary>
-
-[`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="context">`Context`</a>__
-
 __<a name="bodyparseroptions">`BodyparserOptions`</a>__
 
 |  Name  |                  Type                   |              Description               | Default |
 | ------ | --------------------------------------- | -------------------------------------- | ------- |
 | use    | _boolean_                               | Use this middleware for every request. | `false` |
 | config | _[BodyparserConfig](#bodyparserconfig)_ | `koa-bodyparser` configuration.        | -       |
+</summary>
+
+[`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="context">`Context`</a>__
 
 __<a name="bodyparserconfig">`BodyparserConfig`</a>__
 
@@ -270,32 +265,32 @@ __<a name="bodyparserconfig">`BodyparserConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/8.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="checking-auth">Checking Auth</a></strong>: a simple function which throws if <code>ctx.session.user</code> is not set. Non-configurable <a href="#">middleware</a>.
 <br/><br/>
-</summary>
-
 __<a name="checkauthoptions">`CheckauthOptions`</a>__
 
 | Name |   Type    |              Description               | Default |
 | ---- | --------- | -------------------------------------- | ------- |
 | use  | _boolean_ | Use this middleware for every request. | `false` |
+</summary>
+
+%TYPEDEF types/config/checkauth.xml%
 
 
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/9.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="logging">Logging</a></strong>: a logger <a href="https://github.com/koajs/logger">middleware</a>.
 <br/><br/>
-</summary>
-
 __<a name="loggeroptions">`LoggerOptions`</a>__
 
 |  Name  |              Type               |              Description               | Default |
 | ------ | ------------------------------- | -------------------------------------- | ------- |
 | use    | _boolean_                       | Use this middleware for every request. | `false` |
 | config | _[LoggerConfig](#loggerconfig)_ | `koa-logger` configuration.            | -       |
+</summary>
 
 __<a name="loggerconfig">`LoggerConfig`</a>__
 
@@ -307,17 +302,16 @@ __<a name="loggerconfig">`LoggerConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/10.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="compression">Compression</a></strong>: a compress <a href="https://github.com/koajs/compress">middleware</a>.
 <br/><br/>
-</summary>
-
 __<a name="compressoptions">`CompressOptions`</a>__
 
 |  Name  |                Type                 |              Description               | Default |
 | ------ | ----------------------------------- | -------------------------------------- | ------- |
 | use    | _boolean_                           | Use this middleware for every request. | `false` |
 | config | _[CompressConfig](#compressconfig)_ | `koa-compress` configuration.          | -       |
+</summary>
 
 __<a name="compressconfig">`CompressConfig`</a>__
 
@@ -338,15 +332,9 @@ __<a name="compressconfig">`CompressConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/11.svg?sanitize=true" width="15"></a></p>
-<details open>
+<details>
 <summary><strong><a name="static-files">Static Files</a></strong>: serving files from filesystem <a href="https://github.com/koajs/static">middleware</a>.
 <br/><br/>
-</summary>
-
-`import('http').ServerResponse` __<a name="serverresponse">`ServerResponse`</a>__
-
-`(res: ServerResponse, path: string, stats: Stats) => any` __<a name="setheaders">`SetHeaders`</a>__
-
 __<a name="staticoptions">`StaticOptions`</a>__
 
 |   Name    |              Type               |                    Description                    | Default |
@@ -356,6 +344,11 @@ __<a name="staticoptions">`StaticOptions`</a>__
 | mount     | _string_                        | Path from which to serve files.                   | `/`     |
 | maxage    | _number_                        | How long to cache file for.                       | `0`     |
 | config    | _[StaticConfig](#staticconfig)_ | `koa-static` configuration.                       | -       |
+</summary>
+
+`import('http').ServerResponse` __<a name="serverresponse">`ServerResponse`</a>__
+
+`(res: ServerResponse, path: string, stats: Stats) => any` __<a name="setheaders">`SetHeaders`</a>__
 
 __<a name="staticconfig">`StaticConfig`</a>__
 

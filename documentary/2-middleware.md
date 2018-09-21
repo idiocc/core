@@ -9,20 +9,20 @@ Each middleware accepts the following properties:
   ["Property", "Description", "Default"],
   ["`use`", "Whether to use this middleware for every request. If not set to `true`, the configured middleware function will be included in the `middleware` property of the returned object, which can then be passed to a router configuration (not part of the `@idio/core`).", "`false`"],
   ["`config`", "Configuration object expected by the middleware constructor.", "`{}`"],
-  ["`function`", "A constructor function when passing middleware not from the bundle.", ""],
-  ["`...props`", "Any additional specific properties (see individual middleware configuration).", ""]
+  ["`...props`", "Any additional specific properties (see individual middleware configuration).", null]
 ]
 ```
 
 
 %MACRO middleware
 %~ width="15"%
-<details open>
+<details>
 <summary><strong>[$1](###)</strong>: $2 <a href="$3">middleware</a>.
 <br/><br/>
+%TYPEDEF types/options/$4.xml%
 </summary>
 
-%TYPEDEF types/$4.xml%
+%TYPEDEF types/config/$4.xml%
 
 $5
 </details>

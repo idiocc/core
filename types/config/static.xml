@@ -1,25 +1,6 @@
 <types>
   <import name="ServerResponse" from="http" />
-
   <type name="SetHeaders" type="(res: ServerResponse, path: string, stats: Stats) => any" />
-
-  <type name="StaticOptions">
-    <prop type="string|string[]" name="root">
-      Root or multiple roots from which to serve files.
-    </prop>
-    <prop boolean name="use" default="false">
-      Use this middleware for every request.
-    </prop>
-    <prop string name="mount" default="/">
-      Path from which to serve files.
-    </prop>
-    <prop number name="maxage" default="0">
-      How long to cache file for.
-    </prop>
-    <prop opt type="StaticConfig" name="config">
-      `koa-static` configuration.
-    </prop>
-  </type>
   <type name="StaticConfig">
     <prop number name="maxage" default="0">
       Browser cache max-age in milliseconds.

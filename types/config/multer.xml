@@ -1,12 +1,4 @@
 <types>
-  <type name="MulterOptions">
-    <prop boolean name="use" default="false">
-      Use this middleware for every request.
-    </prop>
-    <prop opt type="MulterConfig" name="config">
-      `koa-multer` configuration.
-    </prop>
-  </type>
   <type name="Limits" desc="[An object](https://github.com/expressjs/multer#limits) specifying the size limits.">
     <prop number name="fieldNameSize" default="100">
       Max field name size in bytes.

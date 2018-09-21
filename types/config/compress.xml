@@ -1,12 +1,4 @@
 <types>
-  <type name="CompressOptions">
-    <prop boolean name="use" default="false">
-      Use this middleware for every request.
-    </prop>
-    <prop opt type="CompressConfig" name="config">
-      `koa-compress` configuration.
-    </prop>
-  </type>
   <type name="CompressConfig">
     <prop opt type="(content_type: string) => boolean" name="filter">
       An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`.
