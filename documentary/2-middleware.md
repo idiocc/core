@@ -18,7 +18,7 @@ Each middleware accepts the following properties:
 %~ width="15"%
 <details>
 <summary><strong>[$1](###)</strong>: $2 <a href="$3">middleware</a>.
-<br/><br/>
+<br/><br/><img src="images/$4.svg" align="left" width="200">
 
 %TYPEDEF types/options/$4.xml%
 </summary>
