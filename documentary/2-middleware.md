@@ -16,9 +16,9 @@ Each middleware accepts the following properties:
 
 %MACRO middleware
 %~ width="15"%
-<img src="images/$4.svg" align="left" height="100">
+<a href="$3"><img src="images/$4.svg" align="left" height="100"></a>
 <details>
-<summary><strong>[$1](###)</strong>: $2 <a href="$3">middleware</a>.
+<summary><strong>[$1](###)</strong>: $2.
 <hr/>
 
 %TYPEDEF types/options/$4.xml%
@@ -40,7 +40,7 @@ $5
 
 %USE-MACRO middleware
 <data>File Uploads</data>
-<data>multer</data>
+<data>receiving files on the server</data>
 <data>https://github.com/koa-modules/multer</data>
 <data>multer</data>
 <data/>
@@ -56,7 +56,7 @@ $5
 
 %USE-MACRO middleware
 <data>Parse Body</data>
-<data>parsing of data sent to the server</data>
+<data>parsing of data sent with requests</data>
 <data>https://github.com/koajs/body-parser</data>
 <data>bodyparser</data>
 <data/>
@@ -72,7 +72,7 @@ $5
 
 %USE-MACRO middleware
 <data>Logging</data>
-<data>a logger</data>
+<data>a logger of incoming requests / response times and sizes</data>
 <data>https://github.com/koajs/logger</data>
 <data>logger</data>
 <data/>
@@ -80,7 +80,7 @@ $5
 
 %USE-MACRO middleware
 <data>Compression</data>
-<data>a compress</data>
+<data>enabling gzip and other compression</data>
 <data>https://github.com/koajs/compress</data>
 <data>compress</data>
 <data/>
