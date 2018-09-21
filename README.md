@@ -571,6 +571,8 @@ Page available at: http://localhost:5003/test
 
 ## Copyright
 
+Middleware icons from [FoglihtenDeH0 font](https://www.1001fonts.com/foglihtendeh0-font.html)
+
 (c) [Art Deco][1] 2018
 
 [1]: https://artdeco.bz
