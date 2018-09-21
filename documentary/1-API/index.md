@@ -26,9 +26,6 @@ The return type contains the _URL_, _Application_ and _Router_ instances, and th
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
 %EXAMPLE: example/example.js, ../src => @idio/core%
-
-```
-File available at: http://localhost:8080/static/test.txt
-```
+%FORK example example/example.js%
 
 %~%

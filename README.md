@@ -74,18 +74,16 @@ The return type contains the _URL_, _Application_ and _Router_ instances, and th
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
 ```js
-/* yarn example/ */
-import { resolve } from 'path'
-import core from '@idio/core'
+import idioCore from '@idio/core'
 
-(async () => {
-  const { url } = await core({
+const Server = async () => {
+  const { url } = await idioCore({
     logger: {
       use: true,
     },
     static: {
       use: true,
-      root: resolve(__dirname, 'static'),
+      root: 'example/static',
       mount: '/static',
     },
     compress: {
@@ -98,9 +96,8 @@ import core from '@idio/core'
     port: 8080,
   })
   console.log('File available at: %s/static/test.txt', url)
-})()
+}
 ```
-
 ```
 File available at: http://localhost:8080/static/test.txt
 ```

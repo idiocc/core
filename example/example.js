@@ -1,15 +1,14 @@
-/* yarn example/ */
-import { resolve } from 'path'
-import core from '../src'
+/* start example */
+import idioCore from '../src'
 
-(async () => {
-  const { url } = await core({
+const Server = async () => {
+  const { url } = await idioCore({
     logger: {
       use: true,
     },
     static: {
       use: true,
-      root: resolve(__dirname, 'static'),
+      root: 'example/static',
       mount: '/static',
     },
     compress: {
@@ -22,4 +21,10 @@ import core from '../src'
     port: 8080,
   })
   console.log('File available at: %s/static/test.txt', url)
+}
+/* end example */
+
+(async () => {
+  await Server()
+  process.exit()
 })()
