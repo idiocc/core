@@ -19,6 +19,7 @@ Each middleware accepts the following properties:
 <details>
 <summary><strong>[$1](###)</strong>: $2 <a href="$3">middleware</a>.
 <br/><br/>
+
 %TYPEDEF types/options/$4.xml%
 </summary>
 
