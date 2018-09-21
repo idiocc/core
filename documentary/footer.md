@@ -1,6 +1,6 @@
 ## Copyright
 
-Middleware icons from [FoglihtenDeH0 font](https://www.1001fonts.com/foglihtendeh0-font.html)
+Middleware icons and logo from [FoglihtenDeH0 font](https://www.1001fonts.com/foglihtendeh0-font.html).
 
 (c) [Art Deco][1] 2018
 
