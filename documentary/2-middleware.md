@@ -29,23 +29,23 @@ $5
 %
 
 %USE-MACRO middleware
-<data>session</data>
-<data>handling sessions</data>
+<data>Session</data>
+<data>handling sessions via cookies</data>
 <data>https://github.com/koajs/session</data>
 <data>session</data>
 <data/>
 %
 
 %USE-MACRO middleware
+<data>File Uploads</data>
 <data>multer</data>
-<data>file uploads</data>
 <data>https://github.com/koa-modules/multer</data>
 <data>multer</data>
 <data/>
 %
 
 %USE-MACRO middleware
-<data>csrf</data>
+<data>Cross-Site Request Forgery</data>
 <data>prevention against CSRF attacks</data>
 <data>https://github.com/koajs/csrf</data>
 <data>csrf</data>
@@ -53,7 +53,7 @@ $5
 %
 
 %USE-MACRO middleware
-<data>bodyparser</data>
+<data>Parse Body</data>
 <data>parsing of data sent to the server</data>
 <data>https://github.com/koajs/body-parser</data>
 <data>bodyparser</data>
@@ -61,32 +61,32 @@ $5
 %
 
 %USE-MACRO middleware
-<data>checkauth</data>
-<data>A simple function which throws if `ctx.session.user` is not set. Non-configurable </data>
+<data>Checking Auth</data>
+<data>a simple function which throws if <code>ctx.session.user</code> is not set. Non-configurable</data>
 <data>#</data>
 <data>checkauth</data>
 <data/>
 %
 
 %USE-MACRO middleware
-<data>logger</data>
-<data>logging requests</data>
+<data>Logging</data>
+<data>a logger</data>
 <data>https://github.com/koajs/logger</data>
 <data>logger</data>
 <data/>
 %
 
 %USE-MACRO middleware
-<data>compress</data>
-<data>compression</data>
+<data>Compression</data>
+<data>a compress</data>
 <data>https://github.com/koajs/compress</data>
 <data>compress</data>
 <data/>
 %
 
 %USE-MACRO middleware
-<data>static</data>
-<data>serving static files</data>
+<data>Static Files</data>
+<data>serving files from filesystem</data>
 <data>https://github.com/koajs/static</data>
 <data>static</data>
 <data>
