@@ -131,11 +131,13 @@ Each middleware accepts the following properties:
 | `function` | A constructor function when passing middleware not from the bundle.                                                                                                                                                                                                 |         |
 | `...props` | Any additional specific properties (see individual middleware configuration).                                                                                                                                                                                       |         |
 
+
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
-
-### session
-
-[`koa-session`](https://github.com/koajs/session) for handling sessions.
+<details open>
+<summary><strong><a name="session">session</a></strong>: handling sessions <a href="https://github.com/koajs/session">middleware</a>.
+<br/><br/>
+</summary>
 
 __<a name="sessionoptions">`SessionOptions`</a>__
 
@@ -157,8 +159,10 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 | rolling   | _boolean_           | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.                                        | `false`    |
 | renew     | _boolean_           | Renew session when session is nearly expired, so we can always keep user logged in.                                                                                                       | `false`    |
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
 
+</details>
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
 <details open>
 <summary><strong><a name="multer">multer</a></strong>: file uploads <a href="https://github.com/koa-modules/multer">middleware</a>.
 <br/><br/>
@@ -201,13 +205,14 @@ __<a name="multerconfig">`MulterConfig`</a>__
 | limits       | _[Limits](#limits)_                                                                                    | Limits of the uploaded data.                                                                    | -       |
 | preservePath | _boolean_                                                                                              | Keep the full path of files instead of just the base name.                                      | `false` |
 
+
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true" width="15"></a></p>
-
-### csrf
-
-[`koa-csrf`](https://github.com/koajs/csrf) for prevention against CSRF attacks.
+<details open>
+<summary><strong><a name="csrf">csrf</a></strong>: prevention against CSRF attacks <a href="https://github.com/koajs/csrf">middleware</a>.
+<br/><br/>
+</summary>
 
 __<a name="csrfoptions">`CSRFOptions`</a>__
 
@@ -227,11 +232,14 @@ __<a name="csrfconfig">`CSRFConfig`</a>__
 | excludedMethods                | _string[]_ |             | -       |
 | disableQuery                   | _boolean_  |             | -       |
 
+
+</details>
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/7.svg?sanitize=true" width="15"></a></p>
-
-### bodyparser
-
-[`koa-bodyparser`](https://github.com/koajs/body-parser) to parse data sent to the server.
+<details open>
+<summary><strong><a name="bodyparser">bodyparser</a></strong>: parsing of data sent to the server <a href="https://github.com/koajs/body-parser">middleware</a>.
+<br/><br/>
+</summary>
 
 [`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="context">`Context`</a>__
 
@@ -255,11 +263,14 @@ __<a name="bodyparserconfig">`BodyparserConfig`</a>__
 | extendTypes | _{json: string[], form: string[], text: string[]}_ | Support extend types.                                                                                        | -                  |
 | onerror     | _(err: Error, ctx: Context) =&gt; void_            | Support custom error handle.                                                                                 | -                  |
 
+
+</details>
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/8.svg?sanitize=true" width="15"></a></p>
-
-### checkauth
-
-A simple middleware which throws if `ctx.session.user` is not set. Does not require configuration.
+<details open>
+<summary><strong><a name="checkauth">checkauth</a></strong>: A simple function which throws if `ctx.session.user` is not set. Non-configurable  <a href="#">middleware</a>.
+<br/><br/>
+</summary>
 
 __<a name="checkauthoptions">`CheckauthOptions`</a>__
 
@@ -267,11 +278,14 @@ __<a name="checkauthoptions">`CheckauthOptions`</a>__
 | ---- | --------- | -------------------------------------- | ------- |
 | use  | _boolean_ | Use this middleware for every request. | `false` |
 
+
+</details>
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/9.svg?sanitize=true" width="15"></a></p>
-
-### logger
-
-[`koa-logger`](https://github.com/koajs/logger) to log requests.
+<details open>
+<summary><strong><a name="logger">logger</a></strong>: logging requests <a href="https://github.com/koajs/logger">middleware</a>.
+<br/><br/>
+</summary>
 
 __<a name="loggeroptions">`LoggerOptions`</a>__
 
@@ -286,11 +300,14 @@ __<a name="loggerconfig">`LoggerConfig`</a>__
 | ----------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | transporter | _(str: string, args: [string, string, string, string, string, string, string]) =&gt; void_ | Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`. | -       |
 
+
+</details>
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/10.svg?sanitize=true" width="15"></a></p>
-
-### compress
-
-[`koa-compress`](https://github.com/koajs/compress) to apply compression.
+<details open>
+<summary><strong><a name="compress">compress</a></strong>: compression <a href="https://github.com/koajs/compress">middleware</a>.
+<br/><br/>
+</summary>
 
 __<a name="compressoptions">`CompressOptions`</a>__
 
@@ -314,11 +331,14 @@ __<a name="compressconfig">`CompressConfig`</a>__
 | strategy    | _number_                               | Compression only.                                                                                                             | -       |
 | dictionary  | _*_                                    | Deflate/inflate only, empty dictionary by default.                                                                            | -       |
 
+
+</details>
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/11.svg?sanitize=true" width="15"></a></p>
-
-### static
-
-[`koa-static`](https://github.com/koajs/static) to serve static files.
+<details open>
+<summary><strong><a name="static">static</a></strong>: serving static files <a href="https://github.com/koajs/static">middleware</a>.
+<br/><br/>
+</summary>
 
 `import('http').ServerResponse` __<a name="serverresponse">`ServerResponse`</a>__
 
@@ -347,14 +367,15 @@ __<a name="staticconfig">`StaticConfig`</a>__
 | setHeaders | _[SetHeaders](#setheaders)_ | Function to set custom headers on response.                                                                                                                                                         | -            |
 | extensions | _boolean_                   | Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served.                                                                           | `false`      |
 
+
 For example, the below configuration will serve files from both the `static` directory of the project, and the _React.js_ dependency. When `NODE_ENV` environment variable is set to `production`, files will be cached for 10 days.
 
 ```js
-import { resolve } from 'path'
+import { join } from 'path'
 import core from '@idio/core'
 
-const STATIC = resolve(__dirname, 'static')
-const REACT = resolve(dirname(require.resolve('react')), 'umd')
+const STATIC = join(__dirname, 'static')
+const REACT = join(dirname(require.resolve('react')), 'umd')
 
 const DAY = 1000 * 60 * 60 * 24
 
@@ -370,7 +391,10 @@ const DAY = 1000 * 60 * 60 * 24
 })
 ```
 
+</details>
+
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/12.svg?sanitize=true"></a></p>
+
 
 ## Custom Middleware
 
@@ -411,6 +435,8 @@ await core({
   },
 })
 ```
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
 
 ## Copyright
 
