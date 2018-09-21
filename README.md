@@ -1,6 +1,9 @@
-# @idio/core
+@idio/core
+===
 
 [![npm version](https://badge.fury.io/js/%40idio%2Fcore.svg)](https://npmjs.org/package/@idio/core)
+
+<a href="https://github.com/idio/core"><img src="images/logo.svg?sanitize=true" width="150" align="left"></a>
 
 `@idio/core` is a koa2-based web server with some pre-installed middleware which facilitates quick creation of a web server with the essential functionality, such as static files serving, compression, body parsing, _etc_. Other components such as `@idio/database`, `@idio/route` and `@idio/jsx` allow to build more complex websites.
 
@@ -119,7 +122,7 @@ Each middleware accepts the following properties:
 
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/session"><img src="images/session.svg" align="left" height="100"></a>
+<a href="https://github.com/koajs/session"><img src="images/session.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="session">Session</a></strong>: handling sessions via cookies.
 <hr/>
@@ -149,7 +152,7 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koa-modules/multer"><img src="images/multer.svg" align="left" height="100"></a>
+<a href="https://github.com/koa-modules/multer"><img src="images/multer.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="file-uploads">File Uploads</a></strong>: receiving files on the server.
 <hr/>
@@ -196,7 +199,7 @@ __<a name="multerconfig">`MulterConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/csrf"><img src="images/csrf.svg" align="left" height="100"></a>
+<a href="https://github.com/koajs/csrf"><img src="images/csrf.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="cross-site-request-forgery">Cross-Site Request Forgery</a></strong>: prevention against CSRF attacks.
 <hr/>
@@ -224,7 +227,7 @@ __<a name="csrfconfig">`CSRFConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/7.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/body-parser"><img src="images/bodyparser.svg" align="left" height="100"></a>
+<a href="https://github.com/koajs/body-parser"><img src="images/bodyparser.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="parse-body">Parse Body</a></strong>: parsing of data sent with requests.
 <hr/>
@@ -256,7 +259,7 @@ __<a name="bodyparserconfig">`BodyparserConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/8.svg?sanitize=true" width="15"></a></p>
-<a href="#"><img src="images/checkauth.svg" align="left" height="100"></a>
+<a href="#"><img src="images/checkauth.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="checking-auth">Checking Auth</a></strong>: a simple function which throws if <code>ctx.session.user</code> is not set. Non-configurable.
 <hr/>
@@ -274,7 +277,7 @@ __<a name="checkauthoptions">`CheckauthOptions`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/9.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/logger"><img src="images/logger.svg" align="left" height="100"></a>
+<a href="https://github.com/koajs/logger"><img src="images/logger.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="logging">Logging</a></strong>: a logger of incoming requests / response times and sizes.
 <hr/>
@@ -297,7 +300,7 @@ __<a name="loggerconfig">`LoggerConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/10.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/compress"><img src="images/compress.svg" align="left" height="100"></a>
+<a href="https://github.com/koajs/compress"><img src="images/compress.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="compression">Compression</a></strong>: enabling gzip and other compression.
 <hr/>
@@ -329,7 +332,7 @@ __<a name="compressconfig">`CompressConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/11.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/static"><img src="images/static.svg" align="left" height="100"></a>
+<a href="https://github.com/koajs/static"><img src="images/static.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="static-files">Static Files</a></strong>: serving files from filesystem.
 <hr/>
