@@ -84,12 +84,12 @@ The return type contains the _URL_, _Application_ and _Router_ instances, and th
 
 __<a name="type-idiocore">`IdioCore`</a>__
 
-|      Name       |                Type                 |                                             Description                                              | Default |
-| --------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------- | ------- |
-| __url*__        | _string_                            | The url on which the server is accessible.                                                           | -       |
-| __app*__        | _[Application](#type-application)_  | The `Koa` application.                                                                               | -       |
-| __router*__     | _[Router](#type-router)_            | The `koa-router` instance.                                                                           | -       |
-| __middleware*__ | _Object.&lt;string, Middleware&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -       |
+|      Name       |                          Type                           |                                             Description                                              | Default |
+| --------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------- |
+| __url*__        | _string_                                                | The url on which the server is accessible.                                                           | -       |
+| __app*__        | _[Application](#type-application)_                      | The `Koa` application.                                                                               | -       |
+| __router*__     | _[Router](#type-router)_                                | The `koa-router` instance.                                                                           | -       |
+| __middleware*__ | _Object.&lt;string, [Middleware](#type-middleware)&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -       |
 
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
