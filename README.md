@@ -21,7 +21,7 @@ yarn add -E @idio/core
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`async core(middleware?: MiddlewareConfig, config?: Config): IdioCore`](#async-coremiddleware-middlewareconfigconfig-config-idiocore)
+- [`async core(middlewareConfig?: MiddlewareConfig, config?: Config): IdioCore`](#async-coremiddlewareconfig-middlewareconfigconfig-config-idiocore)
   * [`MiddlewareConfig`](#middlewareconfig)
   * [`Config`](#config)
   * [`IdioCore`](#idiocore)
@@ -50,7 +50,7 @@ import idioCore from '@idio/core'
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
-## `async core(`<br/>&nbsp;&nbsp;`middleware?: MiddlewareConfig,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): IdioCore`
+## `async core(`<br/>&nbsp;&nbsp;`middlewareConfig?: MiddlewareConfig,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): IdioCore`
 
 The `@idio/core` accepts 2 arguments which are the middleware configuration object and server configuration object. It is possible to start the server without any configuration, however it will do nothing, therefore it is important to add some middleware configuration.
 

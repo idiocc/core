@@ -10,7 +10,7 @@ import idioCore from '@idio/core'
 
 ```## async core => IdioCore
 [
-  ["middleware?", "MiddlewareConfig"],
+  ["middlewareConfig?", "MiddlewareConfig"],
   ["config?", "Config"]
 ]
 ```
