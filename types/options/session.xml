@@ -1,0 +1,13 @@
+<types>
+  <type name="SessionOptions" noToc>
+    <prop type="string[]" name="keys">
+      A set of keys to be installed in `app.keys`.
+    </prop>
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="SessionConfig" name="config">
+      `koa-session` configuration.
+    </prop>
+  </type>
+</types>

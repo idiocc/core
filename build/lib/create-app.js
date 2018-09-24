@@ -1,28 +1,24 @@
-"use strict";
+let Koa = require('koa'); if (Koa && Koa.__esModule) Koa = Koa.default;
+let setupMiddleware = require('./setup-middleware'); if (setupMiddleware && setupMiddleware.__esModule) setupMiddleware = setupMiddleware.default;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createApp;
+/**
+ * Create an application and setup middleware.
+ * @param {import('..').MiddlewareConfig} middleware
+ */
+async function createApp(middlewareConfig) {
+  const app = new Koa()
 
-var _koa = _interopRequireDefault(require("koa"));
-
-var _setupMiddleware = _interopRequireDefault(require("./setup-middleware"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-async function createApp(config) {
-  const app = new _koa.default();
-  app.context.config = config;
-  const middleware = await (0, _setupMiddleware.default)(config.middleware, app);
+  const middleware = await setupMiddleware(middlewareConfig, app)
 
   if (app.env == 'production') {
-    app.proxy = true;
+    app.proxy = true
   }
 
   return {
     app,
-    middleware
-  };
+    middleware,
+  }
 }
+
+module.exports=createApp
 //# sourceMappingURL=create-app.js.map

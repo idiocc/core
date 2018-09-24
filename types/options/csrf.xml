@@ -1,0 +1,10 @@
+<types>
+  <type name="CSRFOptions" noToc>
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="CSRFConfig" name="config">
+      `koa-csrf` configuration.
+    </prop>
+  </type>
+</types>

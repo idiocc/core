@@ -4,18 +4,17 @@
   "description": "The core idio functionality and middleware.",
   "main": "build",
   "scripts": {
-    "t": "zoroaster -b",
-    "test": "zoroaster -b test/spec",
-    "test-build": "BABEL_ENV=test-build yarn test",
-    "test-all": "yarn-s test test-build",
-    "test-watch": "yarn test -w",
+    "t": "zoroaster -a",
+    "test": "yarn t test/spec",
+    "test-build": "ALAMODE_ENV=test-build yarn test",
+    "d": "NODE_DEBUG=doc doc src/index.js -g",
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
     "rec": "NODE_DEBUG=appshot appshot -T 23 -a Terminal -y 150 -f",
     "e": "node example",
     "example/": "yarn e example/example.js",
-    "build": "yarn-s b doc",
-    "b": "b --source-maps"
+    "build": "yarn-s d b doc",
+    "b": "alamode src -o build"
   },
   "files": [
     "build"
@@ -35,18 +34,19 @@
   },
   "homepage": "https://github.com/idiojs/core#readme",
   "devDependencies": {
-    "catchment": "2.0.1",
-    "documentary": "1.8.2",
-    "eslint-config-artdeco": "1.0.0",
+    "alamode": "1.5.1",
+    "catchment": "3.1.1",
+    "documentary": "1.19.0",
+    "eslint-config-artdeco": "1.0.1",
     "rqt": "2.0.0",
-    "snapshot-context": "2.0.1",
+    "snapshot-context": "2.0.4",
     "yarn-s": "1.1.0",
-    "zoroaster": "2.1.0"
+    "zoroaster": "3.5.1"
   },
   "dependencies": {
-    "@wrote/ensure-path": "1.0.1",
-    "erotic": "1.2.1",
-    "koa": "2.5.1",
+    "@wrote/ensure-path": "1.0.3",
+    "erotic": "2.0.1",
+    "koa": "2.5.3",
     "koa-bodyparser": "4.2.1",
     "koa-compose": "4.1.0",
     "koa-compress": "3.0.0",
@@ -55,7 +55,7 @@
     "koa-mount": "3.0.0",
     "koa-multer": "1.0.2",
     "koa-router": "7.4.0",
-    "koa-session": "5.8.1",
+    "koa-session": "5.9.0",
     "koa-static": "5.0.0",
     "server-destroy": "1.0.1"
   }

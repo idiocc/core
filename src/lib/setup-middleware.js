@@ -72,8 +72,8 @@ const setupBodyParser = (app, config) => {
   return bodyparser
 }
 
-const setupLogger = () => {
-  const l = logger()
+const setupLogger = (app, config) => {
+  const l = logger(config)
   return l
 }
 
@@ -88,10 +88,24 @@ const map = {
   static: setupStatic,
 }
 
+/**
+ * @return {Middleware}
+ */
 async function initMiddleware(name, conf, app) {
-  const fn = typeof conf.function == 'function' ? conf.function : map[name]
-  if (typeof fn != 'function') {
-    throw new Error(`Expecting function for ${name} middleware`)
+  if (typeof conf == 'function') {
+    app.use(conf)
+    return conf
+  }
+  let fn
+  if (name in map) {
+    fn = map[name]
+  } else if (conf.middlewareConstructor) {
+    if (typeof conf.middlewareConstructor != 'function') {
+      throw new Error(`Expecting a function in the "middlewareConstructor" of the ${name} middleware.`)
+    }
+    fn = conf.middlewareConstructor
+  } else {
+    throw new Error('Either the "middleware" or "middlewareConstructor" properties must be passed.')
   }
   const { use, config = {}, ...rest } = conf
   const res = await fn(app, config, rest)
@@ -101,11 +115,16 @@ async function initMiddleware(name, conf, app) {
   return res
 }
 
-export default async function setupMiddleware(middleware = {}, app) {
-  const res = await Object.keys(middleware)
+/**
+ * @param {MiddlewareConfig} middleware
+ * @param {import('koa').Application} app
+ */
+export default async function setupMiddleware(middlewareConfig = {}, app) {
+  /** @type {Object.<string, Middleware>} */
+  const res = await Object.keys(middlewareConfig)
     .reduce(async (acc, name) => {
       const accRes = await acc
-      const conf = middleware[name]
+      const conf = middlewareConfig[name]
       let installed
       if (Array.isArray(conf)) {
         const p = conf.map(async (c) => {
@@ -122,3 +141,6 @@ export default async function setupMiddleware(middleware = {}, app) {
     }, {})
   return res
 }
+
+/** @typedef {import('koa').Middleware} Middleware */
+/** @typedef {import('..').MiddlewareConfig} MiddlewareConfig */

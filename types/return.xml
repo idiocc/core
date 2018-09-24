@@ -1,0 +1,19 @@
+<types>
+  <import name="Application" from="koa" link="https://github.com/koajs/koa/blob/master/docs/api/index.md#application" />
+  <import name="Middleware" from="koa" link="https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69" />
+  <import name="Router" from="koa-router" link="https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router" />
+  <type name="IdioCore">
+    <prop string name="url">
+      The url on which the server is accessible.
+    </prop>
+    <prop type="Application" name="app">
+      The `Koa` application.
+    </prop>
+    <prop type="Router" name="router">
+      The `koa-router` instance.
+    </prop>
+    <prop type="Object.<string, Middleware>" name="middleware">
+      The map of configured middleware functions which could then be set up to be used on a certain route.
+    </prop>
+  </type>
+</types>

@@ -1,0 +1,51 @@
+<types>
+  <type name="Limits" desc="[An object](https://github.com/expressjs/multer#limits) specifying the size limits." noToc>
+    <prop number name="fieldNameSize" default="100">
+      Max field name size in bytes.
+    </prop>
+    <prop number name="fieldSize" default="1024">
+      Max field value size in bytes.
+    </prop>
+    <prop number name="fields" default="Infinity">
+      Max number of non-file fields.
+    </prop>
+    <prop opt number name="fileSize" default="Infinity">
+      For multipart forms, the max file size in bytes.
+    </prop>
+    <prop opt number name="files" default="Infinity">
+      For multipart forms, the max number of file fields.
+    </prop>
+    <prop opt number name="parts" default="Infinity">
+      For multipart forms, the max number of parts (fields + files).
+    </prop>
+    <prop opt number name="headerPairs" default="2000">
+      For multipart forms, the max number of header key=> value pairs to parse.
+    </prop>
+  </type>
+  <type name="MulterConfig" noToc>
+    <prop opt string name="dest">
+      Where to store the files.
+    </prop>
+    <prop opt type="StorageEngine" name="storage">
+      Where to store the files.
+    </prop>
+    <prop opt type="(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void" name="fileFilter">
+      [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted.
+    </prop>
+    <prop opt type="Limits" name="limits">
+      Limits of the uploaded data.
+    </prop>
+    <prop boolean name="preservePath" default="false">
+      Keep the full path of files instead of just the base name.
+    </prop>
+  </type>
+
+  <import
+    name="IncomingMessage"
+    from="http"
+    link="https://nodejs.org/api/http.html#http_class_http_incomingmessage"
+  />
+  <import name="Stats" from="fs" link="https://nodejs.org/api/fs.html#fs_class_fs_stats" />
+  <import name="StorageEngine" from="koa-multer" link="https://github.com/expressjs/multer#storage" />
+  <import name="File" from="koa-multer" link="https://github.com/expressjs/multer#file-information." />
+</types>

@@ -1,13 +1,24 @@
-# @idio/core
+@idio/core
+===
 
 %NPM: @idio/core%
 
-`@idio/core` is a koa2-based web server with some pre-installed middleware that facilitates a quick creation of a web server with the essential functionality, such as static files serving, compression, body parsing, _etc_. Other components such as `@idio/database` and `@idio/jsx` allow to build more complex websites.
+<a href="https://github.com/idio/core"><img src="images/logo.svg?sanitize=true" width="150" align="left"></a>
+
+`@idio/core` is a _Koa2_-based web server with some pre-installed middleware which facilitates quick creation of a web server with the essential functionality, such as serving static files, compression, body parsing, _etc_. It also provides full JSDoc documentation of all options for completion in IDEs. Other components such as `@idio/database`, `@idio/route` and `@idio/jsx` allow to build more complex websites (to come).
 
 ```sh
 yarn add -E @idio/core
 ```
 
+<p align="center">
+<a href="https://idio.cc"><img alt="Developer-Friendly Suggestions For Middleware" src="app2.gif"></a>
+</p>
+
+%~%
+
 ## Table Of Contents
 
 %TOC%
+
+%~%

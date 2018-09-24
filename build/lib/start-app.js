@@ -1,122 +1,100 @@
-"use strict";
+const { debuglog } = require('util');
+let enableDestroy = require('server-destroy'); if (enableDestroy && enableDestroy.__esModule) enableDestroy = enableDestroy.default;
+let Router = require('koa-router'); if (Router && Router.__esModule) Router = Router.default;
+let Koa = require('koa'); if (Koa && Koa.__esModule) Koa = Koa.default;
+let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
+let setupMiddleware = require('./setup-middleware'); if (setupMiddleware && setupMiddleware.__esModule) setupMiddleware = setupMiddleware.default;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = startApp;
+/**
+ * Create an application and setup middleware.
+ * @param {MiddlewareConfig} middlewareConfig
+ */
+async function createApp(middlewareConfig) {
+  const app = new Koa()
 
-var _util = require("util");
+  const middleware = await setupMiddleware(middlewareConfig, app)
 
-var _serverDestroy = _interopRequireDefault(require("server-destroy"));
+  if (app.env == 'production') {
+    app.proxy = true
+  }
 
-var _koaRouter = _interopRequireDefault(require("koa-router"));
+  return {
+    app,
+    middleware,
+  }
+}
 
-var _erotic = _interopRequireDefault(require("erotic"));
+const LOG = debuglog('idio')
 
-var _createApp = _interopRequireDefault(require("./create-app"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import { AppReturn, Config } from '../types' // eslint-disable-line no-unused-vars
-const LOG = (0, _util.debuglog)('idio');
-const DEFAULT_PORT = 5000;
-const DEFAULT_HOST = '0.0.0.0';
+const DEFAULT_PORT = 5000
+const DEFAULT_HOST = '0.0.0.0'
 
 async function destroy(server) {
-  await new Promise(resolve => {
-    server.on('close', resolve);
-    server.destroy();
-  });
-  LOG('destroyed the server');
+  await new Promise((resolve) => {
+    server.on('close', resolve)
+    server.destroy()
+  })
+  LOG('destroyed the server')
 }
+
 /**
- * @param {Koa} app
+ * @param {import('koa').Application} app
  * @param {number} [port]
- * @param {string} [hostname]
+ * @param {string} [hostname='0.0.0.0']
  */
-
-
 function listen(app, port, hostname = '0.0.0.0') {
-  const cb = (0, _erotic.default)(true);
+  const cb = erotic(true)
   return new Promise((r, j) => {
-    const ec = err => {
-      const e = cb(err);
-      j(e);
-    };
-
+    const ec = (err) => {
+      const e = cb(err)
+      j(e)
+    }
     const server = app.listen(port, hostname, () => {
-      r(server);
-      app.removeListener('error', ec);
-    }).once('error', ec);
-  });
+      r(server)
+      app.removeListener('error', ec)
+    }).once('error', ec)
+  })
 }
+
 /**
  * Start the server.
- * @param {Config} [config] configuration object
- * @returns {AppReturn} An object with variables
+ * @param {MiddlewareConfig} [middlewareConfig] Middleware configuration.
+ * @param {Config} [config] Configuration object.
  */
-
-
-async function startApp(config = {}) {
+async function startApp(middlewareConfig, config) {
   const {
     port = DEFAULT_PORT,
-    host = DEFAULT_HOST
-  } = config; // close all connections when running nodemon
+    host = DEFAULT_HOST,
+  } = config
 
+  // close all connections when running nodemon
   process.once('SIGUSR2', async () => {
-    await app.destroy();
-    process.kill(process.pid, 'SIGUSR2');
-  });
-  const appMeta = await (0, _createApp.default)(config);
-  const {
-    app
-  } = appMeta;
-  const server = await listen(app, port, host);
-  (0, _serverDestroy.default)(server);
+    await app.destroy()
+    process.kill(process.pid, 'SIGUSR2')
+  })
 
+  const appMeta = await createApp(middlewareConfig, config)
+  const { app } = appMeta
+
+  const server = await listen(app, port, host)
+
+  enableDestroy(server)
   app.destroy = async () => {
-    await destroy(server);
-  };
+    await destroy(server)
+  }
+  const { port: p } = server.address()
 
-  const {
-    port: p
-  } = server.address();
-  const url = `http://localhost:${p}`;
-  const router = (0, _koaRouter.default)();
-  return { ...appMeta,
-    router,
-    url
-  };
+  const url = `http://localhost:${p}`
+
+  const router = new Router()
+
+  return { ...appMeta, router, url }
 }
-/**
- * @typedef {Object} App
- * @property {function} destroy Kill the server and disconnect from the database
- *
- * @typedef {Object} AppReturn
- * @property {App} app
- * @property {string} url
- * @property {object} middleware
- * @property {Router} router
- * @property {function} [connect]
 
- * @typedef {Object} Config
- * @property {number} [port=5000]
- * @property {number} [host=0.0.0.0]
- * @property {MiddlewareConfig} [middleware]
- *
- * @typedef ISignature
- * @property {boolean} use
- * @property {Object} config
- * @property {Object} [rest]
- *
- * @typedef {Object} MiddlewareConfig
- * @property {ISignature} [session]
- * @property {ISignature} [multer]
- * @property {ISignature} [csrf]
- * @property {ISignature} [compress]
- * @property {ISignature} [bodyparser]
- * @property {ISignature} [checkauth]
- * @property {ISignature} [logger]
- * @property {Static} [static]
+module.exports=startApp
+
+/**
+ * @typedef {import('..').MiddlewareConfig} MiddlewareConfig
+ * @typedef {import('..').Config} Config
  */
 //# sourceMappingURL=start-app.js.map

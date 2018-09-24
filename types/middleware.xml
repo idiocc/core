@@ -1,0 +1,31 @@
+<types>
+  <type
+    name="MiddlewareConfig"
+    desc="Middleware configuration for the `idio` `core` server."
+  >
+    <prop opt type="SessionOptions" name="session">
+      `session` options.
+    </prop>
+    <prop opt type="MulterOptions" name="multer">
+      `multer` options.
+    </prop>
+    <prop opt type="CSRFOptions" name="csrf">
+      `csrf` options.
+    </prop>
+    <prop opt type="BodyparserOptions" name="bodyparser">
+      `bodyparser` options.
+    </prop>
+    <prop opt type="CompressOptions" name="compress">
+      `compress` options.
+    </prop>
+    <prop opt type="CheckauthOptions" name="checkauth">
+      `checkauth` options.
+    </prop>
+    <prop opt type="LoggerOptions" name="logger">
+      `logger` options.
+    </prop>
+    <prop opt type="StaticOptions" name="static">
+      `static` options.
+    </prop>
+  </type>
+</types>

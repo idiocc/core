@@ -1,0 +1,10 @@
+<types>
+  <type name="MulterOptions" noToc>
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="MulterConfig" name="config">
+      `koa-multer` configuration.
+    </prop>
+  </type>
+</types>

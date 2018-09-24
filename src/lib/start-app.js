@@ -1,9 +1,28 @@
 import { debuglog } from 'util'
 import enableDestroy from 'server-destroy'
 import Router from 'koa-router'
+import Koa from 'koa'
 import erotic from 'erotic'
-import createApp from './create-app'
-// import { AppReturn, Config } from '../types' // eslint-disable-line no-unused-vars
+import setupMiddleware from './setup-middleware'
+
+/**
+ * Create an application and setup middleware.
+ * @param {MiddlewareConfig} middlewareConfig
+ */
+async function createApp(middlewareConfig) {
+  const app = new Koa()
+
+  const middleware = await setupMiddleware(middlewareConfig, app)
+
+  if (app.env == 'production') {
+    app.proxy = true
+  }
+
+  return {
+    app,
+    middleware,
+  }
+}
 
 const LOG = debuglog('idio')
 
@@ -19,9 +38,9 @@ async function destroy(server) {
 }
 
 /**
- * @param {Koa} app
+ * @param {import('koa').Application} app
  * @param {number} [port]
- * @param {string} [hostname]
+ * @param {string} [hostname='0.0.0.0']
  */
 function listen(app, port, hostname = '0.0.0.0') {
   const cb = erotic(true)
@@ -39,10 +58,10 @@ function listen(app, port, hostname = '0.0.0.0') {
 
 /**
  * Start the server.
- * @param {Config} [config] configuration object
- * @returns {AppReturn} An object with variables
+ * @param {MiddlewareConfig} [middlewareConfig] Middleware configuration.
+ * @param {Config} [config] Configuration object.
  */
-export default async function startApp(config = {}) {
+async function startApp(middlewareConfig, config) {
   const {
     port = DEFAULT_PORT,
     host = DEFAULT_HOST,
@@ -54,7 +73,7 @@ export default async function startApp(config = {}) {
     process.kill(process.pid, 'SIGUSR2')
   })
 
-  const appMeta = await createApp(config)
+  const appMeta = await createApp(middlewareConfig, config)
   const { app } = appMeta
 
   const server = await listen(app, port, host)
@@ -67,39 +86,14 @@ export default async function startApp(config = {}) {
 
   const url = `http://localhost:${p}`
 
-  const router = Router()
+  const router = new Router()
 
   return { ...appMeta, router, url }
 }
 
-/**
- * @typedef {Object} App
- * @property {function} destroy Kill the server by terminating all active connections.
- *
- * @typedef {Object} AppReturn
- * @property {App} app
- * @property {string} url
- * @property {object} middleware
- * @property {Router} router
- * @property {function} [connect]
+export default startApp
 
- * @typedef {Object} Config
- * @property {number} [port=5000]
- * @property {number} [host=0.0.0.0]
- * @property {MiddlewareConfig} [middleware]
- *
- * @typedef ISignature
- * @property {boolean} use
- * @property {Object} config
- * @property {Object} [rest]
- *
- * @typedef {Object} MiddlewareConfig
- * @property {ISignature} [session]
- * @property {ISignature} [multer]
- * @property {ISignature} [csrf]
- * @property {ISignature} [compress]
- * @property {ISignature} [bodyparser]
- * @property {ISignature} [checkauth]
- * @property {ISignature} [logger]
- * @property {Static} [static]
+/**
+ * @typedef {import('..').MiddlewareConfig} MiddlewareConfig
+ * @typedef {import('..').Config} Config
  */

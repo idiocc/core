@@ -1,0 +1,10 @@
+<types>
+  <type name="CompressOptions" noToc>
+    <prop boolean name="use" default="false">
+      Use this middleware for every request.
+    </prop>
+    <prop opt type="CompressConfig" name="config">
+      `koa-compress` configuration.
+    </prop>
+  </type>
+</types>

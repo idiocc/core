@@ -1,4 +1,5 @@
-import { equal } from 'zoroaster/assert'
+import { equal, throws, ok } from 'zoroaster/assert'
+import rqt from 'rqt'
 import Context from '../context'
 import idioCore from '../../src'
 
@@ -7,6 +8,31 @@ const T = {
   context: Context,
   'is a function'() {
     equal(typeof idioCore, 'function')
+  },
+  async 'throws an error when a server already started'({ start }) {
+    const port = 5555
+    const config = { port }
+    await start({}, config)
+    await throws({
+      fn: start,
+      args: [{}, config],
+      code: 'EADDRINUSE',
+      stack(s) {
+        ok(/at startApp/.test(s))
+      },
+    })
+  },
+  async 'can add middleware automatically'({ start }) {
+    const body = 'test'
+    const { url } = await start({
+      /** @type {import('koa').Middleware} */
+      async test(ctx, next) {
+        ctx.body = body
+        await next()
+      },
+    })
+    const res = await rqt(url)
+    equal(res, body)
   },
 }
 
