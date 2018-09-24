@@ -54,20 +54,20 @@ import idioCore from '@idio/core'
 
 The `@idio/core` accepts 2 arguments which are the middleware configuration object and server configuration object. It is possible to start the server without any configuration, however it will do nothing, therefore it is important to add some middleware configuration.
 
-__<a name="middlewareconfig">`MiddlewareConfig`</a>__: Middleware configuration for the `idio` `core` server.
+__<a name="type-middlewareconfig">`MiddlewareConfig`</a>__: Middleware configuration for the `idio` `core` server.
 
-|    Name    |                   Type                    |      Description      | Default |
-| ---------- | ----------------------------------------- | --------------------- | ------- |
-| session    | _[SessionOptions](#sessionoptions)_       | `session` options.    | -       |
-| multer     | _[MulterOptions](#multeroptions)_         | `multer` options.     | -       |
-| csrf       | _[CSRFOptions](#csrfoptions)_             | `csrf` options.       | -       |
-| bodyparser | _[BodyparserOptions](#bodyparseroptions)_ | `bodyparser` options. | -       |
-| compress   | _[CompressOptions](#compressoptions)_     | `compress` options.   | -       |
-| checkauth  | _[CheckauthOptions](#checkauthoptions)_   | `checkauth` options.  | -       |
-| logger     | _[LoggerOptions](#loggeroptions)_         | `logger` options.     | -       |
-| static     | _[StaticOptions](#staticoptions)_         | `static` options.     | -       |
+|    Name    |                      Type                      |      Description      | Default |
+| ---------- | ---------------------------------------------- | --------------------- | ------- |
+| session    | _[SessionOptions](#type-sessionoptions)_       | `session` options.    | -       |
+| multer     | _[MulterOptions](#type-multeroptions)_         | `multer` options.     | -       |
+| csrf       | _[CSRFOptions](#type-csrfoptions)_             | `csrf` options.       | -       |
+| bodyparser | _[BodyparserOptions](#type-bodyparseroptions)_ | `bodyparser` options. | -       |
+| compress   | _[CompressOptions](#type-compressoptions)_     | `compress` options.   | -       |
+| checkauth  | _[CheckauthOptions](#type-checkauthoptions)_   | `checkauth` options.  | -       |
+| logger     | _[LoggerOptions](#type-loggeroptions)_         | `logger` options.     | -       |
+| static     | _[StaticOptions](#type-staticoptions)_         | `static` options.     | -       |
 
-__<a name="config">`Config`</a>__: Server configuration object.
+__<a name="type-config">`Config`</a>__: Server configuration object.
 
 | Name |   Type   |              Description               |  Default  |
 | ---- | -------- | -------------------------------------- | --------- |
@@ -76,19 +76,19 @@ __<a name="config">`Config`</a>__: Server configuration object.
 
 The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-set-up).
 
-[`import('koa').Application`](https://github.com/koajs/koa/blob/master/docs/api/index.md#application) __<a name="application">`Application`</a>__
+[`import('koa').Application`](https://github.com/koajs/koa/blob/master/docs/api/index.md#application) __<a name="type-application">`Application`</a>__
 
-[`import('koa').Middleware`](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) __<a name="middleware">`Middleware`</a>__
+[`import('koa').Middleware`](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) __<a name="type-middleware">`Middleware`</a>__
 
-[`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="router">`Router`</a>__
+[`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="type-router">`Router`</a>__
 
-__<a name="idiocore">`IdioCore`</a>__
+__<a name="type-idiocore">`IdioCore`</a>__
 
 |      Name       |                Type                 |                                             Description                                              | Default |
 | --------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------- | ------- |
 | __url*__        | _string_                            | The url on which the server is accessible.                                                           | -       |
-| __app*__        | _[Application](#application)_       | The `Koa` application.                                                                               | -       |
-| __router*__     | _[Router](#router)_                 | The `koa-router` instance.                                                                           | -       |
+| __app*__        | _[Application](#type-application)_  | The `Koa` application.                                                                               | -       |
+| __router*__     | _[Router](#type-router)_            | The `koa-router` instance.                                                                           | -       |
 | __middleware*__ | _Object.&lt;string, Middleware&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -       |
 
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
@@ -144,16 +144,16 @@ Each middleware accepts the following properties:
 <summary><strong><a name="session">Session</a></strong>: handling sessions via cookies.
 <hr/>
 
-__<a name="sessionoptions">`SessionOptions`</a>__
+__<a name="type-sessionoptions">`SessionOptions`</a>__
 
-|   Name    |               Type                |                 Description                  | Default |
-| --------- | --------------------------------- | -------------------------------------------- | ------- |
-| __keys*__ | _string[]_                        | A set of keys to be installed in `app.keys`. | -       |
-| use       | _boolean_                         | Use this middleware for every request.       | `false` |
-| config    | _[SessionConfig](#sessionconfig)_ | `koa-session` configuration.                 | -       |
+|   Name    |                  Type                  |                 Description                  | Default |
+| --------- | -------------------------------------- | -------------------------------------------- | ------- |
+| __keys*__ | _string[]_                             | A set of keys to be installed in `app.keys`. | -       |
+| use       | _boolean_                              | Use this middleware for every request.       | `false` |
+| config    | _[SessionConfig](#type-sessionconfig)_ | `koa-session` configuration.                 | -       |
 </summary>
 
-__<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-session`.
+__<a name="type-sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-session`.
 
 |   Name    |        Type         |                                                                                        Description                                                                                        |  Default   |
 | --------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
@@ -174,23 +174,23 @@ __<a name="sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-se
 <summary><strong><a name="file-uploads">File Uploads</a></strong>: receiving files on the server.
 <hr/>
 
-__<a name="multeroptions">`MulterOptions`</a>__
+__<a name="type-multeroptions">`MulterOptions`</a>__
 
-|  Name  |              Type               |              Description               | Default |
-| ------ | ------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                       | Use this middleware for every request. | `false` |
-| config | _[MulterConfig](#multerconfig)_ | `koa-multer` configuration.            | -       |
+|  Name  |                 Type                 |              Description               | Default |
+| ------ | ------------------------------------ | -------------------------------------- | ------- |
+| use    | _boolean_                            | Use this middleware for every request. | `false` |
+| config | _[MulterConfig](#type-multerconfig)_ | `koa-multer` configuration.            | -       |
 </summary>
 
-[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="incomingmessage">`IncomingMessage`</a>__
+[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="type-incomingmessage">`IncomingMessage`</a>__
 
-[`import('fs').Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) __<a name="stats">`Stats`</a>__
+[`import('fs').Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) __<a name="type-stats">`Stats`</a>__
 
-[`import('koa-multer').StorageEngine`](https://github.com/expressjs/multer#storage) __<a name="storageengine">`StorageEngine`</a>__
+[`import('koa-multer').StorageEngine`](https://github.com/expressjs/multer#storage) __<a name="type-storageengine">`StorageEngine`</a>__
 
-[`import('koa-multer').File`](https://github.com/expressjs/multer#file-information.) __<a name="file">`File`</a>__
+[`import('koa-multer').File`](https://github.com/expressjs/multer#file-information.) __<a name="type-file">`File`</a>__
 
-__<a name="limits">`Limits`</a>__: [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
+__<a name="type-limits">`Limits`</a>__: [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
 
 |     Name      |   Type   |                                Description                                |  Default   |
 | ------------- | -------- | ------------------------------------------------------------------------- | ---------- |
@@ -202,14 +202,14 @@ __<a name="limits">`Limits`</a>__: [An object](https://github.com/expressjs/mult
 | parts         | _number_ | For multipart forms, the max number of parts (fields + files).            | `Infinity` |
 | headerPairs   | _number_ | For multipart forms, the max number of header key=> value pairs to parse. | `2000`     |
 
-__<a name="multerconfig">`MulterConfig`</a>__
+__<a name="type-multerconfig">`MulterConfig`</a>__
 
 |     Name     |                                                  Type                                                  |                                           Description                                           | Default |
 | ------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------- |
 | dest         | _string_                                                                                               | Where to store the files.                                                                       | -       |
-| storage      | _[StorageEngine](#storageengine)_                                                                      | Where to store the files.                                                                       | -       |
+| storage      | _[StorageEngine](#type-storageengine)_                                                                 | Where to store the files.                                                                       | -       |
 | fileFilter   | _(req: IncomingMessage, file: File, callback: (error: Error \| null, acceptFile: boolean)) =&gt; void_ | [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted. | -       |
-| limits       | _[Limits](#limits)_                                                                                    | Limits of the uploaded data.                                                                    | -       |
+| limits       | _[Limits](#type-limits)_                                                                               | Limits of the uploaded data.                                                                    | -       |
 | preservePath | _boolean_                                                                                              | Keep the full path of files instead of just the base name.                                      | `false` |
 
 
@@ -221,15 +221,15 @@ __<a name="multerconfig">`MulterConfig`</a>__
 <summary><strong><a name="cross-site-request-forgery">Cross-Site Request Forgery</a></strong>: prevention against CSRF attacks.
 <hr/>
 
-__<a name="csrfoptions">`CSRFOptions`</a>__
+__<a name="type-csrfoptions">`CSRFOptions`</a>__
 
-|  Name  |            Type             |              Description               | Default |
-| ------ | --------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                   | Use this middleware for every request. | `false` |
-| config | _[CSRFConfig](#csrfconfig)_ | `koa-csrf` configuration.              | -       |
+|  Name  |               Type               |              Description               | Default |
+| ------ | -------------------------------- | -------------------------------------- | ------- |
+| use    | _boolean_                        | Use this middleware for every request. | `false` |
+| config | _[CSRFConfig](#type-csrfconfig)_ | `koa-csrf` configuration.              | -       |
 </summary>
 
-__<a name="csrfconfig">`CSRFConfig`</a>__
+__<a name="type-csrfconfig">`CSRFConfig`</a>__
 
 |              Name              |    Type    | Description | Default |
 | ------------------------------ | ---------- | ----------- | ------- |
@@ -249,17 +249,17 @@ __<a name="csrfconfig">`CSRFConfig`</a>__
 <summary><strong><a name="parse-body">Parse Body</a></strong>: parsing of data sent with requests.
 <hr/>
 
-__<a name="bodyparseroptions">`BodyparserOptions`</a>__
+__<a name="type-bodyparseroptions">`BodyparserOptions`</a>__
 
-|  Name  |                  Type                   |              Description               | Default |
-| ------ | --------------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                               | Use this middleware for every request. | `false` |
-| config | _[BodyparserConfig](#bodyparserconfig)_ | `koa-bodyparser` configuration.        | -       |
+|  Name  |                     Type                     |              Description               | Default |
+| ------ | -------------------------------------------- | -------------------------------------- | ------- |
+| use    | _boolean_                                    | Use this middleware for every request. | `false` |
+| config | _[BodyparserConfig](#type-bodyparserconfig)_ | `koa-bodyparser` configuration.        | -       |
 </summary>
 
-[`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="context">`Context`</a>__
+[`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="type-context">`Context`</a>__
 
-__<a name="bodyparserconfig">`BodyparserConfig`</a>__
+__<a name="type-bodyparserconfig">`BodyparserConfig`</a>__
 
 |    Name     |                        Type                        |                                                 Description                                                  |      Default       |
 | ----------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------ |
@@ -281,7 +281,7 @@ __<a name="bodyparserconfig">`BodyparserConfig`</a>__
 <summary><strong><a name="checking-auth">Checking Auth</a></strong>: a simple function which throws if <code>ctx.session.user</code> is not set. Non-configurable.
 <hr/>
 
-__<a name="checkauthoptions">`CheckauthOptions`</a>__
+__<a name="type-checkauthoptions">`CheckauthOptions`</a>__
 
 | Name |   Type    |              Description               | Default |
 | ---- | --------- | -------------------------------------- | ------- |
@@ -299,15 +299,15 @@ __<a name="checkauthoptions">`CheckauthOptions`</a>__
 <summary><strong><a name="logging">Logging</a></strong>: a logger of incoming requests / response times and sizes.
 <hr/>
 
-__<a name="loggeroptions">`LoggerOptions`</a>__
+__<a name="type-loggeroptions">`LoggerOptions`</a>__
 
-|  Name  |              Type               |              Description               | Default |
-| ------ | ------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                       | Use this middleware for every request. | `false` |
-| config | _[LoggerConfig](#loggerconfig)_ | `koa-logger` configuration.            | -       |
+|  Name  |                 Type                 |              Description               | Default |
+| ------ | ------------------------------------ | -------------------------------------- | ------- |
+| use    | _boolean_                            | Use this middleware for every request. | `false` |
+| config | _[LoggerConfig](#type-loggerconfig)_ | `koa-logger` configuration.            | -       |
 </summary>
 
-__<a name="loggerconfig">`LoggerConfig`</a>__
+__<a name="type-loggerconfig">`LoggerConfig`</a>__
 
 |    Name     |                                            Type                                            |                                                                                       Description                                                                                       | Default |
 | ----------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -322,15 +322,15 @@ __<a name="loggerconfig">`LoggerConfig`</a>__
 <summary><strong><a name="compression">Compression</a></strong>: enabling gzip and other compression.
 <hr/>
 
-__<a name="compressoptions">`CompressOptions`</a>__
+__<a name="type-compressoptions">`CompressOptions`</a>__
 
-|  Name  |                Type                 |              Description               | Default |
-| ------ | ----------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                           | Use this middleware for every request. | `false` |
-| config | _[CompressConfig](#compressconfig)_ | `koa-compress` configuration.          | -       |
+|  Name  |                   Type                   |              Description               | Default |
+| ------ | ---------------------------------------- | -------------------------------------- | ------- |
+| use    | _boolean_                                | Use this middleware for every request. | `false` |
+| config | _[CompressConfig](#type-compressconfig)_ | `koa-compress` configuration.          | -       |
 </summary>
 
-__<a name="compressconfig">`CompressConfig`</a>__
+__<a name="type-compressconfig">`CompressConfig`</a>__
 
 |    Name     |                  Type                  |                                                          Description                                                          | Default |
 | ----------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -354,33 +354,33 @@ __<a name="compressconfig">`CompressConfig`</a>__
 <summary><strong><a name="static-files">Static Files</a></strong>: serving files from filesystem.
 <hr/>
 
-__<a name="staticoptions">`StaticOptions`</a>__
+__<a name="type-staticoptions">`StaticOptions`</a>__
 
-|   Name    |              Type               |                    Description                    | Default |
-| --------- | ------------------------------- | ------------------------------------------------- | ------- |
-| __root*__ | _string\|string[]_              | Root or multiple roots from which to serve files. | -       |
-| use       | _boolean_                       | Use this middleware for every request.            | `false` |
-| mount     | _string_                        | Path from which to serve files.                   | `/`     |
-| maxage    | _number_                        | How long to cache file for.                       | `0`     |
-| config    | _[StaticConfig](#staticconfig)_ | `koa-static` configuration.                       | -       |
+|   Name    |                 Type                 |                    Description                    | Default |
+| --------- | ------------------------------------ | ------------------------------------------------- | ------- |
+| __root*__ | _string\|string[]_                   | Root or multiple roots from which to serve files. | -       |
+| use       | _boolean_                            | Use this middleware for every request.            | `false` |
+| mount     | _string_                             | Path from which to serve files.                   | `/`     |
+| maxage    | _number_                             | How long to cache file for.                       | `0`     |
+| config    | _[StaticConfig](#type-staticconfig)_ | `koa-static` configuration.                       | -       |
 </summary>
 
-[`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse) __<a name="serverresponse">`ServerResponse`</a>__
+[`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse) __<a name="type-serverresponse">`ServerResponse`</a>__
 
-`(res: ServerResponse, path: string, stats: Stats) => any` __<a name="setheaders">`SetHeaders`</a>__
+`(res: ServerResponse, path: string, stats: Stats) => any` __<a name="type-setheaders">`SetHeaders`</a>__
 
-__<a name="staticconfig">`StaticConfig`</a>__
+__<a name="type-staticconfig">`StaticConfig`</a>__
 
-|    Name    |            Type             |                                                                                             Description                                                                                             |   Default    |
-| ---------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| maxage     | _number_                    | Browser cache max-age in milliseconds.                                                                                                                                                              | `0`          |
-| hidden     | _boolean_                   | Allow transfer of hidden files.                                                                                                                                                                     | `false`      |
-| index      | _string_                    | Default file name.                                                                                                                                                                                  | `index.html` |
-| defer      | _boolean_                   | If `true`, serves after return next(), allowing any downstream middleware to respond first.                                                                                                         | `false`      |
-| gzip       | _boolean_                   | Try to serve the gzipped version of a file automatically when gzip is supported by a client and if the requested file with `.gz` extension exists.                                                  | `true`       |
-| br         | _boolean_                   | Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with `.br` extension exists (note, that brotli is only accepted over https). | `true`       |
-| setHeaders | _[SetHeaders](#setheaders)_ | Function to set custom headers on response.                                                                                                                                                         | -            |
-| extensions | _boolean_                   | Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served.                                                                           | `false`      |
+|    Name    |               Type               |                                                                                             Description                                                                                             |   Default    |
+| ---------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| maxage     | _number_                         | Browser cache max-age in milliseconds.                                                                                                                                                              | `0`          |
+| hidden     | _boolean_                        | Allow transfer of hidden files.                                                                                                                                                                     | `false`      |
+| index      | _string_                         | Default file name.                                                                                                                                                                                  | `index.html` |
+| defer      | _boolean_                        | If `true`, serves after return next(), allowing any downstream middleware to respond first.                                                                                                         | `false`      |
+| gzip       | _boolean_                        | Try to serve the gzipped version of a file automatically when gzip is supported by a client and if the requested file with `.gz` extension exists.                                                  | `true`       |
+| br         | _boolean_                        | Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with `.br` extension exists (note, that brotli is only accepted over https). | `true`       |
+| setHeaders | _[SetHeaders](#type-setheaders)_ | Function to set custom headers on response.                                                                                                                                                         | -            |
+| extensions | _boolean_                        | Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served.                                                                           | `false`      |
 
 
 For example, the below configuration will serve files from both the `static` directory of the project, and the _React.js_ dependency. When `NODE_ENV` environment variable is set to `production`, files will be cached for 10 days.
