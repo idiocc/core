@@ -2,7 +2,15 @@ let startApp = require('./lib/start-app'); if (startApp && startApp.__esModule) 
 
 /**
  * Start the server.
- * @param {{ session?: SessionOptions, multer?: MulterOptions, csrf?: CSRFOptions, bodyparser?: BodyparserOptions, compress?: CompressOptions, checkauth?: CheckauthOptions, logger?: LoggerOptions, static?: StaticOptions }} [middleware] Middleware configuration for the `idio` `core` server.
+ * @param {MiddlewareConfig} [middlewareConfig] Middleware configuration for the `idio` `core` server.
+ * @param {SessionOptions} [middlewareConfig.session] `session` options.
+ * @param {MulterOptions} [middlewareConfig.multer] `multer` options.
+ * @param {CSRFOptions} [middlewareConfig.csrf] `csrf` options.
+ * @param {BodyparserOptions} [middlewareConfig.bodyparser] `bodyparser` options.
+ * @param {CompressOptions} [middlewareConfig.compress] `compress` options.
+ * @param {CheckauthOptions} [middlewareConfig.checkauth] `checkauth` options.
+ * @param {LoggerOptions} [middlewareConfig.logger] `logger` options.
+ * @param {StaticOptions} [middlewareConfig.static] `static` options.
  * @param {Config} [config] Server configuration object.
  * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
@@ -19,20 +27,23 @@ let startApp = require('./lib/start-app'); if (startApp && startApp.__esModule) 
  *  },
  * })
  */
-async function idioCore(middleware = {}, config = {}) {
-  const res = await startApp(middleware, config)
-  const { url, app, router, middleware: mw } = res
+async function idioCore(middlewareConfig = {}, config = {}) {
+  const res = await startApp(middlewareConfig, config)
+  const { url, app, router, middleware } = res
 
-  return { url, app, router, middleware: mw }
+  return { url, app, router, middleware }
 }
 
-/* documentary types/bodyparser.xml */
+/* documentary types/options/bodyparser.xml */
 /**
- * @typedef {import('koa').Context} Context
- *
  * @typedef {Object} BodyparserOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {BodyparserConfig} [config] `koa-bodyparser` configuration.
+ */
+
+/* documentary types/config/bodyparser.xml */
+/**
+ * @typedef {import('koa').Context} Context
  *
  * @typedef {Object} BodyparserConfig
  * @prop {string[]} [enableTypes="['json', 'form']"] Parser will only parse when request type hits enableTypes. Default `['json', 'form']`.
@@ -45,18 +56,26 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {(err: Error, ctx: Context) => void} [onerror] Support custom error handle.
  */
 
-/* documentary types/checkauth.xml */
+/* documentary types/options/checkauth.xml */
 /**
  * @typedef {Object} CheckauthOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  */
 
-/* documentary types/compress.xml */
+/**
+ * @typedef {Object} CheckauthOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ */
+
+/* documentary types/options/compress.xml */
 /**
  * @typedef {Object} CompressOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {CompressConfig} [config] `koa-compress` configuration.
- *
+ */
+
+/* documentary types/config/compress.xml */
+/**
  * @typedef {Object} CompressConfig
  * @prop {(content_type: string) => boolean} [filter] An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`.
  * @prop {number} [threshold=1024] Minimum response size in bytes to compress. Default `1024`.
@@ -70,12 +89,15 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {*} [dictionary] Deflate/inflate only, empty dictionary by default.
  */
 
-/* documentary types/csrf.xml */
+/* documentary types/options/csrf.xml */
 /**
  * @typedef {Object} CSRFOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {CSRFConfig} [config] `koa-csrf` configuration.
- *
+ */
+
+/* documentary types/config/csrf.xml */
+/**
  * @typedef {Object} CSRFConfig
  * @prop {string} [invalidSessionSecretMessage]
  * @prop {number} [invalidSessionSecretStatusCode]
@@ -85,26 +107,32 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {boolean} [disableQuery]
  */
 
-/* documentary types/logger.xml */
+/* documentary types/options/logger.xml */
 /**
  * @typedef {Object} LoggerOptions
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {LoggerConfig} [config] `koa-logger` configuration.
- *
+ */
+
+/* documentary types/config/logger.xml */
+/**
  * @typedef {Object} LoggerConfig
  * @prop {(str: string, args: [string, string, string, string, string, string, string]) => void} [transporter] Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`.
  */
 
-/* documentary types/multer.xml */
+/* documentary types/options/multer.xml */
+/**
+ * @typedef {Object} MulterOptions
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {MulterConfig} [config] `koa-multer` configuration.
+ */
+
+/* documentary types/config/multer.xml */
 /**
  * @typedef {import('http').IncomingMessage} IncomingMessage
  * @typedef {import('fs').Stats} Stats
  * @typedef {import('koa-multer').StorageEngine} StorageEngine
  * @typedef {import('koa-multer').File} File
- *
- * @typedef {Object} MulterOptions
- * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
- * @prop {MulterConfig} [config] `koa-multer` configuration.
  *
  * @typedef {Object} Limits [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
  * @prop {number} [fieldNameSize=100] Max field name size in bytes. Default `100`.
@@ -123,35 +151,41 @@ async function idioCore(middleware = {}, config = {}) {
  * @prop {boolean} [preservePath=false] Keep the full path of files instead of just the base name. Default `false`.
  */
 
-/* documentary types/session.xml */
+/* documentary types/options/session.xml */
 /**
  * @typedef {Object} SessionOptions
  * @prop {string[]} keys A set of keys to be installed in `app.keys`.
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {SessionConfig} [config] `koa-session` configuration.
- *
+ */
+
+/* documentary types/config/session.xml */
+/**
  * @typedef {Object} SessionConfig Configuration passed to `koa-session`.
  * @prop {string} [key="koa:sess"] Cookie key. Default `koa:sess`.
  * @prop {number|'session'} [maxAge=86400000] maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. Default `86400000`.
  * @prop {boolean} [overwrite=true] Can overwrite or not. Default `true`.
- * @prop {boolean} [httpOnly=true] httpOnly or not or not. Default `true`.
+ * @prop {boolean} [httpOnly=true] httpOnly or not. Default `true`.
  * @prop {boolean} [signed=true] Signed or not. Default `true`.
  * @prop {boolean} [rolling=false] Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. Default `false`.
  * @prop {boolean} [renew=false] Renew session when session is nearly expired, so we can always keep user logged in. Default `false`.
  */
 
-/* documentary types/static.xml */
+/* documentary types/options/static.xml */
 /**
- * @typedef {import('http').ServerResponse} ServerResponse
- *
- * @typedef {(res: ServerResponse, path: string, stats: Stats) => any} SetHeaders
- *
  * @typedef {Object} StaticOptions
  * @prop {string|string[]} root Root or multiple roots from which to serve files.
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {string} [mount="/"] Path from which to serve files. Default `/`.
  * @prop {number} [maxage=0] How long to cache file for. Default `0`.
  * @prop {StaticConfig} [config] `koa-static` configuration.
+ */
+
+/* documentary types/config/static.xml */
+/**
+ * @typedef {import('http').ServerResponse} ServerResponse
+ *
+ * @typedef {(res: ServerResponse, path: string, stats: Stats) => any} SetHeaders
  *
  * @typedef {Object} StaticConfig
  * @prop {number} [maxage=0] Browser cache max-age in milliseconds. Default `0`.
@@ -166,10 +200,6 @@ async function idioCore(middleware = {}, config = {}) {
 
 /* documentary types/middleware.xml */
 /**
- * @typedef {Object} Config
- * @prop {number} [port=5000] Port on which to start the server. Default `5000`.
- * @prop {string} [host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
- *
  * @typedef {Object} MiddlewareConfig Middleware configuration for the `idio` `core` server.
  * @prop {SessionOptions} [session] `session` options.
  * @prop {MulterOptions} [multer] `multer` options.
@@ -189,5 +219,4 @@ async function idioCore(middleware = {}, config = {}) {
  */
 
 module.exports=idioCore
-
 //# sourceMappingURL=index.js.map

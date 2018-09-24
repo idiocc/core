@@ -1,8 +1,28 @@
 const { debuglog } = require('util');
 let enableDestroy = require('server-destroy'); if (enableDestroy && enableDestroy.__esModule) enableDestroy = enableDestroy.default;
 let Router = require('koa-router'); if (Router && Router.__esModule) Router = Router.default;
+let Koa = require('koa'); if (Koa && Koa.__esModule) Koa = Koa.default;
 let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
-let createApp = require('./create-app'); if (createApp && createApp.__esModule) createApp = createApp.default;
+let setupMiddleware = require('./setup-middleware'); if (setupMiddleware && setupMiddleware.__esModule) setupMiddleware = setupMiddleware.default;
+
+/**
+ * Create an application and setup middleware.
+ * @param {MiddlewareConfig} middlewareConfig
+ */
+async function createApp(middlewareConfig) {
+  const app = new Koa()
+
+  const middleware = await setupMiddleware(middlewareConfig, app)
+
+  if (app.env == 'production') {
+    app.proxy = true
+  }
+
+  return {
+    app,
+    middleware,
+  }
+}
 
 const LOG = debuglog('idio')
 
@@ -38,10 +58,10 @@ function listen(app, port, hostname = '0.0.0.0') {
 
 /**
  * Start the server.
- * @param {import('..').MiddlewareConfig} [middleware]
- * @param {import('..').Config} [config] configuration object
+ * @param {MiddlewareConfig} [middlewareConfig] Middleware configuration.
+ * @param {Config} [config] Configuration object.
  */
-async function startApp(middleware, config) {
+async function startApp(middlewareConfig, config) {
   const {
     port = DEFAULT_PORT,
     host = DEFAULT_HOST,
@@ -53,7 +73,7 @@ async function startApp(middleware, config) {
     process.kill(process.pid, 'SIGUSR2')
   })
 
-  const appMeta = await createApp(middleware, config)
+  const appMeta = await createApp(middlewareConfig, config)
   const { app } = appMeta
 
   const server = await listen(app, port, host)
@@ -72,4 +92,9 @@ async function startApp(middleware, config) {
 }
 
 module.exports=startApp
+
+/**
+ * @typedef {import('..').MiddlewareConfig} MiddlewareConfig
+ * @typedef {import('..').Config} Config
+ */
 //# sourceMappingURL=start-app.js.map
