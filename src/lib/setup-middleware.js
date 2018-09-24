@@ -119,12 +119,12 @@ async function initMiddleware(name, conf, app) {
  * @param {MiddlewareConfig} middleware
  * @param {import('koa').Application} app
  */
-export default async function setupMiddleware(middleware = {}, app) {
+export default async function setupMiddleware(middlewareConfig = {}, app) {
   /** @type {Object.<string, Middleware>} */
-  const res = await Object.keys(middleware)
+  const res = await Object.keys(middlewareConfig)
     .reduce(async (acc, name) => {
       const accRes = await acc
-      const conf = middleware[name]
+      const conf = middlewareConfig[name]
       let installed
       if (Array.isArray(conf)) {
         const p = conf.map(async (c) => {

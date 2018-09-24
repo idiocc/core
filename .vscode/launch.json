@@ -15,7 +15,7 @@
       "console": "integratedTerminal",
       "args": [
         "test/spec",
-        "-b",
+        "-a",
         "-w",
         "-t",
         "9999999"

@@ -2,15 +2,15 @@ import startApp from './lib/start-app'
 
 /**
  * Start the server.
- * @param {MiddlewareConfig} [middleware] Middleware configuration for the `idio` `core` server.
- * @param {SessionOptions} [middleware.session] `session` options.
- * @param {MulterOptions} [middleware.multer] `multer` options.
- * @param {CSRFOptions} [middleware.csrf] `csrf` options.
- * @param {BodyparserOptions} [middleware.bodyparser] `bodyparser` options.
- * @param {CompressOptions} [middleware.compress] `compress` options.
- * @param {CheckauthOptions} [middleware.checkauth] `checkauth` options.
- * @param {LoggerOptions} [middleware.logger] `logger` options.
- * @param {StaticOptions} [middleware.static] `static` options.
+ * @param {MiddlewareConfig} [middlewareConfig] Middleware configuration for the `idio` `core` server.
+ * @param {SessionOptions} [middlewareConfig.session] `session` options.
+ * @param {MulterOptions} [middlewareConfig.multer] `multer` options.
+ * @param {CSRFOptions} [middlewareConfig.csrf] `csrf` options.
+ * @param {BodyparserOptions} [middlewareConfig.bodyparser] `bodyparser` options.
+ * @param {CompressOptions} [middlewareConfig.compress] `compress` options.
+ * @param {CheckauthOptions} [middlewareConfig.checkauth] `checkauth` options.
+ * @param {LoggerOptions} [middlewareConfig.logger] `logger` options.
+ * @param {StaticOptions} [middlewareConfig.static] `static` options.
  * @param {Config} [config] Server configuration object.
  * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
@@ -27,11 +27,11 @@ import startApp from './lib/start-app'
  *  },
  * })
  */
-async function idioCore(middleware = {}, config = {}) {
-  const res = await startApp(middleware, config)
-  const { url, app, router, middleware: mw } = res
+async function idioCore(middlewareConfig = {}, config = {}) {
+  const res = await startApp(middlewareConfig, config)
+  const { url, app, router, middleware } = res
 
-  return { url, app, router, middleware: mw }
+  return { url, app, router, middleware }
 }
 
 /* documentary types/options/bodyparser.xml */
