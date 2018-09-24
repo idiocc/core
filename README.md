@@ -76,20 +76,20 @@ __<a name="type-config">`Config`</a>__: Server configuration object.
 
 The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-set-up).
 
-[`import('koa').Application`](https://github.com/koajs/koa/blob/master/docs/api/index.md#application) __<a name="type-application">`Application`</a>__
+[`import('koa').Application`](https://github.com/koajs/koa/blob/master/docs/api/index.md#application) __<a name="type-application">`Application`</a>__: An instance of the Koa application.
 
-[`import('koa').Middleware`](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) __<a name="type-middleware">`Middleware`</a>__
+[`import('koa').Middleware`](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) __<a name="type-middleware">`Middleware`</a>__: An async middleware function.
 
-[`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="type-router">`Router`</a>__
+[`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="type-router">`Router`</a>__: An instance of the Koa router.
 
-__<a name="type-idiocore">`IdioCore`</a>__
+__<a name="type-idiocore">`IdioCore`</a>__: The return value of the IdioCore function.
 
-|      Name       |                          Type                           |                                             Description                                              | Default |
-| --------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------- |
-| __url*__        | _string_                                                | The url on which the server is accessible.                                                           | -       |
-| __app*__        | _[Application](#type-application)_                      | The `Koa` application.                                                                               | -       |
-| __router*__     | _[Router](#type-router)_                                | The `koa-router` instance.                                                                           | -       |
-| __middleware*__ | _Object.&lt;string, [Middleware](#type-middleware)&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -       |
+|      Name       |                          Type                           |                                             Description                                              |         Default         |
+| --------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------- |
+| url             | _string_                                                | The url on which the server is accessible.                                                           | `http://localhost:5000` |
+| __app*__        | _[Application](#type-application)_                      | The `Koa` application.                                                                               | -                       |
+| __router*__     | _[Router](#type-router)_                                | The `koa-router` instance.                                                                           | -                       |
+| __middleware*__ | _Object.&lt;string, [Middleware](#type-middleware)&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -                       |
 
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
