@@ -274,9 +274,9 @@ difflib@~0.2.1:
   dependencies:
     heap ">= 0.2.0"
 
-documentary@1.19.0:
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.19.0.tgz#fc45028e19b2e6b1d47ba1a7449bdf0815869d1d"
+documentary@1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.20.0.tgz#d262b30ab002ec324b8a1c7819d635f3492fcafd"
   dependencies:
     "@wrote/clone" "1.0.1"
     "@wrote/ensure-path" "1.0.3"
@@ -288,6 +288,7 @@ documentary@1.19.0:
     restream "3.2.1"
     rexml "1.1.0"
     spawncommand "2.1.0"
+    typal "1.1.0"
     which-stream "1.0.1"
 
 dreamopt@~0.6.0:
@@ -891,6 +892,13 @@ thenify-all@^1.0.0:
 tsscmp@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/tsscmp/-/tsscmp-1.0.5.tgz#7dc4a33af71581ab4337da91d85ca5427ebd9a97"
+
+typal@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/typal/-/typal-1.1.0.tgz#8dc19b0203d5ab31f3117028ef3397013e68ca38"
+  dependencies:
+    mismatch "1.0.3"
+    rexml "1.1.0"
 
 type-is@^1.6.16, type-is@^1.6.4:
   version "1.6.16"
