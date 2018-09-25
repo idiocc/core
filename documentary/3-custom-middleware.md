@@ -13,7 +13,6 @@ When required to add any other middleware in the application not included in the
 %FORK example example/custom-middleware/proxy%
 
 
-
 <!-- set up by passing its constructor as the `middlewareConstructor` property of the configuration. The constructor will receive the `app` and `config` arguments and should return a middleware function. -->
 
 <!-- The `use` and `config` properties stay applicable as with the bundled middleware.

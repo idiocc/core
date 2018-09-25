@@ -3,7 +3,7 @@
 
 [![npm version](https://badge.fury.io/js/%40idio%2Fcore.svg)](https://npmjs.org/package/@idio/core)
 
-<a href="https://github.com/idio/core"><img src="images/logo.svg?sanitize=true" width="150" align="left"></a>
+<a href="https://github.com/idio/core"><img src="https://raw.github.com/idiocc/core/master/images/logo.svg?sanitize=true" width="150" align="left"></a>
 
 `@idio/core` is a _Koa2_-based web server with some pre-installed middleware which facilitates quick creation of a web server with the essential functionality, such as serving static files, compression, body parsing, _etc_. It also provides full JSDoc documentation of all options for completion in IDEs. Other components such as `@idio/database`, `@idio/route` and `@idio/jsx` allow to build more complex websites (to come).
 
@@ -143,7 +143,7 @@ Each middleware accepts the following properties:
 
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/session"><img src="images/session.svg?sanitize=true" align="left" height="100"></a>
+<a href="https://github.com/koajs/session"><img src="https://raw.github.com/idiocc/core/master/images/session.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="session">Session</a></strong>: handling sessions via cookies.
 <hr/>
@@ -173,7 +173,7 @@ __<a name="type-sessionconfig">`SessionConfig`</a>__: Configuration passed to `k
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koa-modules/multer"><img src="images/multer.svg?sanitize=true" align="left" height="100"></a>
+<a href="https://github.com/koa-modules/multer"><img src="https://raw.github.com/idiocc/core/master/images/multer.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="file-uploads">File Uploads</a></strong>: receiving files on the server.
 <hr/>
@@ -220,7 +220,7 @@ __<a name="type-multerconfig">`MulterConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/csrf"><img src="images/csrf.svg?sanitize=true" align="left" height="100"></a>
+<a href="https://github.com/koajs/csrf"><img src="https://raw.github.com/idiocc/core/master/images/csrf.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="cross-site-request-forgery">Cross-Site Request Forgery</a></strong>: prevention against CSRF attacks.
 <hr/>
@@ -248,7 +248,7 @@ __<a name="type-csrfconfig">`CSRFConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/7.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/body-parser"><img src="images/bodyparser.svg?sanitize=true" align="left" height="100"></a>
+<a href="https://github.com/koajs/body-parser"><img src="https://raw.github.com/idiocc/core/master/images/bodyparser.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="parse-body">Parse Body</a></strong>: parsing of data sent with requests.
 <hr/>
@@ -280,7 +280,7 @@ __<a name="type-bodyparserconfig">`BodyparserConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/8.svg?sanitize=true" width="15"></a></p>
-<a href="#"><img src="images/checkauth.svg?sanitize=true" align="left" height="100"></a>
+<a href="#"><img src="https://raw.github.com/idiocc/core/master/images/checkauth.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="checking-auth">Checking Auth</a></strong>: a simple function which throws if <code>ctx.session.user</code> is not set. Non-configurable.
 <hr/>
@@ -298,7 +298,7 @@ __<a name="type-checkauthoptions">`CheckauthOptions`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/9.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/logger"><img src="images/logger.svg?sanitize=true" align="left" height="100"></a>
+<a href="https://github.com/koajs/logger"><img src="https://raw.github.com/idiocc/core/master/images/logger.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="logging">Logging</a></strong>: a logger of incoming requests / response times and sizes.
 <hr/>
@@ -321,7 +321,7 @@ __<a name="type-loggerconfig">`LoggerConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/10.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/compress"><img src="images/compress.svg?sanitize=true" align="left" height="100"></a>
+<a href="https://github.com/koajs/compress"><img src="https://raw.github.com/idiocc/core/master/images/compress.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="compression">Compression</a></strong>: enabling gzip and other compression.
 <hr/>
@@ -353,7 +353,7 @@ __<a name="type-compressconfig">`CompressConfig`</a>__
 </details>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/11.svg?sanitize=true" width="15"></a></p>
-<a href="https://github.com/koajs/static"><img src="images/static.svg?sanitize=true" align="left" height="100"></a>
+<a href="https://github.com/koajs/static"><img src="https://raw.github.com/idiocc/core/master/images/static.svg?sanitize=true" align="left" height="100"></a>
 <details>
 <summary><strong><a name="static-files">Static Files</a></strong>: serving files from filesystem.
 <hr/>
@@ -515,7 +515,6 @@ Proxy started at http://localhost:5002
  --> API: GET /?key=app-secret 200
  --> Proxy: GET / 200
 ```
-
 
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
