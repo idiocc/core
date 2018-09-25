@@ -1,5 +1,9 @@
 ## 25 September 2018
 
+### 1.0.1
+
+- [fix] Explicit return type.
+
 ### 1.0.0
 
 - Release the first version.
