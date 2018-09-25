@@ -390,24 +390,28 @@ __<a name="type-staticconfig">`StaticConfig`</a>__
 For example, the below configuration will serve files from both the `static` directory of the project, and the _React.js_ dependency. When `NODE_ENV` environment variable is set to `production`, files will be cached for 10 days.
 
 ```js
-import { join } from 'path'
-import core from '@idio/core'
+import { join, dirname } from 'path'
+import idioCore from '@idio/core'
 
 const STATIC = join(__dirname, 'static')
 const REACT = join(dirname(require.resolve('react')), 'umd')
 
 const DAY = 1000 * 60 * 60 * 24
 
-(async () => {
-  const { url } = await core({
+const Static = async () => {
+  const { url } = await idioCore({
     static: {
       use: true,
       root: [STATIC, REACT],
       mount: '/scripts',
       maxage: process.env.NODE_ENV == 'production' ? 10 * DAY : 0,
     },
-  })
-})
+  }, { port: 5004 })
+  return url
+}
+```
+```
+Static server started on http://localhost:5004
 ```
 
 </details>

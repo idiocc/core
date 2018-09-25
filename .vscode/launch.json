@@ -31,7 +31,7 @@
       "program": "${workspaceFolder}/example/index.js",
       "console": "integratedTerminal",
       "args": [
-        "example/router",
+        "example/static",
       ],
       "skipFiles": [
         "<node_internals>/**/*.js"

@@ -94,26 +94,8 @@ $5
 <data>
 For example, the below configuration will serve files from both the `static` directory of the project, and the _React.js_ dependency. When `NODE_ENV` environment variable is set to `production`, files will be cached for 10 days.
 
-```js
-import { join } from 'path'
-import core from '@idio/core'
-
-const STATIC = join(__dirname, 'static')
-const REACT = join(dirname(require.resolve('react')), 'umd')
-
-const DAY = 1000 * 60 * 60 * 24
-
-(async () => {
-  const { url } = await core({
-    static: {
-      use: true,
-      root: [STATIC, REACT],
-      mount: '/scripts',
-      maxage: process.env.NODE_ENV == 'production' ? 10 * DAY : 0,
-    },
-  })
-})
-```
+%EXAMPLE: example/static.js, ../src => @idio/core%
+%FORK example example/static.js%
 </data>
 %
 
