@@ -1,5 +1,9 @@
 ## 25 September 2018
 
+### 1.0.2
+
+- [dep] Add types dependencies.
+
 ### 1.0.1
 
 - [fix] Explicit return type.
