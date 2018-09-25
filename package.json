@@ -64,6 +64,8 @@
     "zoroaster": "3.5.1"
   },
   "dependencies": {
+    "@types/koa": "2.0.46",
+    "@types/koa-router": "7.0.32",
     "@wrote/ensure-path": "1.0.3",
     "erotic": "2.0.1",
     "koa": "2.5.3",
