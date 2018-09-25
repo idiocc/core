@@ -1,7 +1,7 @@
 {
   "name": "@idio/core",
   "version": "0.0.0",
-  "description": "The core idio functionality and middleware.",
+  "description": "A Koa2-Based Web Server With Essential Middleware, Including Sessions, File Upload, Body Parser, CSRF Protection, Logging, Compression, Static Files And Router.",
   "main": "build",
   "scripts": {
     "t": "zoroaster -a",
