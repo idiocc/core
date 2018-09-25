@@ -14,6 +14,7 @@ import startApp from './lib/start-app'
  * @param {Config} [config] Server configuration object.
  * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
+ * @return {Promise.<{ url: string, app: import('koa'), router: import('koa-router'), middleware: Object.<string, import('koa').Middleware> }>}
  * @example
  *
  * // start a server, and serve files from the "static" directory.
