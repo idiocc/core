@@ -56,16 +56,16 @@ The `@idio/core` accepts 2 arguments which are the middleware configuration obje
 
 __<a name="type-middlewareconfig">`MiddlewareConfig`</a>__: Middleware configuration for the `idio` `core` server.
 
-|    Name    |                      Type                      |      Description      | Default |
-| ---------- | ---------------------------------------------- | --------------------- | ------- |
-| session    | _[SessionOptions](#type-sessionoptions)_       | `session` options.    | -       |
-| multer     | _[MulterOptions](#type-multeroptions)_         | `multer` options.     | -       |
-| csrf       | _[CSRFOptions](#type-csrfoptions)_             | `csrf` options.       | -       |
-| bodyparser | _[BodyparserOptions](#type-bodyparseroptions)_ | `bodyparser` options. | -       |
-| compress   | _[CompressOptions](#type-compressoptions)_     | `compress` options.   | -       |
-| checkauth  | _[CheckauthOptions](#type-checkauthoptions)_   | `checkauth` options.  | -       |
-| logger     | _[LoggerOptions](#type-loggeroptions)_         | `logger` options.     | -       |
-| static     | _[StaticOptions](#type-staticoptions)_         | `static` options.     | -       |
+|    Name    |                      Type                      |      Description      |
+| ---------- | ---------------------------------------------- | --------------------- |
+| session    | _[SessionOptions](#type-sessionoptions)_       | `session` options.    |
+| multer     | _[MulterOptions](#type-multeroptions)_         | `multer` options.     |
+| csrf       | _[CSRFOptions](#type-csrfoptions)_             | `csrf` options.       |
+| bodyparser | _[BodyparserOptions](#type-bodyparseroptions)_ | `bodyparser` options. |
+| compress   | _[CompressOptions](#type-compressoptions)_     | `compress` options.   |
+| checkauth  | _[CheckauthOptions](#type-checkauthoptions)_   | `checkauth` options.  |
+| logger     | _[LoggerOptions](#type-loggeroptions)_         | `logger` options.     |
+| static     | _[StaticOptions](#type-staticoptions)_         | `static` options.     |
 
 __<a name="type-config">`Config`</a>__: Server configuration object.
 
@@ -235,14 +235,14 @@ __<a name="type-csrfoptions">`CSRFOptions`</a>__
 
 __<a name="type-csrfconfig">`CSRFConfig`</a>__
 
-|              Name              |    Type    | Description | Default |
-| ------------------------------ | ---------- | ----------- | ------- |
-| invalidSessionSecretMessage    | _string_   |             | -       |
-| invalidSessionSecretStatusCode | _number_   |             | -       |
-| invalidTokenMessage            | _string_   |             | -       |
-| invalidTokenStatusCode         | _number_   |             | -       |
-| excludedMethods                | _string[]_ |             | -       |
-| disableQuery                   | _boolean_  |             | -       |
+|              Name              |    Type    | Description |
+| ------------------------------ | ---------- | ----------- |
+| invalidSessionSecretMessage    | _string_   |             |
+| invalidSessionSecretStatusCode | _number_   |             |
+| invalidTokenMessage            | _string_   |             |
+| invalidTokenStatusCode         | _number_   |             |
+| excludedMethods                | _string[]_ |             |
+| disableQuery                   | _boolean_  |             |
 
 
 </details>
@@ -313,9 +313,9 @@ __<a name="type-loggeroptions">`LoggerOptions`</a>__
 
 __<a name="type-loggerconfig">`LoggerConfig`</a>__
 
-|    Name     |                                            Type                                            |                                                                                       Description                                                                                       | Default |
-| ----------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| transporter | _(str: string, args: [string, string, string, string, string, string, string]) =&gt; void_ | Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`. | -       |
+|    Name     |                                            Type                                            |                                                                                       Description                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| transporter | _(str: string, args: [string, string, string, string, string, string, string]) =&gt; void_ | Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`. |
 
 
 </details>
