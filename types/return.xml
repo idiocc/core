@@ -2,17 +2,17 @@
   <import name="Application" from="koa" link="https://github.com/koajs/koa/blob/master/docs/api/index.md#application" desc="An instance of the Koa application." />
   <import name="Middleware" from="koa" link="https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69" desc="An async middleware function." />
   <import name="Router" from="koa-router" link="https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router" desc="An instance of the Koa router." />
-  <type name="IdioCore" desc="The return value of the IdioCore function.">
+  <type name="IdioCore" desc="An object containing the url and references to the app, router and middleware.">
     <prop string name="url" default="http://localhost:5000">
       The url on which the server is accessible.
     </prop>
-    <prop type="Application" name="app">
+    <prop opt type="Application" name="app">
       The `Koa` application.
     </prop>
-    <prop type="Router" name="router">
+    <prop opt type="Router" name="router">
       The `koa-router` instance.
     </prop>
-    <prop type="Object.<string, Middleware>" name="middleware">
+    <prop opt type="Object.<string, Middleware>" name="middleware">
       The map of configured middleware functions which could then be set up to be used on a certain route.
     </prop>
   </type>

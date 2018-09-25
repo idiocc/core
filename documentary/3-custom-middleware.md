@@ -7,7 +7,7 @@ When required to add any other middleware in the application not included in the
 %EXAMPLE: example/custom-middleware/api-server.js, ../../src => @idio/core%
 %FORK example example/custom-middleware/run-api%
 
-2. Passing a configuration object as part of the _MiddlewareConfig_ that includes the `middlewareConstructor` property. Other properties such as `conf` and `use` will be used in the same way as when setting up bundled middleware.
+2. Passing a configuration object as part of the _MiddlewareConfig_ that includes the `middlewareConstructor` property which will receive the reference to the `app`. Other properties such as `conf` and `use` will be used in the same way as when setting up bundled middleware: setting `use` to `true` will result in the middleware being used for every request, and the `config` will be passed to the constructor.
 
 %EXAMPLE: example/custom-middleware/proxy.js, ../../src => @idio/core%
 %FORK example example/custom-middleware/proxy%

@@ -74,6 +74,8 @@ __<a name="type-config">`Config`</a>__: Server configuration object.
 | port | _number_ | The port on which to start the server. | `5000`    |
 | host | _string_ | The host on which to listen.           | `0.0.0.0` |
 
+---
+
 The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-set-up).
 
 [`import('koa').Application`](https://github.com/koajs/koa/blob/master/docs/api/index.md#application) __<a name="type-application">`Application`</a>__: An instance of the Koa application.
@@ -82,14 +84,16 @@ The return type contains the _URL_, _Application_ and _Router_ instances, and th
 
 [`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="type-router">`Router`</a>__: An instance of the Koa router.
 
-__<a name="type-idiocore">`IdioCore`</a>__: The return value of the IdioCore function.
+__<a name="type-idiocore">`IdioCore`</a>__: An object containing the url and references to the app, router and middleware.
 
-|      Name       |                          Type                           |                                             Description                                              |         Default         |
-| --------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------- |
-| url             | _string_                                                | The url on which the server is accessible.                                                           | `http://localhost:5000` |
-| __app*__        | _[Application](#type-application)_                      | The `Koa` application.                                                                               | -                       |
-| __router*__     | _[Router](#type-router)_                                | The `koa-router` instance.                                                                           | -                       |
-| __middleware*__ | _Object.&lt;string, [Middleware](#type-middleware)&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -                       |
+|    Name    |                          Type                           |                                             Description                                              |         Default         |
+| ---------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------- |
+| url        | _string_                                                | The url on which the server is accessible.                                                           | `http://localhost:5000` |
+| app        | _[Application](#type-application)_                      | The `Koa` application.                                                                               | -                       |
+| router     | _[Router](#type-router)_                                | The `koa-router` instance.                                                                           | -                       |
+| middleware | _Object.&lt;string, [Middleware](#type-middleware)&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -                       |
+
+---
 
 To start the server, the async method needs to be called and passed the middleware and server configuration objects. For example, the following code will start a server which serves static files with enabled compression.
 
@@ -459,7 +463,7 @@ Started API server at: http://localhost:5000
  --> API: GET /?key=app-secret 200
 ```
 
-2. Passing a configuration object as part of the _MiddlewareConfig_ that includes the `middlewareConstructor` property. Other properties such as `conf` and `use` will be used in the same way as when setting up bundled middleware.
+2. Passing a configuration object as part of the _MiddlewareConfig_ that includes the `middlewareConstructor` property which will receive the reference to the `app`. Other properties such as `conf` and `use` will be used in the same way as when setting up bundled middleware: setting `use` to `true` will result in the middleware being used for every request, and the `config` will be passed to the constructor.
 
 ```js
 import rqt from 'rqt'
@@ -514,7 +518,7 @@ Proxy started at http://localhost:5002
 
 ## Router Set-up
 
-After the _Application_ and _Router_ instances are obtaining after starting the server in the `app` and `router` properties of the returned object, the router can be configured to respond to custom paths. This can be done by assigning required middleware from the map, and calling the `use` method on the _Application_ instance.
+After the _Application_ and _Router_ instances are obtained after starting the server as the `app` and `router` properties of the [returned object](#type-idiocore), the router can be configured to respond to custom paths. This can be done by assigning configured middleware from the map and standalone middleware, and calling the `use` method on the _Application_ instance.
 
 ```js
 import idioCore from '@idio/core'
