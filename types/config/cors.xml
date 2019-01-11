@@ -1,0 +1,25 @@
+<types>
+  <type name="CorsConfig" noToc>
+    <prop string name="origin" type="origin|Function(ctx)" default="request Origin header">
+      `Access-Control-Allow-Origin` header value.
+    </prop>
+    <prop type="string|Array<string>" name="allowMethods" default="GET,HEAD,PUT,POST,DELETE,PATCH">
+      `Access-Control-Allow-Methods` header value.
+    </prop>
+    <prop opt type="string|Array<string>" name="exposeHeaders">
+      `Access-Control-Expose-Headers` header value.
+    </prop>
+    <prop opt type="string|Array<string>" name="allowHeaders">
+      `Access-Control-Allow-Headers` header value.
+    </prop>
+    <prop opt type="string|number" name="maxAge">
+      `Access-Control-Max-Age` header value in seconds.
+    </prop>
+    <prop type="boolean" name="credentials" default="false">
+      `Access-Control-Allow-Credentials` header value.
+    </prop>
+    <prop type="boolean" name="keepHeadersOnError" default="false">
+      Add set headers to `err.header` if an error is thrown.
+    </prop>
+  </type>
+</types>

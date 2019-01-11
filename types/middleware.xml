@@ -27,5 +27,8 @@
     <prop opt type="StaticOptions" name="static">
       `static` options.
     </prop>
+    <prop opt type="CorsOptions" name="cors">
+      `cors` options.
+    </prop>
   </type>
 </types>

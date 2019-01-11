@@ -3,6 +3,7 @@ import CSRF from 'koa-csrf'
 import multer from 'koa-multer'
 import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
+import cors from '@koa/cors'
 import ensurePath from '@wrote/ensure-path'
 import { join, resolve } from 'path'
 import compress from 'koa-compress'
@@ -28,6 +29,21 @@ function setupStatic(app, config, {
   const c = compose(m)
   if (mount) return Mount(mount, c)
   return c
+}
+
+function setupCors(app, config, {
+  origin,
+}) {
+  const o = Array.isArray(origin) ? (ctx) => {
+    const oh = ctx.get('Origin')
+    const found = origin.find(a => a == oh)
+    return found
+  } : origin
+  const fn = cors({
+    origin: o,
+    ...config,
+  })
+  return fn
 }
 
 function setupCompress(app, config, {
@@ -86,6 +102,7 @@ const map = {
   checkauth: setupCheckAuth,
   logger: setupLogger,
   static: setupStatic,
+  cors: setupCors,
 }
 
 /**
