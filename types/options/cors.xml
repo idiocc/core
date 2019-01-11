@@ -1,8 +1,8 @@
 <types>
   <import from="koa" name="Context"/>
   <type name="CorsOptions" noToc>
-    <prop type="string|Array<string>|((ctx: Context) => string)" name="origin">
-      The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If function is passed, it should return the string.
+    <prop opt type="string|Array<string>|((ctx: Context) => string)" name="origin">
+      The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If a function is passed, it should return the string with the origin to set. If not passed, the request origin is returned, allowing any origin to access the resource.
     </prop>
     <prop boolean name="use" default="false">
       Use this middleware for every request.

@@ -211,7 +211,7 @@ async function idioCore(middlewareConfig = {}, config = {}) {
  * @typedef {import('koa').Context} Context
  *
  * @typedef {Object} CorsOptions
- * @prop {string|Array<string>|((ctx: Context) => string)} origin The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If function is passed, it should return the string.
+ * @prop {string|Array<string>|((ctx: Context) => string)} [origin] The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If a function is passed, it should return the string with the origin to set. If not passed, the request origin is returned, allowing any origin to access the resource.
  * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
  * @prop {CorsConfig} [config] `@koa/cors` configuration.
  */
