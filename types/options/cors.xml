@@ -1,7 +1,7 @@
 <types>
   <import from="koa" name="Context"/>
   <type name="CorsOptions" noToc>
-    <prop type="string|Array<string>|((ctx: Context) => number)" name="origin">
+    <prop type="string|Array<string>|((ctx: Context) => string)" name="origin">
       The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If function is passed, it should return the string.
     </prop>
     <prop boolean name="use" default="false">
