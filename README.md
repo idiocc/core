@@ -34,6 +34,7 @@ yarn add -E @idio/core
   * [Logging](#logging)
   * [Compression](#compression)
   * [Static Files](#static-files)
+  * [CORS](#cors)
 - [Custom Middleware](#custom-middleware)
 - [Router Set-up](#router-set-up)
 - [Copyright](#copyright)
@@ -66,6 +67,7 @@ __<a name="type-middlewareconfig">`MiddlewareConfig`</a>__: Middleware configura
 | checkauth  | _[CheckauthOptions](#type-checkauthoptions)_   | `checkauth` options.  |
 | logger     | _[LoggerOptions](#type-loggeroptions)_         | `logger` options.     |
 | static     | _[StaticOptions](#type-staticoptions)_         | `static` options.     |
+| cors       | _[CorsOptions](#type-corsoptions)_             | `cors` options.       |
 
 __<a name="type-config">`Config`</a>__: Server configuration object.
 
@@ -416,7 +418,39 @@ Static server started on http://localhost:5004
 
 </details>
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/12.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/12.svg?sanitize=true" width="15"></a></p>
+<a href="https://github.com/koajs/cors"><img src="https://raw.github.com/idiocc/core/master/images/cors.svg?sanitize=true" align="left" height="100"></a>
+<details>
+<summary><strong><a name="cors">CORS</a></strong>: return Cross-Origin Resource Sharing headers.
+<hr/>
+
+`import('koa').Context` __<a name="type-context">`Context`</a>__
+
+__<a name="type-corsoptions">`CorsOptions`</a>__
+
+|    Name     |                           Type                            |                                                                                                                                                   Description                                                                                                                                                    | Default |
+| ----------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| __origin*__ | _string\|Array&lt;string&gt;\|((ctx: Context) => number)_ | The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If function is passed, it should return the string. | -       |
+| use         | _boolean_                                                 | Use this middleware for every request.                                                                                                                                                                                                                                                                           | `false` |
+| config      | _[CorsConfig](#type-corsconfig)_                          | `@koa/cors` configuration.                                                                                                                                                                                                                                                                                       | -       |
+</summary>
+
+__<a name="type-corsconfig">`CorsConfig`</a>__
+
+|        Name        |             Type              |                      Description                       |             Default              |
+| ------------------ | ----------------------------- | ------------------------------------------------------ | -------------------------------- |
+| origin             | _string_                      | `Access-Control-Allow-Origin` header value.            | `request Origin header`          |
+| allowMethods       | _string\|Array&lt;string&gt;_ | `Access-Control-Allow-Methods` header value.           | `GET,HEAD,PUT,POST,DELETE,PATCH` |
+| exposeHeaders      | _string\|Array&lt;string&gt;_ | `Access-Control-Expose-Headers` header value.          | -                                |
+| allowHeaders       | _string\|Array&lt;string&gt;_ | `Access-Control-Allow-Headers` header value.           | -                                |
+| maxAge             | _string\|number_              | `Access-Control-Max-Age` header value in seconds.      | -                                |
+| credentials        | _boolean_                     | `Access-Control-Allow-Credentials` header value.       | `false`                          |
+| keepHeadersOnError | _boolean_                     | Add set headers to `err.header` if an error is thrown. | `false`                          |
+
+
+</details>
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
 
 ## Custom Middleware
 
@@ -462,7 +496,7 @@ const APIServer = async (port) => {
 export default APIServer
 ```
 ```
-Started API server at: http://localhost:5000
+Started API server at: http://localhost:5005
  --> API: GET / 403
  --> API: GET /?key=app-secret 200
 ```
@@ -517,7 +551,7 @@ Proxy started at http://localhost:5002
 ```
 
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/14.svg?sanitize=true"></a></p>
 
 ## Router Set-up
 
@@ -579,7 +613,7 @@ Page available at: http://localhost:5003/test
   --> POST /test 200
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/14.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/15.svg?sanitize=true"></a></p>
 
 ## Copyright
 
@@ -587,8 +621,8 @@ Middleware icons and logo from [FoglihtenDeH0 font](https://www.1001fonts.com/fo
 
 Middleware types descriptions by their respective authors.
 
-(c) [Art Deco][1] 2018
+(c) [Idio][1] 2019
 
-[1]: https://artdeco.bz
+[1]: https://idio.cc
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>

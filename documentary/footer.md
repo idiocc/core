@@ -4,8 +4,8 @@ Middleware icons and logo from [FoglihtenDeH0 font](https://www.1001fonts.com/fo
 
 Middleware types descriptions by their respective authors.
 
-(c) [Art Deco][1] 2018
+(c) [Idio][1] 2019
 
-[1]: https://artdeco.bz
+[1]: https://idio.cc
 
 %~ -1%

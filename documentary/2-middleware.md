@@ -99,4 +99,12 @@ For example, the below configuration will serve files from both the `static` dir
 </data>
 %
 
+%USE-MACRO middleware
+<data>CORS</data>
+<data>return Cross-Origin Resource Sharing headers</data>
+<data>https://github.com/koajs/cors</data>
+<data>cors</data>
+<data/>
+%
+
 %~%
