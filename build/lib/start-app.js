@@ -3,7 +3,7 @@ let enableDestroy = require('server-destroy'); if (enableDestroy && enableDestro
 let Router = require('koa-router'); if (Router && Router.__esModule) Router = Router.default;
 let Koa = require('koa'); if (Koa && Koa.__esModule) Koa = Koa.default;
 let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
-let setupMiddleware = require('./setup-middleware'); if (setupMiddleware && setupMiddleware.__esModule) setupMiddleware = setupMiddleware.default;
+const setupMiddleware = require('./setup-middleware');
 
 /**
  * Create an application and setup middleware.
@@ -97,4 +97,3 @@ module.exports=startApp
  * @typedef {import('..').MiddlewareConfig} MiddlewareConfig
  * @typedef {import('..').Config} Config
  */
-//# sourceMappingURL=start-app.js.map

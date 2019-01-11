@@ -1,4 +1,4 @@
-let startApp = require('./lib/start-app'); if (startApp && startApp.__esModule) startApp = startApp.default;
+const startApp = require('./lib/start-app');
 
 /**
  * Start the server.
@@ -11,6 +11,7 @@ let startApp = require('./lib/start-app'); if (startApp && startApp.__esModule) 
  * @param {CheckauthOptions} [middlewareConfig.checkauth] `checkauth` options.
  * @param {LoggerOptions} [middlewareConfig.logger] `logger` options.
  * @param {StaticOptions} [middlewareConfig.static] `static` options.
+ * @param {CorsOptions} [middlewareConfig.cors] `cors` options.
  * @param {Config} [config] Server configuration object.
  * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
@@ -205,6 +206,28 @@ async function idioCore(middlewareConfig = {}, config = {}) {
  * @prop {boolean} [extensions=false] Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served. Default `false`.
  */
 
+/* documentary types/options/cors.xml */
+/**
+ * @typedef {import('koa').Context} Context
+ *
+ * @typedef {Object} CorsOptions
+ * @prop {string|Array<string>|((ctx: Context) => string)} [origin] The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If a function is passed, it should return the string with the origin to set. If not passed, the request origin is returned, allowing any origin to access the resource.
+ * @prop {boolean} [use=false] Use this middleware for every request. Default `false`.
+ * @prop {CorsConfig} [config] `@koa/cors` configuration.
+ */
+
+/* documentary types/config/cors.xml */
+/**
+ * @typedef {Object} CorsConfig
+ * @prop {string} [origin="request Origin header"] `Access-Control-Allow-Origin` header value. Default `request Origin header`.
+ * @prop {string|Array<string>} [allowMethods="GET,HEAD,PUT,POST,DELETE,PATCH"] `Access-Control-Allow-Methods` header value. Default `GET,HEAD,PUT,POST,DELETE,PATCH`.
+ * @prop {string|Array<string>} [exposeHeaders] `Access-Control-Expose-Headers` header value.
+ * @prop {string|Array<string>} [allowHeaders] `Access-Control-Allow-Headers` header value.
+ * @prop {string|number} [maxAge] `Access-Control-Max-Age` header value in seconds.
+ * @prop {boolean} [credentials=false] `Access-Control-Allow-Credentials` header value. Default `false`.
+ * @prop {boolean} [keepHeadersOnError=false] Add set headers to `err.header` if an error is thrown. Default `false`.
+ */
+
 /* documentary types/middleware.xml */
 /**
  * @typedef {Object} MiddlewareConfig Middleware configuration for the `idio` `core` server.
@@ -216,6 +239,7 @@ async function idioCore(middlewareConfig = {}, config = {}) {
  * @prop {CheckauthOptions} [checkauth] `checkauth` options.
  * @prop {LoggerOptions} [logger] `logger` options.
  * @prop {StaticOptions} [static] `static` options.
+ * @prop {CorsOptions} [cors] `cors` options.
  */
 
 /* documentary types/config.xml */
@@ -226,4 +250,3 @@ async function idioCore(middlewareConfig = {}, config = {}) {
  */
 
 module.exports=idioCore
-//# sourceMappingURL=index.js.map

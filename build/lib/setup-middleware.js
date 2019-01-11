@@ -3,6 +3,7 @@ let CSRF = require('koa-csrf'); if (CSRF && CSRF.__esModule) CSRF = CSRF.default
 let multer = require('koa-multer'); if (multer && multer.__esModule) multer = multer.default;
 let bodyParser = require('koa-bodyparser'); if (bodyParser && bodyParser.__esModule) bodyParser = bodyParser.default;
 let logger = require('koa-logger'); if (logger && logger.__esModule) logger = logger.default;
+let cors = require('@koa/cors'); if (cors && cors.__esModule) cors = cors.default;
 let ensurePath = require('@wrote/ensure-path'); if (ensurePath && ensurePath.__esModule) ensurePath = ensurePath.default;
 const { join, resolve } = require('path');
 let compress = require('koa-compress'); if (compress && compress.__esModule) compress = compress.default;
@@ -10,7 +11,7 @@ let serve = require('koa-static'); if (serve && serve.__esModule) serve = serve.
 let compose = require('koa-compose'); if (compose && compose.__esModule) compose = compose.default;
 const { Z_SYNC_FLUSH } = require('zlib');
 let Mount = require('koa-mount'); if (Mount && Mount.__esModule) Mount = Mount.default;
-let checkAuth = require('./check-auth'); if (checkAuth && checkAuth.__esModule) checkAuth = checkAuth.default;
+const checkAuth = require('./check-auth');
 
 function setupStatic(app, config, {
   root = [],
@@ -28,6 +29,21 @@ function setupStatic(app, config, {
   const c = compose(m)
   if (mount) return Mount(mount, c)
   return c
+}
+
+function setupCors(app, config, {
+  origin,
+}) {
+  const o = Array.isArray(origin) ? (ctx) => {
+    const oh = ctx.get('Origin')
+    const found = origin.find(a => a == oh)
+    return found
+  } : origin
+  const fn = cors({
+    origin: o,
+    ...config,
+  })
+  return fn
 }
 
 function setupCompress(app, config, {
@@ -86,6 +102,7 @@ const map = {
   checkauth: setupCheckAuth,
   logger: setupLogger,
   static: setupStatic,
+  cors: setupCors,
 }
 
 /**
@@ -147,4 +164,3 @@ async function initMiddleware(name, conf, app) {
 
 
 module.exports = setupMiddleware
-//# sourceMappingURL=setup-middleware.js.map

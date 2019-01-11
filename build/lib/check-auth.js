@@ -4,5 +4,3 @@ module.exports=() => async (ctx, next) => {
   }
   throw new Error('User not authorized')
 }
-
-//# sourceMappingURL=check-auth.js.map
