@@ -1,7 +1,23 @@
 import { equal } from 'zoroaster/assert'
-import rqt from 'rqt'
 import { gunzipSync } from 'zlib'
+import { request } from 'http'
+import Catchment from 'catchment'
+import { parse } from 'url'
 import Context from '../../context'
+
+const req = async (url, headers = {}) => {
+  const c = new Catchment({ binary: 1 })
+  const { hostname, path, port } = parse(url)
+  const r = request({
+    hostname, port, path,
+    headers,
+  }, (res) => {
+    res.pipe(c)
+  })
+  r.end()
+  const res = await c.promise
+  return res
+}
 
 /** @type {Object.<string, (c: Context)>} */
 const T = {
@@ -12,11 +28,8 @@ const T = {
       compress: { use: true },
     })
     const fullUrl = assignRoute(app, url, router, '/dracula.txt', body)
-    const res = await rqt(fullUrl, {
-      headers: {
-        'Accept-Encoding': 'gzip, deflate, br',
-      },
-      binary: true,
+    const res = await req(fullUrl, {
+      'Accept-Encoding': 'gzip, deflate, br',
     })
     const actual = gunzipSync(res).toString()
     equal(actual, body)
@@ -27,10 +40,8 @@ const T = {
       compress: { use: true, config: { threshold: body.length + 1 } },
     })
     const fullUrl = assignRoute(app, url, router, '/dracula.txt', body)
-    const actual = await rqt(fullUrl, {
-      headers: {
-        'Accept-Encoding': 'gzip, deflate, br',
-      },
+    const actual = await req(fullUrl, {
+      'Accept-Encoding': 'gzip, deflate, br',
     })
     equal(actual, body)
   },
