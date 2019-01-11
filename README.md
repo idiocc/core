@@ -617,7 +617,7 @@ Page available at: http://localhost:5003/test
 
 ## Copyright
 
-Middleware icons and logo from [FoglihtenDeH0 font](https://www.1001fonts.com/foglihtendeh0-font.html).
+Middleware icons and logo from [Deco Dingbats NF font](https://www.1001fonts.com/decodingbats1-font.html).
 
 Middleware types descriptions by their respective authors.
 
