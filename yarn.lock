@@ -499,10 +499,10 @@ difflib@~0.2.1:
   dependencies:
     heap ">= 0.2.0"
 
-documentary@1.21.0:
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.21.0.tgz#73c7afe7c9a38a23634f6cedf7be4f80c2500a04"
-  integrity sha512-63D9s5A9y1RysUbzTxiLzmRdANA9Ht9us9GMo/g9SiC/PyPm/f+54eIVVMDDHtshsyUUdiwOVp/MFYCwpg78Yg==
+documentary@1.21.1:
+  version "1.21.1"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.21.1.tgz#5296c496b4c717e1def41cb0c5f17f003e6cb5aa"
+  integrity sha512-gQ0Pymf8P5UJ/JhtdQEc57djYLLGfdInhZ4O8Am/EsXHk72z9p8+yCWyzk3eIe2UnbPYtd4Vj1neu8Se2QpJ+Q==
   dependencies:
     "@wrote/clone" "1.1.0"
     "@wrote/ensure-path" "1.0.5"

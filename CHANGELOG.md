@@ -1,3 +1,9 @@
+## 26 January 2019
+
+### 1.2.0
+
+- [feature] Return the `server`.
+
 ## 11 January 2018
 
 ### 1.1.0
