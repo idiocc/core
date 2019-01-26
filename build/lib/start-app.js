@@ -41,6 +41,7 @@ async function destroy(server) {
  * @param {import('koa').Application} app
  * @param {number} [port]
  * @param {string} [hostname='0.0.0.0']
+ * @return {Promise<import('http').Server>}
  */
 function listen(app, port, hostname = '0.0.0.0') {
   const cb = erotic(true)
@@ -49,6 +50,7 @@ function listen(app, port, hostname = '0.0.0.0') {
       const e = cb(err)
       j(e)
     }
+    /** @type {import('http').Server} */
     const server = app.listen(port, hostname, () => {
       r(server)
       app.removeListener('error', ec)
@@ -88,7 +90,7 @@ async function startApp(middlewareConfig, config) {
 
   const router = new Router()
 
-  return { ...appMeta, router, url }
+  return { ...appMeta, router, url, server }
 }
 
 module.exports=startApp
