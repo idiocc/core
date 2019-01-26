@@ -86,6 +86,8 @@ The return type contains the _URL_, _Application_ and _Router_ instances, and th
 
 [`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="type-router">`Router`</a>__: An instance of the Koa router.
 
+[`import('http').Server`](https://nodejs.org/api/http.html#http_class_http_server) __<a name="type-server">`Server`</a>__: An instance of the Node's Server class.
+
 __<a name="type-idiocore">`IdioCore`</a>__: An object containing the url and references to the app, router and middleware.
 
 |    Name    |                          Type                           |                                             Description                                              |         Default         |
@@ -93,6 +95,7 @@ __<a name="type-idiocore">`IdioCore`</a>__: An object containing the url and ref
 | url        | _string_                                                | The url on which the server is accessible.                                                           | `http://localhost:5000` |
 | app        | _[Application](#type-application)_                      | The `Koa` application.                                                                               | -                       |
 | router     | _[Router](#type-router)_                                | The `koa-router` instance.                                                                           | -                       |
+| server     | _[Server](#type-server)_                                | The `http` server instance.                                                                          | -                       |
 | middleware | _Object.&lt;string, [Middleware](#type-middleware)&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -                       |
 
 ---
@@ -621,8 +624,33 @@ Middleware icons and logo from [Deco Dingbats NF font](https://www.1001fonts.com
 
 Middleware types descriptions by their respective authors.
 
-(c) [Idio][1] 2019
-
-[1]: https://idio.cc
+<table>
+  <tr>
+    <th>
+      <a href="https://artd.eco">
+        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
+      </a>
+    </th>
+    <th>
+      © <a href="https://artd.eco">Art Deco</a>
+      for
+      <a href="https://idio.cc">Idio</a>
+      2019
+    </th>
+    <th>
+        <a href="https://idio.cc">
+          <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio" />
+        </a>
+      </th>
+    <th>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif" alt="Tech Nation Visa" />
+      </a>
+    </th>
+    <th>
+      <a href="https://www.technation.sucks">Tech Nation Visa Sucks</a>
+    </th>
+  </tr>
+</table>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>

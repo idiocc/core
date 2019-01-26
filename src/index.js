@@ -30,11 +30,11 @@ import startApp from './lib/start-app'
  */
 async function idioCore(middlewareConfig = {}, config = {}) {
   const res = await startApp(middlewareConfig, config)
-  const { url, app, router, middleware } = res
+  const { url, app, server, router, middleware } = res
   /** @type {Object.<string, Middleware>} */
   const mw = middleware
 
-  return { url, app, router, middleware: mw }
+  return { url, app, router, server, middleware: mw }
 }
 
 // here until https://github.com/Microsoft/TypeScript/issues/26921 solved

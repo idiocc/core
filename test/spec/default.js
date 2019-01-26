@@ -34,6 +34,22 @@ const T = {
     const res = await rqt(url)
     equal(res, body)
   },
+  async 'returns the server'({ start }) {
+    const { server, url } = await start()
+    const p = new Promise((r) => {
+      server.on('upgrade', (req, socket) => {
+        r(r)
+        socket.end('HTTP/1.1 200\nok')
+      })
+    })
+    await rqt(url, {
+      headers: {
+        Connection: 'Upgrade',
+        Upgrade: 'websocket',
+      },
+    }).catch(() => {})
+    await p
+  },
 }
 
 export default T
