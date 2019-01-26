@@ -1,6 +1,6 @@
 {
   "name": "@idio/core",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A Koa2-Based Web Server With Essential Middleware, Including Sessions, File Upload, Body Parser, CSRF Protection, Logging, Compression, Static Files And Router.",
   "main": "build",
   "scripts": {
