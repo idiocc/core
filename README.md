@@ -632,12 +632,9 @@ Middleware types descriptions by their respective authors.
       </a>
     </th>
     <th>
-      © <a href="https://artd.eco">Art Deco</a>
-      for
-      <a href="https://idio.cc">Idio</a>
+      © <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a>
       2019
-    </th>
-    <th>
+    </th><th>
         <a href="https://idio.cc">
           <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio" />
         </a>
