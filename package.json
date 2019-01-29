@@ -54,6 +54,7 @@
   },
   "homepage": "https://github.com/idiojs/core#readme",
   "devDependencies": {
+    "@wrote/read": "1.0.2",
     "alamode": "1.7.0",
     "catchment": "3.2.2",
     "documentary": "1.21.1",

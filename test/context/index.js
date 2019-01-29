@@ -1,21 +1,10 @@
 import { join } from 'path'
-import { debuglog } from 'util'
-import Catchment from 'catchment'
-import { createReadStream } from 'fs'
+import _read from '@wrote/read'
 import startApp from '../../src/lib/start-app'
-
-const LOG = debuglog('@idio/core')
 
 const FIXTURE = 'test/fixture'
 
-const read = async (...path) => {
-  const p = join(...path)
-  const rs = createReadStream(p)
-  const { promise } = new Catchment({ rs })
-  /** @type {string} */
-  const res = await promise
-  return res
-}
+const read = (...args) => _read(join(...args))
 
 /**
  * A testing context for the package.
