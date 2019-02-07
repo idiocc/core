@@ -70,10 +70,11 @@ async function startApp(middlewareConfig, config) {
   } = config
 
   // close all connections when running nodemon
-  process.once('SIGUSR2', async () => {
+  const sigListener = async () => {
     await app.destroy()
     process.kill(process.pid, 'SIGUSR2')
-  })
+  }
+  process.once('SIGUSR2', sigListener)
 
   const appMeta = await createApp(middlewareConfig, config)
   const { app } = appMeta
@@ -83,6 +84,7 @@ async function startApp(middlewareConfig, config) {
   enableDestroy(server)
   app.destroy = async () => {
     await destroy(server)
+    process.removeListener('SIGUSR2', sigListener)
   }
   const { port: p } = server.address()
 

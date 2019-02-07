@@ -54,6 +54,7 @@
   },
   "homepage": "https://github.com/idiojs/core#readme",
   "devDependencies": {
+    "@idio/preact-fixture": "1.0.0",
     "@wrote/read": "1.0.2",
     "alamode": "1.7.3",
     "catchment": "3.2.2",
@@ -65,7 +66,7 @@
     "zoroaster": "3.6.6"
   },
   "dependencies": {
-    "@idio/frontend": "1.2.3",
+    "@idio/frontend": "1.2.4",
     "@koa/cors": "2.2.3",
     "@types/koa": "2.0.48",
     "@types/koa-router": "7.0.39",

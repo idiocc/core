@@ -11,6 +11,7 @@ let serve = require('koa-static'); if (serve && serve.__esModule) serve = serve.
 let compose = require('koa-compose'); if (compose && compose.__esModule) compose = compose.default;
 const { Z_SYNC_FLUSH } = require('zlib');
 let Mount = require('koa-mount'); if (Mount && Mount.__esModule) Mount = Mount.default;
+let frontend = require('@idio/frontend'); if (frontend && frontend.__esModule) frontend = frontend.default;
 const checkAuth = require('./check-auth');
 
 function setupStatic(app, config, {
@@ -93,6 +94,25 @@ const setupLogger = (app, config) => {
   return l
 }
 
+/**
+ * @param {App} app
+ * @param {import('..').FrontendConfig} config
+ * @param {import('..').FrontendOptions} options
+ */
+const setupFrontend = async (app, config, options) => {
+  const { directory } = options
+  const d = Array.isArray(directory) ? directory : [directory]
+  const res = await Promise.all(d.map(async (dir) => {
+    const f = await frontend({
+      ...config,
+      directory: dir,
+    })
+    app.use(f)
+    return f
+  }))
+  return res
+}
+
 const map = {
   session: setupSession,
   multer: setupMulter,
@@ -103,6 +123,7 @@ const map = {
   logger: setupLogger,
   static: setupStatic,
   cors: setupCors,
+  frontend: setupFrontend,
 }
 
 /**
@@ -124,8 +145,8 @@ async function initMiddleware(name, conf, app) {
   } else {
     throw new Error('Either the "middleware" or "middlewareConstructor" properties must be passed.')
   }
-  const { use, config = {}, ...rest } = conf
-  const res = await fn(app, config, rest)
+  const { use, config = {}, ...options } = conf
+  const res = await fn(app, config, options)
   if (use) {
     app.use(res)
   }

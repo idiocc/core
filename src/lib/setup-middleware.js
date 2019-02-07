@@ -99,17 +99,17 @@ const setupLogger = (app, config) => {
  * @param {import('..').FrontendConfig} config
  * @param {import('..').FrontendOptions} options
  */
-const setupFrontend = (app, config, options) => {
+const setupFrontend = async (app, config, options) => {
   const { directory } = options
   const d = Array.isArray(directory) ? directory : [directory]
-  const res = d.map((dir) => {
-    const f = frontend({
+  const res = await Promise.all(d.map(async (dir) => {
+    const f = await frontend({
       ...config,
       directory: dir,
     })
     app.use(f)
     return f
-  })
+  }))
   return res
 }
 

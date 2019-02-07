@@ -48,6 +48,14 @@ export default class Context {
     const dracula = await read(FIXTURE, 'chapter1.txt')
     return dracula
   }
+  /** The front-end directory for the files. */
+  get frontend() {
+    return 'test/fixture/frontend'
+  }
+  /** The second front-end directory for the files. */
+  get frontend2() {
+    return 'test/fixture/frontend2'
+  }
 
   /**
    * Assign a route.
