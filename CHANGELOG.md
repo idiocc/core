@@ -1,3 +1,9 @@
+## 7 February 2019
+
+### 1.3.0
+
+- [feature] Add the `frontend` middleware.
+
 ## 26 January 2019
 
 ### 1.2.0
