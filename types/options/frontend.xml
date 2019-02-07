@@ -1,0 +1,10 @@
+<types>
+  <type name="FrontendOptions" noToc desc="Allows to serve front-end JS files and CSS as modules, including from node_modules folder.">
+    <prop type="(string|Array<string>)" name="directory" default="frontend">
+      The directory or directories from which to serve files.
+    </prop>
+    <prop opt type="FrontendConfig" name="config">
+      `@idio/frontend` configuration.
+    </prop>
+  </type>
+</types>

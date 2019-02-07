@@ -12,6 +12,7 @@ import startApp from './lib/start-app'
  * @param {LoggerOptions} [middlewareConfig.logger] `logger` options.
  * @param {StaticOptions} [middlewareConfig.static] `static` options.
  * @param {CorsOptions} [middlewareConfig.cors] `cors` options.
+ * @param {FrontendOptions} [middlewareConfig.frontend] `frontend` options. If the option is specified, the middleware always will be used, i.e., no need to pass `use: true`.
  * @param {Config} [config] Server configuration object.
  * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
@@ -240,6 +241,20 @@ async function idioCore(middlewareConfig = {}, config = {}) {
  * @prop {LoggerOptions} [logger] `logger` options.
  * @prop {StaticOptions} [static] `static` options.
  * @prop {CorsOptions} [cors] `cors` options.
+ * @prop {FrontendOptions} [frontend] `frontend` options. If the option is specified, the middleware always will be used, i.e., no need to pass `use: true`.
+ */
+
+/* documentary types/config/frontend.xml */
+/**
+ * @typedef {Object} FrontendConfig
+ * @prop {string} [pragma="import { h } from 'preact'"] The pragma function to import. This enables to skip writing `h` at the beginning of each file. JSX will be transpiled to have `h` pragma, therefore to use React it's possible to do `import { createElement: h } from 'react'`. Default `import { h } from 'preact'`.
+ */
+
+/* documentary types/options/frontend.xml */
+/**
+ * @typedef {Object} FrontendOptions Allows to serve front-end JS files and CSS as modules, including from node_modules folder.
+ * @prop {(string|Array<string>)} [directory="frontend"] The directory or directories from which to serve files. Default `frontend`.
+ * @prop {FrontendConfig} [config] `@idio/frontend` configuration.
  */
 
 /* documentary types/config.xml */

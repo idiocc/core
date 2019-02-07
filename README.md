@@ -35,6 +35,7 @@ yarn add -E @idio/core
   * [Compression](#compression)
   * [Static Files](#static-files)
   * [CORS](#cors)
+  * [Frontend](#frontend)
 - [Custom Middleware](#custom-middleware)
 - [Router Set-up](#router-set-up)
 - [Copyright](#copyright)
@@ -57,17 +58,18 @@ The `@idio/core` accepts 2 arguments which are the middleware configuration obje
 
 __<a name="type-middlewareconfig">`MiddlewareConfig`</a>__: Middleware configuration for the `idio` `core` server.
 
-|    Name    |                      Type                      |      Description      |
-| ---------- | ---------------------------------------------- | --------------------- |
-| session    | _[SessionOptions](#type-sessionoptions)_       | `session` options.    |
-| multer     | _[MulterOptions](#type-multeroptions)_         | `multer` options.     |
-| csrf       | _[CSRFOptions](#type-csrfoptions)_             | `csrf` options.       |
-| bodyparser | _[BodyparserOptions](#type-bodyparseroptions)_ | `bodyparser` options. |
-| compress   | _[CompressOptions](#type-compressoptions)_     | `compress` options.   |
-| checkauth  | _[CheckauthOptions](#type-checkauthoptions)_   | `checkauth` options.  |
-| logger     | _[LoggerOptions](#type-loggeroptions)_         | `logger` options.     |
-| static     | _[StaticOptions](#type-staticoptions)_         | `static` options.     |
-| cors       | _[CorsOptions](#type-corsoptions)_             | `cors` options.       |
+|    Name    |                      Type                      |                                                      Description                                                       |
+| ---------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| session    | _[SessionOptions](#type-sessionoptions)_       | `session` options.                                                                                                     |
+| multer     | _[MulterOptions](#type-multeroptions)_         | `multer` options.                                                                                                      |
+| csrf       | _[CSRFOptions](#type-csrfoptions)_             | `csrf` options.                                                                                                        |
+| bodyparser | _[BodyparserOptions](#type-bodyparseroptions)_ | `bodyparser` options.                                                                                                  |
+| compress   | _[CompressOptions](#type-compressoptions)_     | `compress` options.                                                                                                    |
+| checkauth  | _[CheckauthOptions](#type-checkauthoptions)_   | `checkauth` options.                                                                                                   |
+| logger     | _[LoggerOptions](#type-loggeroptions)_         | `logger` options.                                                                                                      |
+| static     | _[StaticOptions](#type-staticoptions)_         | `static` options.                                                                                                      |
+| cors       | _[CorsOptions](#type-corsoptions)_             | `cors` options.                                                                                                        |
+| frontend   | _[FrontendOptions](#type-frontendoptions)_     | `frontend` options. If the option is specified, the middleware always will be used, i.e., no need to pass `use: true`. |
 
 __<a name="type-config">`Config`</a>__: Server configuration object.
 
@@ -453,7 +455,30 @@ __<a name="type-corsconfig">`CorsConfig`</a>__
 
 </details>
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/13.svg?sanitize=true" width="15"></a></p>
+<a href="https://github.com/idiocc/frontend"><img src="https://raw.github.com/idiocc/core/master/images/frontend.svg?sanitize=true" align="left" height="100"></a>
+<details>
+<summary><strong><a name="frontend">Frontend</a></strong>: serve JS and CSS files as modules for modern browsers.
+<hr/>
+
+__<a name="type-frontendoptions">`FrontendOptions`</a>__: Allows to serve front-end JS files and CSS as modules, including from node_modules folder.
+
+|   Name    |                   Type                   |                       Description                       |  Default   |
+| --------- | ---------------------------------------- | ------------------------------------------------------- | ---------- |
+| directory | _(string\|Array&lt;string&gt;)_          | The directory or directories from which to serve files. | `frontend` |
+| config    | _[FrontendConfig](#type-frontendconfig)_ | `@idio/frontend` configuration.                         | -          |
+</summary>
+
+__<a name="type-frontendconfig">`FrontendConfig`</a>__
+
+|  Name  |   Type   |                                                                                                           Description                                                                                                            |           Default            |
+| ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| pragma | _string_ | The pragma function to import. This enables to skip writing `h` at the beginning of each file. JSX will be transpiled to have `h` pragma, therefore to use React it's possible to do `import { createElement: h } from 'react'`. | `import { h } from 'preact'` |
+
+
+</details>
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/14.svg?sanitize=true"></a></p>
 
 ## Custom Middleware
 
@@ -554,7 +579,7 @@ Proxy started at http://localhost:5002
 ```
 
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/14.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/15.svg?sanitize=true"></a></p>
 
 ## Router Set-up
 
@@ -616,7 +641,7 @@ Page available at: http://localhost:5003/test
   --> POST /test 200
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/15.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/16.svg?sanitize=true"></a></p>
 
 ## Copyright
 

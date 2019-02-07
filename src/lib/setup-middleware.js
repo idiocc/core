@@ -11,6 +11,7 @@ import serve from 'koa-static'
 import compose from 'koa-compose'
 import { Z_SYNC_FLUSH } from 'zlib'
 import Mount from 'koa-mount'
+import frontend from '@idio/frontend'
 import checkAuth from './check-auth'
 
 function setupStatic(app, config, {
@@ -93,6 +94,25 @@ const setupLogger = (app, config) => {
   return l
 }
 
+/**
+ * @param {App} app
+ * @param {import('..').FrontendConfig} config
+ * @param {import('..').FrontendOptions} options
+ */
+const setupFrontend = (app, config, options) => {
+  const { directory } = options
+  const d = Array.isArray(directory) ? directory : [directory]
+  const res = d.map((dir) => {
+    const f = frontend({
+      ...config,
+      directory: dir,
+    })
+    app.use(f)
+    return f
+  })
+  return res
+}
+
 const map = {
   session: setupSession,
   multer: setupMulter,
@@ -103,6 +123,7 @@ const map = {
   logger: setupLogger,
   static: setupStatic,
   cors: setupCors,
+  frontend: setupFrontend,
 }
 
 /**
@@ -124,8 +145,8 @@ async function initMiddleware(name, conf, app) {
   } else {
     throw new Error('Either the "middleware" or "middlewareConstructor" properties must be passed.')
   }
-  const { use, config = {}, ...rest } = conf
-  const res = await fn(app, config, rest)
+  const { use, config = {}, ...options } = conf
+  const res = await fn(app, config, options)
   if (use) {
     app.use(res)
   }

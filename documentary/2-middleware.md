@@ -107,4 +107,12 @@ For example, the below configuration will serve files from both the `static` dir
 <data/>
 %
 
+%USE-MACRO middleware
+<data>Frontend</data>
+<data>serve JS and CSS files as modules for modern browsers</data>
+<data>https://github.com/idiocc/frontend</data>
+<data>frontend</data>
+<data/>
+%
+
 %~%

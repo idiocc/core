@@ -30,5 +30,8 @@
     <prop opt type="CorsOptions" name="cors">
       `cors` options.
     </prop>
+    <prop opt type="FrontendOptions" name="frontend">
+      `frontend` options. If the option is specified, the middleware always will be used, i.e., no need to pass `use: true`.
+    </prop>
   </type>
 </types>
