@@ -1,3 +1,9 @@
+## 8 February 2019
+
+### 1.3.1
+
+- [feature] Update `frontend` to serve direct imports (`import 'package'`).
+
 ## 7 February 2019
 
 ### 1.3.0
