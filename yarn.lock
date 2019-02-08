@@ -57,10 +57,10 @@
   resolved "https://registry.yarnpkg.com/@artdeco/clean-stack/-/clean-stack-1.0.1.tgz#7e4d3bb1b0ac62173b00e4bba7091f7847cdb088"
   integrity sha512-ZSavD8NpWA1/1SRCKrx8LZ5WfbKS1kRUIFOERJvR1jXqCAcbM3xWSP2VdCKEh4lCwWghSWQkotbpK6n+o1Y/xQ==
 
-"@idio/frontend@1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@idio/frontend/-/frontend-1.2.4.tgz#fce569be624c4afbdf2fc62b9d30332aa6b311e6"
-  integrity sha512-qOwMrXAszwUh7dNpEChRIkUxx/0qfYmmV5FR4kvjR8PRUFjiqxuFZ7B5c0CLDl0mpd5XQY7bITa4yVIj2I+mpA==
+"@idio/frontend@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@idio/frontend/-/frontend-1.3.0.tgz#d8763ea3ac96a988f1ceca1c1ebf9c81e7462005"
+  integrity sha512-WFFe0efnEax9fK/kvOW4sSfrcAedyMZ7SDE/0u9pZgcnwWKxvawdu9MG9VQ5R5G8RHdbmgfO4KJ4k0JTst0bEg==
   dependencies:
     "@a-la/jsx" "1.3.1"
     "@wrote/exists" "1.0.1"
