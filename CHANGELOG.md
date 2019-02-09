@@ -1,3 +1,9 @@
+## 10 February 2019
+
+### 1.3.2
+
+- [feature] Update `frontend` to resolve entries and local deps in `node_modules`, serve linked packages, and simplify the source transforms.
+
 ## 8 February 2019
 
 ### 1.3.1
