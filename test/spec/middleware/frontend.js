@@ -28,6 +28,17 @@ const T = {
     const res = await rqt(fullUrl)
     await test('frontend/index.jsx', res)
   },
+  async 'serves jsx index file'({ start, frontend, SNAPSHOT_DIR }, { setDir, test }) {
+    setDir(SNAPSHOT_DIR)
+    const { url } = await start({
+      frontend: {
+        directory: frontend,
+      },
+    })
+    const fullUrl = `${url}/${frontend}/`
+    const res = await rqt(fullUrl)
+    await test('frontend/index.jsx', res)
+  },
   async 'serves multiple directories'({ start, frontend, frontend2 }) {
     const { url } = await start({
       frontend: {
