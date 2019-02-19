@@ -1,3 +1,9 @@
+## 19 February 2019
+
+### 1.3.3
+
+- [deps] Update dependencies for _Frontend_ fix.
+
 ## 10 February 2019
 
 ### 1.3.2
