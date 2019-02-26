@@ -56,20 +56,20 @@
   "devDependencies": {
     "@idio/preact-fixture": "1.0.0",
     "@wrote/read": "1.0.2",
-    "alamode": "1.8.2",
+    "alamode": "1.8.3",
     "catchment": "3.2.2",
-    "documentary": "1.21.2",
+    "documentary": "1.21.3",
     "eslint-config-artdeco": "1.0.1",
     "rqt": "3.1.2",
     "snapshot-context": "2.0.4",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.7.2"
+    "zoroaster": "3.8.0"
   },
   "dependencies": {
-    "@idio/frontend": "1.4.1",
+    "@idio/frontend": "1.4.2",
     "@koa/cors": "2.2.3",
     "@types/koa": "2.0.48",
-    "@types/koa-router": "7.0.39",
+    "@types/koa-router": "7.0.40",
     "@wrote/ensure-path": "1.0.5",
     "erotic": "2.0.2",
     "koa": "2.7.0",
