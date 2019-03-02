@@ -1,3 +1,9 @@
+## 2 March 2019
+
+### 1.3.5
+
+- [deps] Update dependencies (jsx+frontend: pass through `true` boolean attribute).
+
 ## 26 February 2019
 
 ### 1.3.4

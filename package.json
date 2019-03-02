@@ -58,7 +58,7 @@
     "@wrote/read": "1.0.2",
     "alamode": "1.8.3",
     "catchment": "3.2.2",
-    "documentary": "1.21.3",
+    "documentary": "1.21.4",
     "eslint-config-artdeco": "1.0.1",
     "rqt": "3.1.2",
     "snapshot-context": "2.0.4",
@@ -66,7 +66,7 @@
     "zoroaster": "3.8.0"
   },
   "dependencies": {
-    "@idio/frontend": "1.4.2",
+    "@idio/frontend": "1.4.3",
     "@koa/cors": "2.2.3",
     "@types/koa": "2.0.48",
     "@types/koa-router": "7.0.40",

@@ -40,6 +40,14 @@
     "@a-la/detect-jsx" "1.0.1"
     restream "3.5.0"
 
+"@a-la/jsx@1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@a-la/jsx/-/jsx-1.4.4.tgz#9a4354e57641bbb5da935be1bdbdbb941d7d0ffe"
+  integrity sha512-Egxnz/h2bpOhvOMji0hrd9RFPKb5ID+uMfbVJZdqgO/SJHYH3a+Khxm+ScBhk2ZZo30skR7V33pwzjB3krKBEA==
+  dependencies:
+    "@a-la/detect-jsx" "1.0.1"
+    restream "3.5.0"
+
 "@a-la/markers@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@a-la/markers/-/markers-1.0.3.tgz#2800c812acce35d01756cd82a0553320d405f38d"
@@ -55,12 +63,12 @@
   resolved "https://registry.yarnpkg.com/@artdeco/clean-stack/-/clean-stack-1.0.1.tgz#7e4d3bb1b0ac62173b00e4bba7091f7847cdb088"
   integrity sha512-ZSavD8NpWA1/1SRCKrx8LZ5WfbKS1kRUIFOERJvR1jXqCAcbM3xWSP2VdCKEh4lCwWghSWQkotbpK6n+o1Y/xQ==
 
-"@idio/frontend@1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@idio/frontend/-/frontend-1.4.2.tgz#005b2fb9be9f7726a33bd65768008efc52b42e56"
-  integrity sha512-FDGWDYuhkvadqELlDP6OznyGpE/5QF5kfnJHbHeQR9klrZvXlB+2Wkaz5V83ugmIYF4XZdlORHavOF6LZRNFOA==
+"@idio/frontend@1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@idio/frontend/-/frontend-1.4.3.tgz#bb1f35a48d80a9b8280db31f251986744278542d"
+  integrity sha512-IuvnwEQ71HenI7ChztQNc2C12XRMOukBAx1w9KQgxSOgnfGwAmG805dYrx9MIL8qpWYri+AsEQjpgFu7ndJddw==
   dependencies:
-    "@a-la/jsx" "1.4.3"
+    "@a-la/jsx" "1.4.4"
     "@wrote/exists" "1.0.1"
     "@wrote/read" "1.0.2"
     catchment "3.2.2"
@@ -612,10 +620,10 @@ difflib@~0.2.1:
   dependencies:
     heap ">= 0.2.0"
 
-documentary@1.21.3:
-  version "1.21.3"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.21.3.tgz#dd27d5937e387be4ae51a48a2c502f1a08a705c0"
-  integrity sha512-vrdi17zANLenaNjX+Ns9zL3HCxvEG6NrEgHybc8w9WX5M1rdVk1NGwCLpGYC2u3wrqaIqQBGvQgzzwrHNkXkUA==
+documentary@1.21.4:
+  version "1.21.4"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.21.4.tgz#8dbeded99a04bd3b98acb64914d7c6239b63d4b8"
+  integrity sha512-Ly9t/VLOiXoxJ9GjFH2gGOsyA6OlkF57ZdVOOr1E1uXrIZVQs83NIkCCURPxiyu+kfepkiD7FmXbhu8fZebXsw==
   dependencies:
     "@wrote/clone" "1.1.0"
     "@wrote/ensure-path" "1.0.5"
