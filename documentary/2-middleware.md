@@ -94,8 +94,8 @@ $5
 <data>
 For example, the below configuration will serve files from both the `static` directory of the project, and the _React.js_ dependency. When `NODE_ENV` environment variable is set to `production`, files will be cached for 10 days.
 
-%EXAMPLE: example/static.js, ../src => @idio/core%
-%FORK example example/static.js%
+%EXAMPLE: example/static, ../src => @idio/core%
+%FORK example/static%
 </data>
 %
 

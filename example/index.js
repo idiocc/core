@@ -1,5 +1,30 @@
-const { join } = require('path')
-require('alamode')()
+/* start example */
+import idioCore from '../src'
 
-const p = join(__dirname, '..', process.argv[2])
-require(p)
+const Server = async () => {
+  const { url } = await idioCore({
+    logger: {
+      use: true,
+    },
+    static: {
+      use: true,
+      root: 'example/static',
+      mount: '/static',
+    },
+    compress: {
+      use: true,
+      config: {
+        threshold: 1024,
+      },
+    },
+  }, {
+    port: 8080,
+  })
+  console.log('File available at: %s/static/test.txt', url)
+}
+/* end example */
+
+(async () => {
+  await Server()
+  process.exit()
+})()

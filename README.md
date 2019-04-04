@@ -166,15 +166,15 @@ __<a name="type-sessionoptions">`SessionOptions`</a>__
 
 __<a name="type-sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-session`.
 
-|   Name    |        Type         |                                                                                        Description                                                                                        |  Default   |
-| --------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| key       | _string_            | Cookie key.                                                                                                                                                                               | `koa:sess` |
-| maxAge    | _number\|'session'_ | maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. | `86400000` |
-| overwrite | _boolean_           | Can overwrite or not.                                                                                                                                                                     | `true`     |
-| httpOnly  | _boolean_           | httpOnly or not.                                                                                                                                                                          | `true`     |
-| signed    | _boolean_           | Signed or not.                                                                                                                                                                            | `true`     |
-| rolling   | _boolean_           | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.                                        | `false`    |
-| renew     | _boolean_           | Renew session when session is nearly expired, so we can always keep user logged in.                                                                                                       | `false`    |
+|   Name    |         Type          |                                                                                        Description                                                                                        |  Default   |
+| --------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| key       | _string_              | Cookie key.                                                                                                                                                                               | `koa:sess` |
+| maxAge    | _number \| 'session'_ | maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. | `86400000` |
+| overwrite | _boolean_             | Can overwrite or not.                                                                                                                                                                     | `true`     |
+| httpOnly  | _boolean_             | httpOnly or not.                                                                                                                                                                          | `true`     |
+| signed    | _boolean_             | Signed or not.                                                                                                                                                                            | `true`     |
+| rolling   | _boolean_             | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.                                        | `false`    |
+| renew     | _boolean_             | Renew session when session is nearly expired, so we can always keep user logged in.                                                                                                       | `false`    |
 
 
 </details>
@@ -203,25 +203,25 @@ __<a name="type-multeroptions">`MulterOptions`</a>__
 
 __<a name="type-limits">`Limits`</a>__: [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
 
-|     Name      |   Type   |                                Description                                |  Default   |
-| ------------- | -------- | ------------------------------------------------------------------------- | ---------- |
-| fieldNameSize | _number_ | Max field name size in bytes.                                             | `100`      |
-| fieldSize     | _number_ | Max field value size in bytes.                                            | `1024`     |
-| fields        | _number_ | Max number of non-file fields.                                            | `Infinity` |
-| fileSize      | _number_ | For multipart forms, the max file size in bytes.                          | `Infinity` |
-| files         | _number_ | For multipart forms, the max number of file fields.                       | `Infinity` |
-| parts         | _number_ | For multipart forms, the max number of parts (fields + files).            | `Infinity` |
-| headerPairs   | _number_ | For multipart forms, the max number of header key=> value pairs to parse. | `2000`     |
+|     Name      |   Type   |                                 Description                                  |  Default   |
+| ------------- | -------- | ---------------------------------------------------------------------------- | ---------- |
+| fieldNameSize | _number_ | Max field name size in bytes.                                                | `100`      |
+| fieldSize     | _number_ | Max field value size in bytes.                                               | `1024`     |
+| fields        | _number_ | Max number of non-file fields.                                               | `Infinity` |
+| fileSize      | _number_ | For multipart forms, the max file size in bytes.                             | `Infinity` |
+| files         | _number_ | For multipart forms, the max number of file fields.                          | `Infinity` |
+| parts         | _number_ | For multipart forms, the max number of parts (fields + files).               | `Infinity` |
+| headerPairs   | _number_ | For multipart forms, the max number of header key=&gt; value pairs to parse. | `2000`     |
 
 __<a name="type-multerconfig">`MulterConfig`</a>__
 
-|     Name     |                                                  Type                                                  |                                           Description                                           | Default |
-| ------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------- |
-| dest         | _string_                                                                                               | Where to store the files.                                                                       | -       |
-| storage      | _[StorageEngine](#type-storageengine)_                                                                 | Where to store the files.                                                                       | -       |
-| fileFilter   | _(req: IncomingMessage, file: File, callback: (error: Error \| null, acceptFile: boolean)) =&gt; void_ | [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted. | -       |
-| limits       | _[Limits](#type-limits)_                                                                               | Limits of the uploaded data.                                                                    | -       |
-| preservePath | _boolean_                                                                                              | Keep the full path of files instead of just the base name.                                      | `false` |
+|     Name     |                                                   Type                                                   |                                           Description                                           | Default |
+| ------------ | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------- |
+| dest         | _string_                                                                                                 | Where to store the files.                                                                       | -       |
+| storage      | _[StorageEngine](#type-storageengine)_                                                                   | Where to store the files.                                                                       | -       |
+| fileFilter   | _(req: IncomingMessage, file: File, callback: (error: (Error \| null), acceptFile: boolean)) =&gt; void_ | [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted. | -       |
+| limits       | _[Limits](#type-limits)_                                                                                 | Limits of the uploaded data.                                                                    | -       |
+| preservePath | _boolean_                                                                                                | Keep the full path of files instead of just the base name.                                      | `false` |
 
 
 </details>
@@ -369,7 +369,7 @@ __<a name="type-staticoptions">`StaticOptions`</a>__
 
 |   Name    |                 Type                 |                    Description                    | Default |
 | --------- | ------------------------------------ | ------------------------------------------------- | ------- |
-| __root*__ | _string\|string[]_                   | Root or multiple roots from which to serve files. | -       |
+| __root*__ | _string \| string[]_                 | Root or multiple roots from which to serve files. | -       |
 | use       | _boolean_                            | Use this middleware for every request.            | `false` |
 | mount     | _string_                             | Path from which to serve files.                   | `/`     |
 | maxage    | _number_                             | How long to cache file for.                       | `0`     |
@@ -433,24 +433,24 @@ Static server started on http://localhost:5004
 
 __<a name="type-corsoptions">`CorsOptions`</a>__
 
-|  Name  |                           Type                            |                                                                                                                                                                                                             Description                                                                                                                                                                                                              | Default |
-| ------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-| origin | _string\|Array&lt;string&gt;\|((ctx: Context) => string)_ | The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If a function is passed, it should return the string with the origin to set. If not passed, the request origin is returned, allowing any origin to access the resource. | -       |
-| use    | _boolean_                                                 | Use this middleware for every request.                                                                                                                                                                                                                                                                                                                                                                                               | `false` |
-| config | _[CorsConfig](#type-corsconfig)_                          | `@koa/cors` configuration.                                                                                                                                                                                                                                                                                                                                                                                                           | -       |
+|  Name  |                             Type                              |                                                                                                                                                                                                             Description                                                                                                                                                                                                              | Default |
+| ------ | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| origin | _string \| Array&lt;string&gt; \| ((ctx: Context) => string)_ | The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If a function is passed, it should return the string with the origin to set. If not passed, the request origin is returned, allowing any origin to access the resource. | -       |
+| use    | _boolean_                                                     | Use this middleware for every request.                                                                                                                                                                                                                                                                                                                                                                                               | `false` |
+| config | _[CorsConfig](#type-corsconfig)_                              | `@koa/cors` configuration.                                                                                                                                                                                                                                                                                                                                                                                                           | -       |
 </summary>
 
 __<a name="type-corsconfig">`CorsConfig`</a>__
 
-|        Name        |             Type              |                      Description                       |             Default              |
-| ------------------ | ----------------------------- | ------------------------------------------------------ | -------------------------------- |
-| origin             | _string_                      | `Access-Control-Allow-Origin` header value.            | `request Origin header`          |
-| allowMethods       | _string\|Array&lt;string&gt;_ | `Access-Control-Allow-Methods` header value.           | `GET,HEAD,PUT,POST,DELETE,PATCH` |
-| exposeHeaders      | _string\|Array&lt;string&gt;_ | `Access-Control-Expose-Headers` header value.          | -                                |
-| allowHeaders       | _string\|Array&lt;string&gt;_ | `Access-Control-Allow-Headers` header value.           | -                                |
-| maxAge             | _string\|number_              | `Access-Control-Max-Age` header value in seconds.      | -                                |
-| credentials        | _boolean_                     | `Access-Control-Allow-Credentials` header value.       | `false`                          |
-| keepHeadersOnError | _boolean_                     | Add set headers to `err.header` if an error is thrown. | `false`                          |
+|        Name        |              Type               |                      Description                       |             Default              |
+| ------------------ | ------------------------------- | ------------------------------------------------------ | -------------------------------- |
+| origin             | _string_                        | `Access-Control-Allow-Origin` header value.            | `request Origin header`          |
+| allowMethods       | _string \| Array&lt;string&gt;_ | `Access-Control-Allow-Methods` header value.           | `GET,HEAD,PUT,POST,DELETE,PATCH` |
+| exposeHeaders      | _string \| Array&lt;string&gt;_ | `Access-Control-Expose-Headers` header value.          | -                                |
+| allowHeaders       | _string \| Array&lt;string&gt;_ | `Access-Control-Allow-Headers` header value.           | -                                |
+| maxAge             | _string \| number_              | `Access-Control-Max-Age` header value in seconds.      | -                                |
+| credentials        | _boolean_                       | `Access-Control-Allow-Credentials` header value.       | `false`                          |
+| keepHeadersOnError | _boolean_                       | Add set headers to `err.header` if an error is thrown. | `false`                          |
 
 
 </details>
@@ -465,7 +465,7 @@ __<a name="type-frontendoptions">`FrontendOptions`</a>__: Allows to serve front-
 
 |   Name    |                   Type                   |                       Description                       |  Default   |
 | --------- | ---------------------------------------- | ------------------------------------------------------- | ---------- |
-| directory | _(string\|Array&lt;string&gt;)_          | The directory or directories from which to serve files. | `frontend` |
+| directory | _(string \| Array&lt;string&gt;)_        | The directory or directories from which to serve files. | `frontend` |
 | config    | _[FrontendConfig](#type-frontendconfig)_ | `@idio/frontend` configuration.                         | -          |
 </summary>
 
@@ -656,22 +656,19 @@ Middleware types descriptions by their respective authors.
         <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
       </a>
     </th>
+    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a> 2019</th>
     <th>
-      © <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a>
-      2019
-    </th><th>
-        <a href="https://idio.cc">
-          <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio" />
-        </a>
-      </th>
-    <th>
-      <a href="https://www.technation.sucks" title="Tech Nation Visa">
-        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif" alt="Tech Nation Visa" />
+      <a href="https://idio.cc">
+        <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio" />
       </a>
     </th>
     <th>
-      <a href="https://www.technation.sucks">Tech Nation Visa Sucks</a>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif"
+          alt="Tech Nation Visa" />
+      </a>
     </th>
+    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
   </tr>
 </table>
 

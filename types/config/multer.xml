@@ -29,7 +29,7 @@
     <prop opt type="StorageEngine" name="storage">
       Where to store the files.
     </prop>
-    <prop opt type="(req: IncomingMessage, file: File, callback: (error: Error | null, acceptFile: boolean)) => void" name="fileFilter">
+    <prop opt type="(req: IncomingMessage, file: File, callback: (error: (Error|null), acceptFile: boolean)) => void" name="fileFilter">
       [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted.
     </prop>
     <prop opt type="Limits" name="limits">
