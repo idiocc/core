@@ -1,11 +1,15 @@
 import { equal } from 'assert'
 import rqt, { aqt } from 'rqt'
+import Zoroaster from 'zoroaster'
 import Context from '../../context'
-import SnapshotContext from 'snapshot-context'
 
-/** @type {Object.<string, (c: Context, s: SnapshotContext)>} */
+/** @type {Object.<string, (c: Context, z: Zoroaster)>} */
 const T = {
-  context: [Context, SnapshotContext],
+  context: [Context, class extends Zoroaster {
+    static get snapshotExtension() {
+      return 'js'
+    }
+  }],
   async 'serves redirect'({ start, frontend }) {
     const { url } = await start({
       frontend: {
@@ -17,8 +21,7 @@ const T = {
     equal(statusCode, 302)
     equal(location, `/${frontend}/index.jsx`)
   },
-  async 'serves jsx file'({ start, frontend, SNAPSHOT_DIR }, { setDir, test }) {
-    setDir(SNAPSHOT_DIR)
+  async 'serves jsx file'({ start, frontend }) {
     const { url } = await start({
       frontend: {
         directory: frontend,
@@ -26,10 +29,9 @@ const T = {
     })
     const fullUrl = `${url}/${frontend}/index.jsx`
     const res = await rqt(fullUrl)
-    await test('frontend/index.jsx', res)
+    return res
   },
-  async 'serves jsx index file'({ start, frontend, SNAPSHOT_DIR }, { setDir, test }) {
-    setDir(SNAPSHOT_DIR)
+  async 'serves jsx index file'({ start, frontend }, { snapshotSource }) {
     const { url } = await start({
       frontend: {
         directory: frontend,
@@ -37,7 +39,8 @@ const T = {
     })
     const fullUrl = `${url}/${frontend}/`
     const res = await rqt(fullUrl)
-    await test('frontend/index.jsx', res)
+    snapshotSource('serves jsx file')
+    return res
   },
   async 'serves multiple directories'({ start, frontend, frontend2 }) {
     const { url } = await start({
@@ -52,8 +55,7 @@ const T = {
     const { statusCode: sc } = await aqt(fullUrl2)
     equal(sc, 200)
   },
-  async 'serves alt pragma'({ start, frontend, SNAPSHOT_DIR }, { setDir, test }) {
-    setDir(SNAPSHOT_DIR)
+  async 'serves alt pragma'({ start, frontend }) {
     const { url } = await start({
       frontend: {
         directory: frontend,
@@ -64,7 +66,7 @@ const T = {
     })
     const fullUrl = `${url}/${frontend}/index.jsx`
     const res = await rqt(fullUrl)
-    await test('frontend/pragma.jsx', res)
+    return res
   },
 }
 

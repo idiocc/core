@@ -27,9 +27,6 @@ export default class Context {
   async _destroy() {
     if (this.app) await this.app.destroy()
   }
-  get SNAPSHOT_DIR() {
-    return join(__dirname, '../snapshot')
-  }
   get staticDir() {
     return join(FIXTURE, 'static')
   }
