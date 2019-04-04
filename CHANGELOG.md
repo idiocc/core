@@ -1,3 +1,9 @@
+## 4 April 2019
+
+### [1.3.6](https://github.com/idiojs/core/compare/v1.3.5...v1.3.6)
+
+- [deps] Unfix dependencies.
+
 ## 2 March 2019
 
 ### 1.3.5
