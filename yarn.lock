@@ -47,10 +47,10 @@
   resolved "https://registry.yarnpkg.com/@depack/split/-/split-1.0.0.tgz#37fea28d9bc6f01e5a2da87d393f402781bb7e99"
   integrity sha512-PNJPl01VFMKtyN7qBZ2cds4N/lO2KvzLrR7JamODFiuuL2X8mGoTKp1SI8fxlT2MwLV8mScCUKn55QPwsUX7iA==
 
-"@goa/koa@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@goa/koa/-/koa-1.0.1.tgz#62ddb5c12050d093872a39785cb97ab50177f1ff"
-  integrity sha512-XWeP0TrtRtbONkatUDKSL3cNfBMpSzj0uG/R8+NT1p/f8P2wXwrKQ59NMlQy1DGgF03VqXl6QNzxItSMMfmYFg==
+"@goa/koa@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@goa/koa/-/koa-1.0.2.tgz#2d1c95204f4e97dd7c3327888060bfe0771821bf"
+  integrity sha512-pXQoRg3dyHuIiFAK0rSjdVKPNYb0JmkozFg5yUjWlQrEPqkoVQxwBOw7vycP/fiOTr1nN3haFZgdjpV5lG6ZUw==
 
 "@idio/frontend@^1.5.0":
   version "1.5.0"
