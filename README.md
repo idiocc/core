@@ -58,47 +58,47 @@ The `@idio/core` accepts 2 arguments which are the middleware configuration obje
 
 __<a name="type-middlewareconfig">`MiddlewareConfig`</a>__: Middleware configuration for the `idio` `core` server.
 
-|    Name    |                      Type                      |                                                      Description                                                       |
-| ---------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| session    | _[SessionOptions](#type-sessionoptions)_       | `session` options.                                                                                                     |
-| multer     | _[MulterOptions](#type-multeroptions)_         | `multer` options.                                                                                                      |
-| csrf       | _[CSRFOptions](#type-csrfoptions)_             | `csrf` options.                                                                                                        |
-| bodyparser | _[BodyparserOptions](#type-bodyparseroptions)_ | `bodyparser` options.                                                                                                  |
-| compress   | _[CompressOptions](#type-compressoptions)_     | `compress` options.                                                                                                    |
-| checkauth  | _[CheckauthOptions](#type-checkauthoptions)_   | `checkauth` options.                                                                                                   |
-| logger     | _[LoggerOptions](#type-loggeroptions)_         | `logger` options.                                                                                                      |
-| static     | _[StaticOptions](#type-staticoptions)_         | `static` options.                                                                                                      |
-| cors       | _[CorsOptions](#type-corsoptions)_             | `cors` options.                                                                                                        |
-| frontend   | _[FrontendOptions](#type-frontendoptions)_     | `frontend` options. If the option is specified, the middleware always will be used, i.e., no need to pass `use: true`. |
+|    Name    |                                                                              Type                                                                               |                                                      Description                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| session    | <em>[SessionOptions](#type-sessionoptions)</em>                                                                                                                 | `session` options.                                                                                                     |
+| multer     | <em>[MulterOptions](#type-multeroptions)</em>                                                                                                                   | `multer` options.                                                                                                      |
+| csrf       | <em>[CSRFOptions](#type-csrfoptions)</em>                                                                                                                       | `csrf` options.                                                                                                        |
+| bodyparser | <em>[BodyparserOptions](#type-bodyparseroptions)</em>                                                                                                           | `bodyparser` options.                                                                                                  |
+| compress   | <em>[CompressOptions](#type-compressoptions)</em>                                                                                                               | `compress` options.                                                                                                    |
+| checkauth  | <em>[CheckauthOptions](#type-checkauthoptions)</em>                                                                                                             | `checkauth` options.                                                                                                   |
+| logger     | <em>[LoggerOptions](#type-loggeroptions)</em>                                                                                                                   | `logger` options.                                                                                                      |
+| static     | <em>[StaticOptions](#type-staticoptions)</em>                                                                                                                   | `static` options.                                                                                                      |
+| cors       | <em>[CorsOptions](#type-corsoptions)</em>                                                                                                                       | `cors` options.                                                                                                        |
+| frontend   | <em><a href="#type-frontendoptions" title="Allows to serve front-end JS files and CSS as modules, including from node_modules folder.">FrontendOptions</a></em> | `frontend` options. If the option is specified, the middleware always will be used, i.e., no need to pass `use: true`. |
 
 __<a name="type-config">`Config`</a>__: Server configuration object.
 
-| Name |   Type   |              Description               |  Default  |
-| ---- | -------- | -------------------------------------- | --------- |
-| port | _number_ | The port on which to start the server. | `5000`    |
-| host | _string_ | The host on which to listen.           | `0.0.0.0` |
+| Name |      Type       |              Description               |  Default  |
+| ---- | --------------- | -------------------------------------- | --------- |
+| port | <em>number</em> | The port on which to start the server. | `5000`    |
+| host | <em>string</em> | The host on which to listen.           | `0.0.0.0` |
 
 ---
 
 The return type contains the _URL_, _Application_ and _Router_ instances, and the map of configured middleware, which could then be [passed to the router](#router-set-up).
 
-[`import('koa').Application`](https://github.com/koajs/koa/blob/master/docs/api/index.md#application) __<a name="type-application">`Application`</a>__: An instance of the Koa application.
+[`import('@goa/koa').Application`](https://github.com/idiocc/goa/blob/master/doc/TYPES.md#type-_goaapplication) __<a name="type-_goaapplication">`_goa.Application`</a>__: An instance of the Koa application.
 
-[`import('koa').Middleware`](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) __<a name="type-middleware">`Middleware`</a>__: An async middleware function.
+[`import('@goa/koa').Middleware`](https://github.com/idiocc/goa/blob/master/doc/TYPES.md#type-_goamiddleware) __<a name="type-_goamiddleware">`_goa.Middleware`</a>__: An async middleware function.
 
-[`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="type-router">`Router`</a>__: An instance of the Koa router.
+[`import('koa-router').Router`](https://github.com/alexmingoia/koa-router#exp_module_koa-router--Router) __<a name="type-koa-routerrouter">`koa-router.Router`</a>__: An instance of the Koa router.
 
-[`import('http').Server`](https://nodejs.org/api/http.html#http_class_http_server) __<a name="type-server">`Server`</a>__: An instance of the Node's Server class.
+[`import('http').Server`](https://nodejs.org/api/http.html#http_class_http_server) __<a name="type-httpserver">`http.Server`</a>__: An instance of the Node's Server class.
 
 __<a name="type-idiocore">`IdioCore`</a>__: An object containing the url and references to the app, router and middleware.
 
-|    Name    |                          Type                           |                                             Description                                              |         Default         |
-| ---------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------- |
-| url        | _string_                                                | The url on which the server is accessible.                                                           | `http://localhost:5000` |
-| app        | _[Application](#type-application)_                      | The `Koa` application.                                                                               | -                       |
-| router     | _[Router](#type-router)_                                | The `koa-router` instance.                                                                           | -                       |
-| server     | _[Server](#type-server)_                                | The `http` server instance.                                                                          | -                       |
-| middleware | _Object.&lt;string, [Middleware](#type-middleware)&gt;_ | The map of configured middleware functions which could then be set up to be used on a certain route. | -                       |
+|    Name    |                                                          Type                                                           |                                             Description                                              |         Default         |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------- |
+| url        | <em>string</em>                                                                                                         | The url on which the server is accessible.                                                           | `http://localhost:5000` |
+| app        | <em><a href="#type-_goaapplication" title="An instance of the Koa application.">_goa.Application</a></em>               | The `Koa` application.                                                                               | -                       |
+| router     | <em>Router</em>                                                                                                         | The `koa-router` instance.                                                                           | -                       |
+| server     | <em><a href="#type-httpserver" title="An instance of the Node's Server class.">http.Server</a></em>                     | The `http` server instance.                                                                          | -                       |
+| middleware | <em>Object&lt;string, <a href="#type-_goamiddleware" title="An async middleware function.">_goa.Middleware</a>&gt;</em> | The map of configured middleware functions which could then be set up to be used on a certain route. | -                       |
 
 ---
 
@@ -157,24 +157,24 @@ Each middleware accepts the following properties:
 
 __<a name="type-sessionoptions">`SessionOptions`</a>__
 
-|   Name    |                  Type                  |                 Description                  | Default |
-| --------- | -------------------------------------- | -------------------------------------------- | ------- |
-| __keys*__ | _string[]_                             | A set of keys to be installed in `app.keys`. | -       |
-| use       | _boolean_                              | Use this middleware for every request.       | `false` |
-| config    | _[SessionConfig](#type-sessionconfig)_ | `koa-session` configuration.                 | -       |
+|   Name    |                                                  Type                                                   |                 Description                  | Default |
+| --------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------- |
+| __keys*__ | <em>string[]</em>                                                                                       | A set of keys to be installed in `app.keys`. | -       |
+| use       | <em>boolean</em>                                                                                        | Use this middleware for every request.       | `false` |
+| config    | <em><a href="#type-sessionconfig" title="Configuration passed to `koa-session`.">SessionConfig</a></em> | `koa-session` configuration.                 | -       |
 </summary>
 
 __<a name="type-sessionconfig">`SessionConfig`</a>__: Configuration passed to `koa-session`.
 
-|   Name    |         Type          |                                                                                        Description                                                                                        |  Default   |
-| --------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| key       | _string_              | Cookie key.                                                                                                                                                                               | `koa:sess` |
-| maxAge    | _number \| 'session'_ | maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. | `86400000` |
-| overwrite | _boolean_             | Can overwrite or not.                                                                                                                                                                     | `true`     |
-| httpOnly  | _boolean_             | httpOnly or not.                                                                                                                                                                          | `true`     |
-| signed    | _boolean_             | Signed or not.                                                                                                                                                                            | `true`     |
-| rolling   | _boolean_             | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.                                        | `false`    |
-| renew     | _boolean_             | Renew session when session is nearly expired, so we can always keep user logged in.                                                                                                       | `false`    |
+|   Name    |              Type              |                                                                                        Description                                                                                        |  Default   |
+| --------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| key       | <em>string</em>                | Cookie key.                                                                                                                                                                               | `koa:sess` |
+| maxAge    | <em>(number \| 'session')</em> | maxAge in ms with default of 1 day. `session` will result in a cookie that expires when session/browser is closed. Warning: If a session cookie is stolen, this cookie will never expire. | `86400000` |
+| overwrite | <em>boolean</em>               | Can overwrite or not.                                                                                                                                                                     | `true`     |
+| httpOnly  | <em>boolean</em>               | httpOnly or not.                                                                                                                                                                          | `true`     |
+| signed    | <em>boolean</em>               | Signed or not.                                                                                                                                                                            | `true`     |
+| rolling   | <em>boolean</em>               | Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown.                                        | `false`    |
+| renew     | <em>boolean</em>               | Renew session when session is nearly expired, so we can always keep user logged in.                                                                                                       | `false`    |
 
 
 </details>
@@ -187,41 +187,41 @@ __<a name="type-sessionconfig">`SessionConfig`</a>__: Configuration passed to `k
 
 __<a name="type-multeroptions">`MulterOptions`</a>__
 
-|  Name  |                 Type                 |              Description               | Default |
-| ------ | ------------------------------------ | -------------------------------------- | ------- |
-| use    | _boolean_                            | Use this middleware for every request. | `false` |
-| config | _[MulterConfig](#type-multerconfig)_ | `koa-multer` configuration.            | -       |
+|  Name  |                    Type                     |              Description               | Default |
+| ------ | ------------------------------------------- | -------------------------------------- | ------- |
+| use    | <em>boolean</em>                            | Use this middleware for every request. | `false` |
+| config | <em>[MulterConfig](#type-multerconfig)</em> | `koa-multer` configuration.            | -       |
 </summary>
 
-[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="type-incomingmessage">`IncomingMessage`</a>__
+[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="type-httpincomingmessage">`http.IncomingMessage`</a>__
 
-[`import('fs').Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) __<a name="type-stats">`Stats`</a>__
+[`import('fs').Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) __<a name="type-fsstats">`fs.Stats`</a>__
 
-[`import('koa-multer').StorageEngine`](https://github.com/expressjs/multer#storage) __<a name="type-storageengine">`StorageEngine`</a>__
+[`import('koa-multer').StorageEngine`](https://github.com/expressjs/multer#storage) __<a name="type-koa-multerstorageengine">`koa-multer.StorageEngine`</a>__
 
-[`import('koa-multer').File`](https://github.com/expressjs/multer#file-information.) __<a name="type-file">`File`</a>__
+[`import('koa-multer').File`](https://github.com/expressjs/multer#file-information.) __<a name="type-koa-multerfile">`koa-multer.File`</a>__
 
 __<a name="type-limits">`Limits`</a>__: [An object](https://github.com/expressjs/multer#limits) specifying the size limits.
 
-|     Name      |   Type   |                                 Description                                  |  Default   |
-| ------------- | -------- | ---------------------------------------------------------------------------- | ---------- |
-| fieldNameSize | _number_ | Max field name size in bytes.                                                | `100`      |
-| fieldSize     | _number_ | Max field value size in bytes.                                               | `1024`     |
-| fields        | _number_ | Max number of non-file fields.                                               | `Infinity` |
-| fileSize      | _number_ | For multipart forms, the max file size in bytes.                             | `Infinity` |
-| files         | _number_ | For multipart forms, the max number of file fields.                          | `Infinity` |
-| parts         | _number_ | For multipart forms, the max number of parts (fields + files).               | `Infinity` |
-| headerPairs   | _number_ | For multipart forms, the max number of header key=&gt; value pairs to parse. | `2000`     |
+|     Name      |      Type       |                                 Description                                  |  Default   |
+| ------------- | --------------- | ---------------------------------------------------------------------------- | ---------- |
+| fieldNameSize | <em>number</em> | Max field name size in bytes.                                                | `100`      |
+| fieldSize     | <em>number</em> | Max field value size in bytes.                                               | `1024`     |
+| fields        | <em>number</em> | Max number of non-file fields.                                               | `Infinity` |
+| fileSize      | <em>number</em> | For multipart forms, the max file size in bytes.                             | `Infinity` |
+| files         | <em>number</em> | For multipart forms, the max number of file fields.                          | `Infinity` |
+| parts         | <em>number</em> | For multipart forms, the max number of parts (fields + files).               | `Infinity` |
+| headerPairs   | <em>number</em> | For multipart forms, the max number of header key=&gt; value pairs to parse. | `2000`     |
 
 __<a name="type-multerconfig">`MulterConfig`</a>__
 
-|     Name     |                                                   Type                                                   |                                           Description                                           | Default |
-| ------------ | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------- |
-| dest         | _string_                                                                                                 | Where to store the files.                                                                       | -       |
-| storage      | _[StorageEngine](#type-storageengine)_                                                                   | Where to store the files.                                                                       | -       |
-| fileFilter   | _(req: IncomingMessage, file: File, callback: (error: (Error \| null), acceptFile: boolean)) =&gt; void_ | [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted. | -       |
-| limits       | _[Limits](#type-limits)_                                                                                 | Limits of the uploaded data.                                                                    | -       |
-| preservePath | _boolean_                                                                                                | Keep the full path of files instead of just the base name.                                      | `false` |
+|     Name     |                                                                  Type                                                                  |                                           Description                                           | Default |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------- |
+| dest         | <em>string</em>                                                                                                                        | Where to store the files.                                                                       | -       |
+| storage      | <em>StorageEngine</em>                                                                                                                 | Where to store the files.                                                                       | -       |
+| fileFilter   | <em>(req: IncomingMessage, file: File, callback: (error: (Error|null), acceptFile: boolean)) => void</em>                              | [Function](https://github.com/expressjs/multer#filefilter) to control which files are accepted. | -       |
+| limits       | <em><a href="#type-limits" title="[An object](https://github.com/expressjs/multer#limits) specifying the size limits.">Limits</a></em> | Limits of the uploaded data.                                                                    | -       |
+| preservePath | <em>boolean</em>                                                                                                                       | Keep the full path of files instead of just the base name.                                      | `false` |
 
 
 </details>
@@ -234,22 +234,22 @@ __<a name="type-multerconfig">`MulterConfig`</a>__
 
 __<a name="type-csrfoptions">`CSRFOptions`</a>__
 
-|  Name  |               Type               |              Description               | Default |
-| ------ | -------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                        | Use this middleware for every request. | `false` |
-| config | _[CSRFConfig](#type-csrfconfig)_ | `koa-csrf` configuration.              | -       |
+|  Name  |                  Type                   |              Description               | Default |
+| ------ | --------------------------------------- | -------------------------------------- | ------- |
+| use    | <em>boolean</em>                        | Use this middleware for every request. | `false` |
+| config | <em>[CSRFConfig](#type-csrfconfig)</em> | `koa-csrf` configuration.              | -       |
 </summary>
 
 __<a name="type-csrfconfig">`CSRFConfig`</a>__
 
-|              Name              |    Type    | Description |
-| ------------------------------ | ---------- | ----------- |
-| invalidSessionSecretMessage    | _string_   |             |
-| invalidSessionSecretStatusCode | _number_   |             |
-| invalidTokenMessage            | _string_   |             |
-| invalidTokenStatusCode         | _number_   |             |
-| excludedMethods                | _string[]_ |             |
-| disableQuery                   | _boolean_  |             |
+|              Name              |       Type        | Description |
+| ------------------------------ | ----------------- | ----------- |
+| invalidSessionSecretMessage    | <em>string</em>   |             |
+| invalidSessionSecretStatusCode | <em>number</em>   |             |
+| invalidTokenMessage            | <em>string</em>   |             |
+| invalidTokenStatusCode         | <em>number</em>   |             |
+| excludedMethods                | <em>string[]</em> |             |
+| disableQuery                   | <em>boolean</em>  |             |
 
 
 </details>
@@ -262,26 +262,26 @@ __<a name="type-csrfconfig">`CSRFConfig`</a>__
 
 __<a name="type-bodyparseroptions">`BodyparserOptions`</a>__
 
-|  Name  |                     Type                     |              Description               | Default |
-| ------ | -------------------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                                    | Use this middleware for every request. | `false` |
-| config | _[BodyparserConfig](#type-bodyparserconfig)_ | `koa-bodyparser` configuration.        | -       |
+|  Name  |                        Type                         |              Description               | Default |
+| ------ | --------------------------------------------------- | -------------------------------------- | ------- |
+| use    | <em>boolean</em>                                    | Use this middleware for every request. | `false` |
+| config | <em>[BodyparserConfig](#type-bodyparserconfig)</em> | `koa-bodyparser` configuration.        | -       |
 </summary>
 
-[`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="type-context">`Context`</a>__
+[`import('koa').Context`](https://github.com/koajs/koa/blob/master/docs/api/context.md) __<a name="type-koacontext">`koa.Context`</a>__
 
 __<a name="type-bodyparserconfig">`BodyparserConfig`</a>__
 
-|    Name     |                        Type                        |                                                 Description                                                  |      Default       |
-| ----------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------ |
-| enableTypes | _string[]_                                         | Parser will only parse when request type hits enableTypes.                                                   | `['json', 'form']` |
-| encode      | _string_                                           | Requested encoding.                                                                                          | `utf-8`            |
-| formLimit   | _string_                                           | Limit of the urlencoded body. If the body ends up being larger than this limit a 413 error code is returned. | `56kb`             |
-| jsonLimit   | _string_                                           | Limit of the json body.                                                                                      | `1mb`              |
-| strict      | _boolean_                                          | When set to true, JSON parser will only accept arrays and objects.                                           | `true`             |
-| detectJSON  | _(ctx: Context) =&gt; boolean_                     | Custom json request detect function.                                                                         | `null`             |
-| extendTypes | _{json: string[], form: string[], text: string[]}_ | Support extend types.                                                                                        | -                  |
-| onerror     | _(err: Error, ctx: Context) =&gt; void_            | Support custom error handle.                                                                                 | -                  |
+|    Name     |                            Type                             |                                                 Description                                                  |      Default       |
+| ----------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------ |
+| enableTypes | <em>string[]</em>                                           | Parser will only parse when request type hits enableTypes.                                                   | `['json', 'form']` |
+| encode      | <em>string</em>                                             | Requested encoding.                                                                                          | `utf-8`            |
+| formLimit   | <em>string</em>                                             | Limit of the urlencoded body. If the body ends up being larger than this limit a 413 error code is returned. | `56kb`             |
+| jsonLimit   | <em>string</em>                                             | Limit of the json body.                                                                                      | `1mb`              |
+| strict      | <em>boolean</em>                                            | When set to true, JSON parser will only accept arrays and objects.                                           | `true`             |
+| detectJSON  | <em>(ctx: Context) => boolean</em>                          | Custom json request detect function.                                                                         | `null`             |
+| extendTypes | <em>{ json: string[], form: string[], text: string[] }</em> | Support extend types.                                                                                        | -                  |
+| onerror     | <em>(err: Error, ctx: Context) => void</em>                 | Support custom error handle.                                                                                 | -                  |
 
 
 </details>
@@ -294,9 +294,9 @@ __<a name="type-bodyparserconfig">`BodyparserConfig`</a>__
 
 __<a name="type-checkauthoptions">`CheckauthOptions`</a>__
 
-| Name |   Type    |              Description               | Default |
-| ---- | --------- | -------------------------------------- | ------- |
-| use  | _boolean_ | Use this middleware for every request. | `false` |
+| Name |       Type       |              Description               | Default |
+| ---- | ---------------- | -------------------------------------- | ------- |
+| use  | <em>boolean</em> | Use this middleware for every request. | `false` |
 </summary>
 
 
@@ -312,17 +312,17 @@ __<a name="type-checkauthoptions">`CheckauthOptions`</a>__
 
 __<a name="type-loggeroptions">`LoggerOptions`</a>__
 
-|  Name  |                 Type                 |              Description               | Default |
-| ------ | ------------------------------------ | -------------------------------------- | ------- |
-| use    | _boolean_                            | Use this middleware for every request. | `false` |
-| config | _[LoggerConfig](#type-loggerconfig)_ | `koa-logger` configuration.            | -       |
+|  Name  |                    Type                     |              Description               | Default |
+| ------ | ------------------------------------------- | -------------------------------------- | ------- |
+| use    | <em>boolean</em>                            | Use this middleware for every request. | `false` |
+| config | <em>[LoggerConfig](#type-loggerconfig)</em> | `koa-logger` configuration.            | -       |
 </summary>
 
 __<a name="type-loggerconfig">`LoggerConfig`</a>__
 
-|    Name     |                                            Type                                            |                                                                                       Description                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| transporter | _(str: string, args: [string, string, string, string, string, string, string]) =&gt; void_ | Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`. |
+|    Name     |                                              Type                                              |                                                                                       Description                                                                                       |
+| ----------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| transporter | <em>(str: string, args: [string, string, string, string, string, string, string]) => void</em> | Param `str` is output string with ANSI Color, and you can get pure text with other modules like `strip-ansi`. Param `args` is a array by `[format, method, url, status, time, length]`. |
 
 
 </details>
@@ -335,26 +335,26 @@ __<a name="type-loggerconfig">`LoggerConfig`</a>__
 
 __<a name="type-compressoptions">`CompressOptions`</a>__
 
-|  Name  |                   Type                   |              Description               | Default |
-| ------ | ---------------------------------------- | -------------------------------------- | ------- |
-| use    | _boolean_                                | Use this middleware for every request. | `false` |
-| config | _[CompressConfig](#type-compressconfig)_ | `koa-compress` configuration.          | -       |
+|  Name  |                      Type                       |              Description               | Default |
+| ------ | ----------------------------------------------- | -------------------------------------- | ------- |
+| use    | <em>boolean</em>                                | Use this middleware for every request. | `false` |
+| config | <em>[CompressConfig](#type-compressconfig)</em> | `koa-compress` configuration.          | -       |
 </summary>
 
 __<a name="type-compressconfig">`CompressConfig`</a>__
 
-|    Name     |                  Type                  |                                                          Description                                                          | Default |
-| ----------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------- |
-| filter      | _(content_type: string) =&gt; boolean_ | An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`. | -       |
-| threshold   | _number_                               | Minimum response size in bytes to compress.                                                                                   | `1024`  |
-| flush       | _number_                               | Default: `zlib.constants.Z_NO_FLUSH`.                                                                                         | -       |
-| finishFlush | _number_                               | Default: `zlib.constants.Z_FINISH`.                                                                                           | -       |
-| chunkSize   | _number_                               | Default: `16*1024`.                                                                                                           | -       |
-| windowBits  | _number_                               | Support extend types.                                                                                                         | -       |
-| level       | _number_                               | Compression only.                                                                                                             | -       |
-| memLevel    | _number_                               | Compression only.                                                                                                             | -       |
-| strategy    | _number_                               | Compression only.                                                                                                             | -       |
-| dictionary  | _*_                                    | Deflate/inflate only, empty dictionary by default.                                                                            | -       |
+|    Name     |                    Type                    |                                                          Description                                                          | Default |
+| ----------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------- |
+| filter      | <em>(content_type: string) => boolean</em> | An optional function that checks the response content type to decide whether to compress. By default, it uses `compressible`. | -       |
+| threshold   | <em>number</em>                            | Minimum response size in bytes to compress.                                                                                   | `1024`  |
+| flush       | <em>number</em>                            | Default: `zlib.constants.Z_NO_FLUSH`.                                                                                         | -       |
+| finishFlush | <em>number</em>                            | Default: `zlib.constants.Z_FINISH`.                                                                                           | -       |
+| chunkSize   | <em>number</em>                            | Default: `16*1024`.                                                                                                           | -       |
+| windowBits  | <em>number</em>                            | Support extend types.                                                                                                         | -       |
+| level       | <em>number</em>                            | Compression only.                                                                                                             | -       |
+| memLevel    | <em>number</em>                            | Compression only.                                                                                                             | -       |
+| strategy    | <em>number</em>                            | Compression only.                                                                                                             | -       |
+| dictionary  | <em>*</em>                                 | Deflate/inflate only, empty dictionary by default.                                                                            | -       |
 
 
 </details>
@@ -367,31 +367,31 @@ __<a name="type-compressconfig">`CompressConfig`</a>__
 
 __<a name="type-staticoptions">`StaticOptions`</a>__
 
-|   Name    |                 Type                 |                    Description                    | Default |
-| --------- | ------------------------------------ | ------------------------------------------------- | ------- |
-| __root*__ | _string \| string[]_                 | Root or multiple roots from which to serve files. | -       |
-| use       | _boolean_                            | Use this middleware for every request.            | `false` |
-| mount     | _string_                             | Path from which to serve files.                   | `/`     |
-| maxage    | _number_                             | How long to cache file for.                       | `0`     |
-| config    | _[StaticConfig](#type-staticconfig)_ | `koa-static` configuration.                       | -       |
+|   Name    |                    Type                     |                    Description                    | Default |
+| --------- | ------------------------------------------- | ------------------------------------------------- | ------- |
+| __root*__ | <em>(string \| string[])</em>               | Root or multiple roots from which to serve files. | -       |
+| use       | <em>boolean</em>                            | Use this middleware for every request.            | `false` |
+| mount     | <em>string</em>                             | Path from which to serve files.                   | `/`     |
+| maxage    | <em>number</em>                             | How long to cache file for.                       | `0`     |
+| config    | <em>[StaticConfig](#type-staticconfig)</em> | `koa-static` configuration.                       | -       |
 </summary>
 
-[`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse) __<a name="type-serverresponse">`ServerResponse`</a>__
+[`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_class_http_serverresponse) __<a name="type-httpserverresponse">`http.ServerResponse`</a>__
 
 `(res: ServerResponse, path: string, stats: Stats) => any` __<a name="type-setheaders">`SetHeaders`</a>__
 
 __<a name="type-staticconfig">`StaticConfig`</a>__
 
-|    Name    |               Type               |                                                                                             Description                                                                                             |   Default    |
-| ---------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| maxage     | _number_                         | Browser cache max-age in milliseconds.                                                                                                                                                              | `0`          |
-| hidden     | _boolean_                        | Allow transfer of hidden files.                                                                                                                                                                     | `false`      |
-| index      | _string_                         | Default file name.                                                                                                                                                                                  | `index.html` |
-| defer      | _boolean_                        | If `true`, serves after return next(), allowing any downstream middleware to respond first.                                                                                                         | `false`      |
-| gzip       | _boolean_                        | Try to serve the gzipped version of a file automatically when gzip is supported by a client and if the requested file with `.gz` extension exists.                                                  | `true`       |
-| br         | _boolean_                        | Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with `.br` extension exists (note, that brotli is only accepted over https). | `true`       |
-| setHeaders | _[SetHeaders](#type-setheaders)_ | Function to set custom headers on response.                                                                                                                                                         | -            |
-| extensions | _boolean_                        | Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served.                                                                           | `false`      |
+|    Name    |                  Type                   |                                                                                             Description                                                                                             |   Default    |
+| ---------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| maxage     | <em>number</em>                         | Browser cache max-age in milliseconds.                                                                                                                                                              | `0`          |
+| hidden     | <em>boolean</em>                        | Allow transfer of hidden files.                                                                                                                                                                     | `false`      |
+| index      | <em>string</em>                         | Default file name.                                                                                                                                                                                  | `index.html` |
+| defer      | <em>boolean</em>                        | If `true`, serves after return next(), allowing any downstream middleware to respond first.                                                                                                         | `false`      |
+| gzip       | <em>boolean</em>                        | Try to serve the gzipped version of a file automatically when gzip is supported by a client and if the requested file with `.gz` extension exists.                                                  | `true`       |
+| br         | <em>boolean</em>                        | Try to serve the brotli version of a file automatically when brotli is supported by a client and if the requested file with `.br` extension exists (note, that brotli is only accepted over https). | `true`       |
+| setHeaders | <em>[SetHeaders](#type-setheaders)</em> | Function to set custom headers on response.                                                                                                                                                         | -            |
+| extensions | <em>boolean</em>                        | Try to match extensions from passed array to search for file when no extension is sufficed in URL. First found is served.                                                                           | `false`      |
 
 
 For example, the below configuration will serve files from both the `static` directory of the project, and the _React.js_ dependency. When `NODE_ENV` environment variable is set to `production`, files will be cached for 10 days.
@@ -429,28 +429,28 @@ Static server started on http://localhost:5004
 <summary><strong><a name="cors">CORS</a></strong>: return Cross-Origin Resource Sharing headers.
 <hr/>
 
-`import('koa').Context` __<a name="type-context">`Context`</a>__
+`import('koa').Context` __<a name="type-koacontext">`koa.Context`</a>__
 
 __<a name="type-corsoptions">`CorsOptions`</a>__
 
-|  Name  |                             Type                              |                                                                                                                                                                                                             Description                                                                                                                                                                                                              | Default |
-| ------ | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-| origin | _string \| Array&lt;string&gt; \| ((ctx: Context) => string)_ | The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If a function is passed, it should return the string with the origin to set. If not passed, the request origin is returned, allowing any origin to access the resource. | -       |
-| use    | _boolean_                                                     | Use this middleware for every request.                                                                                                                                                                                                                                                                                                                                                                                               | `false` |
-| config | _[CorsConfig](#type-corsconfig)_                              | `@koa/cors` configuration.                                                                                                                                                                                                                                                                                                                                                                                                           | -       |
+|  Name  |                           Type                           |                                                                                                                                                                                                             Description                                                                                                                                                                                                              | Default |
+| ------ | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| origin | <em>string|Array<string>|((ctx: Context) => string)</em> | The origin or an array of origins to accept as valid. In case of an array, the origin from the request headers will be searched in the array, and if found, it will be returned (since browsers only support a single `Access-Control-Allow-Origin` header). If a function is passed, it should return the string with the origin to set. If not passed, the request origin is returned, allowing any origin to access the resource. | -       |
+| use    | <em>boolean</em>                                         | Use this middleware for every request.                                                                                                                                                                                                                                                                                                                                                                                               | `false` |
+| config | <em>[CorsConfig](#type-corsconfig)</em>                  | `@koa/cors` configuration.                                                                                                                                                                                                                                                                                                                                                                                                           | -       |
 </summary>
 
 __<a name="type-corsconfig">`CorsConfig`</a>__
 
-|        Name        |              Type               |                      Description                       |             Default              |
-| ------------------ | ------------------------------- | ------------------------------------------------------ | -------------------------------- |
-| origin             | _string_                        | `Access-Control-Allow-Origin` header value.            | `request Origin header`          |
-| allowMethods       | _string \| Array&lt;string&gt;_ | `Access-Control-Allow-Methods` header value.           | `GET,HEAD,PUT,POST,DELETE,PATCH` |
-| exposeHeaders      | _string \| Array&lt;string&gt;_ | `Access-Control-Expose-Headers` header value.          | -                                |
-| allowHeaders       | _string \| Array&lt;string&gt;_ | `Access-Control-Allow-Headers` header value.           | -                                |
-| maxAge             | _string \| number_              | `Access-Control-Max-Age` header value in seconds.      | -                                |
-| credentials        | _boolean_                       | `Access-Control-Allow-Credentials` header value.       | `false`                          |
-| keepHeadersOnError | _boolean_                       | Add set headers to `err.header` if an error is thrown. | `false`                          |
+|        Name        |                   Type                   |                      Description                       |             Default              |
+| ------------------ | ---------------------------------------- | ------------------------------------------------------ | -------------------------------- |
+| origin             | <em>string</em>                          | `Access-Control-Allow-Origin` header value.            | `request Origin header`          |
+| allowMethods       | <em>(string \| Array&lt;string&gt;)</em> | `Access-Control-Allow-Methods` header value.           | `GET,HEAD,PUT,POST,DELETE,PATCH` |
+| exposeHeaders      | <em>(string \| Array&lt;string&gt;)</em> | `Access-Control-Expose-Headers` header value.          | -                                |
+| allowHeaders       | <em>(string \| Array&lt;string&gt;)</em> | `Access-Control-Allow-Headers` header value.           | -                                |
+| maxAge             | <em>(string \| number)</em>              | `Access-Control-Max-Age` header value in seconds.      | -                                |
+| credentials        | <em>boolean</em>                         | `Access-Control-Allow-Credentials` header value.       | `false`                          |
+| keepHeadersOnError | <em>boolean</em>                         | Add set headers to `err.header` if an error is thrown. | `false`                          |
 
 
 </details>
@@ -463,17 +463,17 @@ __<a name="type-corsconfig">`CorsConfig`</a>__
 
 __<a name="type-frontendoptions">`FrontendOptions`</a>__: Allows to serve front-end JS files and CSS as modules, including from node_modules folder.
 
-|   Name    |                   Type                   |                       Description                       |  Default   |
-| --------- | ---------------------------------------- | ------------------------------------------------------- | ---------- |
-| directory | _(string \| Array&lt;string&gt;)_        | The directory or directories from which to serve files. | `frontend` |
-| config    | _[FrontendConfig](#type-frontendconfig)_ | `@idio/frontend` configuration.                         | -          |
+|   Name    |                      Type                       |                       Description                       |  Default   |
+| --------- | ----------------------------------------------- | ------------------------------------------------------- | ---------- |
+| directory | <em>(string \| Array&lt;string&gt;)</em>        | The directory or directories from which to serve files. | `frontend` |
+| config    | <em>[FrontendConfig](#type-frontendconfig)</em> | `@idio/frontend` configuration.                         | -          |
 </summary>
 
 __<a name="type-frontendconfig">`FrontendConfig`</a>__
 
-|  Name  |   Type   |                                                                                                           Description                                                                                                            |           Default            |
-| ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| pragma | _string_ | The pragma function to import. This enables to skip writing `h` at the beginning of each file. JSX will be transpiled to have `h` pragma, therefore to use React it's possible to do `import { createElement: h } from 'react'`. | `import { h } from 'preact'` |
+|  Name  |      Type       |                                                                                                           Description                                                                                                            |           Default            |
+| ------ | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| pragma | <em>string</em> | The pragma function to import. This enables to skip writing `h` at the beginning of each file. JSX will be transpiled to have `h` pragma, therefore to use React it's possible to do `import { createElement: h } from 'react'`. | `import { h } from 'preact'` |
 
 
 </details>
