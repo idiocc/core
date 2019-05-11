@@ -1,3 +1,9 @@
+## 11 May 2019
+
+### [1.4.0](https://github.com/idiojs/core/compare/v1.3.6...v1.4.0)
+
+- [deps] Switch to [`@goa/koa`](https://github.com/idiocc/goa): The Koa web-server compiled using [Google Closure Compiler](https://github.com/google/closure-compiler/) via [Depack](https://artdecocode.com/depack/).
+
 ## 4 April 2019
 
 ### [1.3.6](https://github.com/idiojs/core/compare/v1.3.5...v1.3.6)
