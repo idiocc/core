@@ -25,7 +25,7 @@ const T = {
   async 'can add middleware automatically'({ start }) {
     const body = 'test'
     const { url } = await start({
-      /** @type {import('koa').Middleware} */
+      /** @type {import('@goa/koa').Middleware} */
       async test(ctx, next) {
         ctx.body = body
         await next()

@@ -1,7 +1,7 @@
 const { debuglog } = require('util');
 let enableDestroy = require('server-destroy'); if (enableDestroy && enableDestroy.__esModule) enableDestroy = enableDestroy.default;
 let Router = require('koa-router'); if (Router && Router.__esModule) Router = Router.default;
-let Koa = require('koa'); if (Koa && Koa.__esModule) Koa = Koa.default;
+let Koa = require('@goa/koa'); if (Koa && Koa.__esModule) Koa = Koa.default;
 let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
 const setupMiddleware = require('./setup-middleware');
 

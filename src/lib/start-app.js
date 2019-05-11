@@ -1,7 +1,7 @@
 import { debuglog } from 'util'
 import enableDestroy from 'server-destroy'
 import Router from 'koa-router'
-import Koa from 'koa'
+import Koa from '@goa/koa'
 import erotic from 'erotic'
 import setupMiddleware from './setup-middleware'
 

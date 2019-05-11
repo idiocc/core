@@ -95,7 +95,7 @@ const setupLogger = (app, config) => {
 }
 
 /**
- * @param {App} app
+ * @param {_goa.Application} app
  * @param {import('..').FrontendConfig} config
  * @param {import('..').FrontendOptions} options
  */
@@ -126,13 +126,12 @@ const map = {
   frontend: setupFrontend,
 }
 
-/**
- * @return {Middleware}
- */
 async function initMiddleware(name, conf, app) {
   if (typeof conf == 'function') {
-    app.use(conf)
-    return conf
+    /** @type {_goa.Middleware} */
+    const c = conf
+    app.use(c)
+    return c
   }
   let fn
   if (name in map) {
@@ -146,6 +145,7 @@ async function initMiddleware(name, conf, app) {
     throw new Error('Either the "middleware" or "middlewareConstructor" properties must be passed.')
   }
   const { use, config = {}, ...options } = conf
+  /** @type {_goa.Middleware} */
   const res = await fn(app, config, options)
   if (use) {
     app.use(res)
@@ -154,11 +154,11 @@ async function initMiddleware(name, conf, app) {
 }
 
 /**
- * @param {MiddlewareConfig} middleware
- * @param {import('koa').Application} app
+ * @param {MiddlewareConfig} middlewareConfig
+ * @param {_goa.Application} app
  */
                async function setupMiddleware(middlewareConfig = {}, app) {
-  /** @type {Object.<string, Middleware>} */
+  /** @type {Object.<string, _goa.Middleware>} */
   const res = await Object.keys(middlewareConfig)
     .reduce(async (acc, name) => {
       const accRes = await acc
@@ -180,7 +180,8 @@ async function initMiddleware(name, conf, app) {
   return res
 }
 
-/** @typedef {import('koa').Middleware} Middleware */
+/** @typedef {import('@goa/koa').Middleware} _goa.Middleware */
+/** @typedef {import('@goa/koa').Application} _goa.Application */
 /** @typedef {import('..').MiddlewareConfig} MiddlewareConfig */
 
 

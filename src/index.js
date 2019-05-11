@@ -17,30 +17,29 @@ import startApp from './lib/start-app'
  * @param {number} [config.port=5000] The port on which to start the server. Default `5000`.
  * @param {string} [config.host="0.0.0.0"] The host on which to listen. Default `0.0.0.0`.
  * @example
- *
- * // start a server, and serve files from the "static" directory.
- * await idioCore({
- *  static: {
- *    use: true,
- *    root: 'static',
- *    config: {
- *      hidden: true,
- *    },
- *  },
- * })
+```js
+// start a server, and serve files from the "static" directory.
+await idioCore({
+  static: {
+    use: true,
+    root: 'static',
+    config: {
+      hidden: true,
+    },
+  },
+})
+```
  */
 async function idioCore(middlewareConfig = {}, config = {}) {
   const res = await startApp(middlewareConfig, config)
   const { url, app, server, router, middleware } = res
-  /** @type {Object.<string, Middleware>} */
-  const mw = middleware
 
-  return { url, app, router, server, middleware: mw }
+  return { url, app, router, server, middleware }
 }
 
 // here until https://github.com/Microsoft/TypeScript/issues/26921 solved
 /**
- * @typedef {import('koa').Middleware} Middleware
+ * @typedef {import('@goa/koa').Middleware} _goa.Middleware
  */
 
 /* documentary types/options/bodyparser.xml */
@@ -52,7 +51,7 @@ async function idioCore(middlewareConfig = {}, config = {}) {
 
 /* documentary types/config/bodyparser.xml */
 /**
- * @typedef {import('koa').Context} Context
+ * @typedef {import('@goa/koa').Context} Context
  *
  * @typedef {Object} BodyparserConfig
  * @prop {string[]} [enableTypes="['json', 'form']"] Parser will only parse when request type hits enableTypes. Default `['json', 'form']`.
