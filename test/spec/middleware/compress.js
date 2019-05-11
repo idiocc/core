@@ -1,4 +1,4 @@
-import { equal } from 'zoroaster/assert'
+import { equal } from '@zoroaster/assert'
 import { gunzipSync } from 'zlib'
 import { request } from 'http'
 import Catchment from 'catchment'
