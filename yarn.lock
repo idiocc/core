@@ -47,10 +47,10 @@
   resolved "https://registry.yarnpkg.com/@depack/split/-/split-1.0.0.tgz#37fea28d9bc6f01e5a2da87d393f402781bb7e99"
   integrity sha512-PNJPl01VFMKtyN7qBZ2cds4N/lO2KvzLrR7JamODFiuuL2X8mGoTKp1SI8fxlT2MwLV8mScCUKn55QPwsUX7iA==
 
-"@goa/koa@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@goa/koa/-/koa-1.1.0.tgz#29e548b7a9d60277dc07005fb52bb64df641050d"
-  integrity sha512-3z8MVsdZnYCx9c+CfB+7YkP4xyGE87cpn9TDS4hHXgkd/U86j0k1M34QQjIQxl51+amzu3uoPzKNFwp4lKdYPQ==
+"@goa/koa@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@goa/koa/-/koa-1.1.1.tgz#5c4a7a07717e3a32026afd5366fcd3b6c8976bb1"
+  integrity sha512-IR/byIIk4krVac7tBzXBQJAxN4MxQ0rxSUWbYsnPWWcDHmamL/HdA3cGuQM01lix3x3Z83aeaagBKgjhfBIcTg==
   dependencies:
     mime-db "^1.40.0"
 
@@ -199,9 +199,9 @@
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
 "@types/react@^16.8.12":
-  version "16.8.20"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.20.tgz#4f633ecbd0a4d56d0ccc50fff6f9321bbcd7d583"
-  integrity sha512-ZLmI+ubSJpfUIlQuULDDrdyuFQORBuGOvNnMue8HeA0GVrAJbWtZQhcBvnBPNRBI/GrfSfrKPFhthzC2SLEtLQ==
+  version "16.8.21"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.21.tgz#aefb32519a4111964993be5b2bd3f172f81c34ff"
+  integrity sha512-+jAtgtJ3htE+VEP/bMzBBOANGkaTbMOGYWVrmhCVtp2WE//lNG6Irw9kBEaLR7lQGjjkt/BlSSHPgArFNOKhkg==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -922,10 +922,10 @@ rexml@^1.4.0:
   resolved "https://registry.yarnpkg.com/rexml/-/rexml-1.4.0.tgz#64368db531b4e86acf1a3e69a4cbbed94acc5232"
   integrity sha512-Pl2ZBXcHiIXBKMBJZp141jlfekTCgKVsMSw0NJ8QYYxAV6p3mXUC9DvGI5tUW3GqWr27ieGiAuZTBm8sqsX96w==
 
-rexml@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/rexml/-/rexml-2.0.1.tgz#964516e7bb6636decc832fb000620dd517d4a6c4"
-  integrity sha512-O5NsTMpdyltN/qZ3Z9KyIUEa1oMDcZnk86OPyYdlgIDeEpfveF02O+7NzLUl/bfm68yhUdGLr3HXzqjviJYVww==
+rexml@^2.0.0, rexml@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/rexml/-/rexml-2.0.2.tgz#e1e6b04aab7d26c72f5f732887c1d6abf0a1d92b"
+  integrity sha512-dfMmsI2M5x0xZdT9FhOieHcajXvcGrT9/RRkg/RvWUm055+srQoGuBJwhEYYeBe+zygmtN33lS5hGnxaqwCT4g==
   dependencies:
     mismatch "^1.2.0"
 
@@ -1052,13 +1052,13 @@ tsscmp@1.0.6:
   integrity sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==
 
 typal@^1.13.1:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/typal/-/typal-1.13.1.tgz#072fa101b9c3e43a623ac5d5a600ca3eddcec919"
-  integrity sha512-GsD2FwEVdCg3DGliQEzeHzF9NvLJrnmNStXYeIp/yFdLHQhJJ546HiWu4QHeq9UjjqqowOg0CDgezxPSYiGiaA==
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/typal/-/typal-1.14.0.tgz#bc01f8065d497ca5f517de133993016b5c789061"
+  integrity sha512-buvfq0zwg1OdiTF30ui6Sc0HMxnCoeLNmSke5YXxWZ1cRdygTBTBV4KZkdDIp+OMMNcKAW8Z3EVgqXyhDzyQqw==
   dependencies:
     "@typedefs/parser" "^1.3.0"
     mismatch "^1.2.0"
-    rexml "^1.4.0"
+    rexml "^2.0.2"
 
 type-is@^1.6.16, type-is@^1.6.4:
   version "1.6.18"
